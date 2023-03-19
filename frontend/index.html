@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CertIZDAT</title>
+    <!-- TODO: Add favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
+    <link rel="icon" type="image/x-icon" href="images/fav.ico">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="main-header">
+      <ul class="nav">
+        <li class="nav-tem">
+          <a href="" class="nav-logo-link">
+            CertIZDAT Logo
+            <img src="NULL" alt="CertIZDAT Logo" class="nav-logo">
+          </a>
+        </li>
+        <li class="nav-tem">
+          <span class="main-text">Download full dump</span>
+          <button
+            type="button"
+            name="download-dump"
+            class="main-button download-dump"
+          >
+            download
+          </button>
+        </li>
+      </ul>
+    </header>
+    <main class="main-container">
+      <h1 class="main-content-title visually-hidden">CertIZDAT</h1>
+      <section class="diagram">
+        <h2 class="visually-hidden">Statistic</h2>
+        <div class="statistic"></div>
+      </section>
+      <section class="setup">
+        <h2 class="visually-hidden">Form Setup</h2>
+        <form action="/action" class="setup-form">
+          <div class="form-column">
+            <label for="scale-input">Scale of graph</label>
+            <select name="scale-input" id="scale-input">
+              <option value="by-month">by month</option>
+              <option value="by-year">by year</option>
+            </select>
+            <label for="time-period-input">Choose time period</label>
+            <input id="time-period-input" type="date">
+          </div>
+          <div class="form-column">
+            <label for="list-of">List of:</label>
+            <select name="list-of" id="list-of">
+              <option value="by-month">Russian Trusted CA</option>
+              <option value="by-year">Russian Self Signed Certs</option>
+            </select>
+            <label for="site-list" class="visually-hidden"
+              >List of sites:
+            </label>
+            <textarea
+              id="site-list"
+              name="site-list"
+              rows="8"
+              cols="46"
+              style="resize: none"
+            ></textarea>
+          </div>
+          <div class="form-column">
+            <div class="download-group">
+              <p class="main-text">Download sites with Russian Trusted CA</p>
+              <button
+                type="button"
+                name="download-ca"
+                class="main-button download-dump"
+              >
+                download
+              </button>
+            </div>
+            <div class="download-group">
+              <p class="main-text">
+                Download sites with self signed certificate
+              </p>
+              <button
+                type="button"
+                name="download-ca"
+                class="main-button download-dump"
+              >
+                download
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
