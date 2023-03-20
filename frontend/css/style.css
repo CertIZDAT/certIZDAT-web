@@ -99,10 +99,6 @@ ul {
   flex-direction: row;
 }
 
-.project-info {
-  display: none;
-}
-
 .form-column {
   min-width: 360px;
   display: flex;
@@ -134,16 +130,6 @@ ul {
   min-width: 440px;
 }
 
-.project-info-button {
-  position: fixed;
-  width: 220px;
-  height: 36px;
-  bottom: 20px;
-  right: 20px;
-  font-size: medium;
-  background-color: #ffe5e5;
-}
-
 .download-group {
   display: flex;
   flex-direction: column;
@@ -153,4 +139,27 @@ ul {
 .download-group > p {
   margin: 0;
   margin-bottom: 10px;
+}
+
+.project-info {
+  position: absolute;
+  padding: 14px;
+  right: 20px;
+  bottom: 4px;
+  width: 380px;
+  height: 230px;
+  border-radius: 5px;
+  background-color: #ffe5e5;
+  display: none;
+}
+
+.project-info-button {
+  position: relative;
+  position: fixed;
+  width: 220px;
+  height: 36px;
+  bottom: 20px;
+  right: 20px;
+  font-size: medium;
+  background-color: #ffe5e5;
 }
