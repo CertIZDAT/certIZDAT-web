@@ -6,23 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CertIZDAT</title>
     <!-- TODO: Add favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
-    <link rel="icon" type="image/x-icon" href="images/fav.ico">
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico"> -->
+    <!-- <link rel="icon" type="image/x-icon" href="images/fav.ico"> -->
     <link href="css/normalize.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
     <header class="main-header">
       <ul class="nav">
-        <li class="nav-tem">
-          <a href="" class="nav-logo-link">
-            CertIZDAT Logo
-            <img src="NULL" alt="CertIZDAT Logo" class="nav-logo">
-          </a>
+        <li class="nav-item">
+          <img
+            src="images/main-logo.png"
+            alt="CertIZDAT Logo"
+            width="144px"
+            class="nav-logo"
+          />
         </li>
-        <li class="nav-tem">
-          <span class="main-text">Download full dump</span>
+        <li class="nav-item">
+          <span class="main-text">Download full dump: </span>
           <button
+            id="aa"
             type="button"
             name="download-dump"
             class="main-button download-dump"
@@ -33,42 +36,50 @@
       </ul>
     </header>
     <main class="main-container">
-      <h1 class="main-content-title visually-hidden">CertIZDAT</h1>
-      <section class="diagram">
+      <h1 class="main-content-title visually-hidden">
+        <span class="red-logo">Cert</span>IZDAT
+      </h1>
+      <section class="main-section diagram">
         <h2 class="visually-hidden">Statistic</h2>
-        <p class="main-text">Last update time:</p>
+        <p class="main-text update-time">Last update time:</p>
         <div class="statistic"></div>
       </section>
-      <section class="setup">
+      <section class="main-section setup">
         <h2 class="visually-hidden">Form Setup</h2>
         <form action="/action" class="setup-form">
           <div class="form-column">
             <label for="scale-input">Scale of graph</label>
-            <select name="scale-input" id="scale-input">
+            <select class="drop-select" name="scale-input" id="scale-input">
               <option value="by-month">by month</option>
-              <option value="by-year">by year</option>
+              <option value="by-year" disabled>by year</option>
             </select>
             <label for="time-period-input">Choose time period</label>
-            <input id="time-period-input" type="date">
+            <input
+              class="drop-select time-select"
+              id="time-period-input"
+              type="date"
+            >
           </div>
-          <div class="form-column">
+          <div class="form-column out-column">
             <label for="list-of">List of:</label>
-            <select name="list-of" id="list-of">
-              <option value="by-month">Russian Trusted CA</option>
-              <option value="by-year">Russian Self Signed Certs</option>
+            <select class="drop-select" name="list-of" id="list-of">
+              <option value="russian-trusted-ca">Russian Trusted CA</option>
+              <option value="self-sign">Russian Self Signed</option>
             </select>
             <label for="site-list" class="visually-hidden"
               >List of sites:
             </label>
             <textarea
               id="site-list"
+              class="main-text-area"
+              placeholder="List will be here..."
               name="site-list"
-              rows="8"
+              rows="12"
               cols="46"
               style="resize: none"
             ></textarea>
           </div>
-          <div class="form-column">
+          <div class="form-column download-column">
             <div class="download-group">
               <p class="main-text">Download sites with Russian Trusted CA</p>
               <button
@@ -97,16 +108,16 @@
               distinctio, unde voluptatum eveniet illo repellat itaque ab id
               officiis enim illum veritatis?
             </p>
-            <button
-              type="button"
-              name="show-project-info"
-              class="main-button project-info-button"
-            >
-              What's for this project?
-            </button>
           </div>
         </form>
       </section>
+      <button
+        type="button"
+        name="show-project-info"
+        class="main-button project-info-button"
+      >
+        What's for this project?
+      </button>
     </main>
   </body>
 </html>
