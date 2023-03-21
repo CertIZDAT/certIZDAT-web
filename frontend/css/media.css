@@ -1,0 +1,41 @@
+@media screen and (max-width: 1000px) {
+  .nav {
+    width: 800px;
+  }
+}
+
+@media screen and (max-width: 1242px) {
+  .statistic {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1038px) {
+  .statistic {
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 934px) {
+  .statistic {
+    width: 780px;
+  }
+}
+
+@media screen and (max-width: 1242px) {
+  .diagram {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1038px) {
+  .diagram {
+    width: 900px;
+  }
+}
+
+@media screen and (max-width: 934px) {
+  .diagram {
+    width: 780px;
+  }
+}

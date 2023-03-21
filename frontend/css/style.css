@@ -58,12 +58,6 @@ ul {
   margin-bottom: 0;
 }
 
-@media screen and (max-width: 1000px) {
-  .nav {
-    width: 800px;
-  }
-}
-
 .nav-item {
   margin: 0px;
 }
@@ -77,32 +71,8 @@ ul {
   border-radius: 15px;
 }
 
-@media screen and (max-width: 1242px) {
-  .statistic {
-    width: 1000px;
-  }
-}
-
-@media screen and (max-width: 1038px) {
-  .statistic {
-    width: 900px;
-  }
-}
-
 .diagram {
   display: flex;
-}
-
-@media screen and (max-width: 1242px) {
-  .diagram {
-    width: 1000px;
-  }
-}
-
-@media screen and (max-width: 1038px) {
-  .diagram {
-    width: 900px;
-  }
 }
 
 .update-time {
