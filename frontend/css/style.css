@@ -36,7 +36,6 @@ ul {
 .main-section {
   display: flex;
   flex-direction: column;
-  width: 1200px;
   margin: 0 auto;
   align-items: center;
   text-align: center;
@@ -46,7 +45,6 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* width: 1200px; */
   margin: 0 auto;
 }
 
@@ -99,6 +97,7 @@ ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .form-column {

@@ -1,9 +1,11 @@
+/* Navigation */
 @media screen and (max-width: 1000px) {
   .nav {
     width: 800px;
   }
 }
 
+/* Statistic section */
 @media screen and (max-width: 1242px) {
   .statistic {
     width: 1000px;
@@ -22,6 +24,7 @@
   }
 }
 
+/* Main diagram */
 @media screen and (max-width: 1242px) {
   .diagram {
     width: 1000px;
@@ -37,5 +40,37 @@
 @media screen and (max-width: 934px) {
   .diagram {
     width: 780px;
+  }
+}
+
+/* Setup section */
+@media screen and (max-width: 1242px) {
+  .setup {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1242px) {
+  .form-column {
+    width: 370px;
+  }
+}
+
+@media screen and (max-width: 1242px) {
+  .out-column {
+    width: 370px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .out-column {
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .out-column {
+    width: 320px;
   }
 }
