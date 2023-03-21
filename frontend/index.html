@@ -58,6 +58,7 @@
               class="drop-select time-select"
               id="time-period-input"
               type="date"
+              disabled
             />
           </div>
           <div class="form-column out-column">
@@ -121,18 +122,21 @@
         What's for this project?
       </button>
     </main>
-    <!-- TODO: Fix f. eventListener -->
     <script>
-      const btn = document.getElementById("show-btn-id");
-      btn.addEventListener("click", function() {
+      document.addEventListener("DOMContentLoaded", function () {
+        const btn = document.getElementById("show-btn-id");
         var project_info_block = document.getElementById("project-info-id");
-        if (project_info_block.style.display === "none") {
-          btn.style.backgroundColor = "#FF0000";
-          project_info_block.style.display = "block";
-        } else {
-          btn.style.backgroundColor = "#FFE5E5";
-          project_info_block.style.display = "none";
-        }
+        project_info_block.style.display = "none";
+        btn.addEventListener("click", function () {
+          var project_info_block = document.getElementById("project-info-id");
+          if (project_info_block.style.display === "none") {
+            btn.style.backgroundColor = "#FF0000";
+            project_info_block.style.display = "block";
+          } else {
+            btn.style.backgroundColor = "#FFE5E5";
+            project_info_block.style.display = "none";
+          }
+        });
       });
     </script>
   </body>
