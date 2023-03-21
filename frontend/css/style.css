@@ -26,18 +26,18 @@ ul {
 }
 
 .main-header {
-  min-height: 50px;
   display: flex;
   text-align: center;
   justify-content: center;
+  min-height: 50px;
   margin: auto 60px 0 60px;
 }
 
 .main-section {
-  width: 1200px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
+  width: 1200px;
+  margin: 0 auto;
   align-items: center;
   text-align: center;
 }
@@ -46,14 +46,15 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin: 0 20px;
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .nav {
   display: flex;
+  justify-content: space-between;
   min-width: 900px;
   padding-left: 0;
-  justify-content: space-between;
   margin-bottom: 0;
 }
 
@@ -100,11 +101,11 @@ ul {
 }
 
 .form-column {
-  min-width: 360px;
   display: flex;
   flex-direction: column;
   align-items: self-start;
   gap: 10px;
+  min-width: 360px;
 }
 
 .drop-select {
@@ -143,17 +144,17 @@ ul {
 
 .project-info {
   position: absolute;
+  width: 380px;
+  height: 230px;
   padding: 14px;
   right: 20px;
   bottom: 4px;
-  width: 380px;
-  height: 230px;
+  text-align: left;
   border-radius: 5px;
   background-color: #ffe5e5;
 }
 
 .project-info-button {
-  position: relative;
   position: fixed;
   width: 220px;
   height: 36px;
