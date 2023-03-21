@@ -46,16 +46,22 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 1200px;
+  /* width: 1200px; */
   margin: 0 auto;
 }
 
 .nav {
   display: flex;
   justify-content: space-between;
-  min-width: 900px;
+  width: 900px;
   padding-left: 0;
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 1000px) {
+  .nav {
+    width: 800px;
+  }
 }
 
 .nav-item {
@@ -71,8 +77,32 @@ ul {
   border-radius: 15px;
 }
 
+@media screen and (max-width: 1242px) {
+  .statistic {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1038px) {
+  .statistic {
+    width: 900px;
+  }
+}
+
 .diagram {
   display: flex;
+}
+
+@media screen and (max-width: 1242px) {
+  .diagram {
+    width: 1000px;
+  }
+}
+
+@media screen and (max-width: 1038px) {
+  .diagram {
+    width: 900px;
+  }
 }
 
 .update-time {
@@ -98,6 +128,7 @@ ul {
 .setup-form {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .form-column {
@@ -105,7 +136,7 @@ ul {
   flex-direction: column;
   align-items: self-start;
   gap: 10px;
-  min-width: 360px;
+  width: 360px;
 }
 
 .drop-select {
