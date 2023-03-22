@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1200">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CertIZDAT 404</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/fav.ico') }}"
+    >
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='images/fav.ico') }}"
+    >
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css')}}"
+    >
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css')}}"
+    >
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/media.css')}}"
+    >
+  </head>
+  <body>
+    <header class="main-header">
+      <ul class="nav">
+        <li class="nav-item">
+          <!-- Ugly hack, replace with <a> globally -->
+          <img
+            src="{{ url_for('static', filename='images/main-logo.png') }}"
+            alt="CertIZDAT Logo"
+            width="144"
+            height="25"
+            class="nav-logo 404-logo"
+            onclick="window.location.href = '/';"
+            style="cursor: pointer;"
+          >
+        </li>
+        <li class="nav-item">
+          <button
+            type="button"
+            name="go-back"
+            class="main-button"
+          >
+            Go back
+          </button>
+        </li>
+      </ul>
+    </header>
+    <main class="main-container">
+      <h1 class="main-content-title visually-hidden">
+        CertIZDAT 404 page
+      </h1>
+      <section class="main-section">
+        <h2 class="not-found">404</h2>
+        <p class="not-found-egg">Mess with the best die like the rest</p>
+      </section>
+    </main>
+    <script type="text/javascript">
+        const backButton = document.querySelector('button[name="go-back"]');
+        const logo = document.getElementsByClassName('404-logo');
+        backButton.addEventListener('click', () => {
+        window.location.href = '/';
+        });
+    </script>
+  </body>
+</html>

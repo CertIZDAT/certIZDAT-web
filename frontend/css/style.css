@@ -163,3 +163,14 @@ ul {
   font-size: medium;
   background-color: #ffe5e5;
 }
+
+/* 404 page */
+.not-found {
+  margin: 60px auto 0;
+  color: #e23030;
+  font-size: 170px;
+}
+
+.not-found-egg {
+  opacity: 0.33;
+}
