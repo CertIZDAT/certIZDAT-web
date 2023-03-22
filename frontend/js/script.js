@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// Setup download button action
+// Setup download dump button action
 function download_dump() {
     // Send a fetch request to the /download_dump endpoint
     fetch('/download_dump')
@@ -30,4 +30,38 @@ function download_dump() {
             a.click();
             document.body.removeChild(a);
         });
-}
+};
+
+// Setup download list of the sites with Russian Trusted CA button action
+function download_ca_list() {
+    // Send a fetch request to the /download_dump endpoint
+    fetch('/download_ca_list')
+        .then(response => response.blob())
+        .then(blob => {
+            // Create a new Blob object with the file data and create a download link
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'CA_list.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+};
+
+// Setup download list of the sites with self signed certificate button action
+function download_self_sign_list() {
+    // Send a fetch request to the /download_dump endpoint
+    fetch('/download_self_sign_list')
+        .then(response => response.blob())
+        .then(blob => {
+            // Create a new Blob object with the file data and create a download link
+            var url = URL.createObjectURL(blob);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'self_sign_list.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+};

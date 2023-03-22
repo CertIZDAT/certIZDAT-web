@@ -21,5 +21,25 @@ def download_dump():
     return send_file(file_path, as_attachment=True, mimetype='application/x-sqlite3')
 
 
+@app.route('/download_ca_list')
+def download_ca_list():
+    file_path = os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        '..',
+        'analyser',
+        'ssl_cert_err.txt')
+    return send_file(file_path, as_attachment=True, mimetype='text/plain')
+
+
+@app.route('/download_self_sign_list')
+def download_self_sign_list():
+    file_path = os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        '..',
+        'analyser',
+        'ssl_self_sign_err.txt')
+    return send_file(file_path, as_attachment=True, mimetype='text/plain')
+
+
 if __name__ == '__main__':
     app.run()
