@@ -14,9 +14,10 @@ def index():
     connection = db.get_db_connection('../analyser/statistics.db')
 
     site_list = common.get_latest_list_results(connection, 'CA')
+    update_time = common.get_last_update_time(connection)
 
     connection.close()
-    return render_template('index.html', site_list=site_list)
+    return render_template('index.html', site_list=site_list, update_time=update_time)
 
 
 # Downloads section

@@ -27,3 +27,8 @@ def get_latest_list_results(connection, type='CA'):
     else:
         return __clean_db_response(connection.execute(
             db.get_last_self_sign_list).fetchall()[0][0])
+
+
+def get_last_update_time(connection):
+    return connection.execute(
+        db.get_last_update_date_time).fetchall()[0][0]
