@@ -14,11 +14,3 @@ get_last_update_date_time = 'SELECT date_time FROM statistic_table ORDER BY date
 def get_db_connection(db_name):
     connect = sqlite3.connect(db_name)
     return connect
-
-# get results from db:
-#   list of the CA
-#   list of the self-signed
-# Note: get results at select change
-
-# get CA count from db
-#   send results to JS plotter

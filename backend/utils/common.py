@@ -1,4 +1,3 @@
-# def – clean db response: replace ',' with '\n'
 from utils import db
 
 
