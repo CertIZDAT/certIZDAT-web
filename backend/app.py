@@ -2,13 +2,21 @@ import os
 
 from flask import Flask, render_template, send_file
 
+from utils import common, db
+
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    # TODO: Read db_name from what??
+    connection = db.get_db_connection('../analyser/statistics.db')
+
+    site_list = common.get_latest_list_results(connection, 'CA')
+
+    connection.close()
+    return render_template('index.html', site_list=site_list)
 
 
 # Downloads section

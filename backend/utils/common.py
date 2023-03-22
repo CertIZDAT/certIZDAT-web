@@ -1,0 +1,29 @@
+# def – clean db response: replace ',' with '\n'
+from utils import db
+
+
+def __clean_db_response(response):
+    items = [item.strip() for item in str(response).split(",")]
+    return "\n".join([str(item[0]).strip("(),") if isinstance(item, tuple) and len(item) == 1 else item for item in items])
+
+
+def get_latest_counts(connection, type='CA'):
+    # Get counts for CA and self-signed
+    if type == 'CA':
+        res = __clean_db_response(connection.execute(
+            db.get_last_ca_count_query).fetchall()[0][0])
+        print(f'ca_count: {res}')
+    else:
+        res = __clean_db_response(connection.execute(
+            db.get_last_self_sign_count_query).fetchall()[0][0])
+        print(f'self_count: {res}')
+
+
+def get_latest_list_results(connection, type='CA'):
+    # Get list of CA and self-signed
+    if type == 'CA':
+        return __clean_db_response(connection.execute(
+            db.get_last_ca_list).fetchall()[0][0])
+    else:
+        return __clean_db_response(connection.execute(
+            db.get_last_self_sign_list).fetchall()[0][0])
