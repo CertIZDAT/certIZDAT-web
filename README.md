@@ -6,7 +6,7 @@
     source env/bin/activate
     pip3 install -r requirements.txt 
     cd backend/
-    FLASK_APP=app flask run
+    gunicorn app:app
 
 ## Setup crontab configuration for analyser
 
