@@ -1,0 +1,3 @@
+[submodule "analyser"]
+	path = analyser
+	url = https://github.com/CertIZDAT/russian-trusted-root-ca-analyzer.git
