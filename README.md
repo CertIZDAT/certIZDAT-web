@@ -6,7 +6,8 @@
     source env/bin/activate
     pip3 install -r requirements.txt 
     cd backend/
-    gunicorn app:app
+    bash
+    gunicorn app:app --workers=$((2 * $(getconf _NPROCESSORS_ONLN)))
 
 ## Setup crontab configuration for analyser
 
