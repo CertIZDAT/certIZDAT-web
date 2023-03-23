@@ -13,7 +13,7 @@ def get_latest_counts(connection, type='CA'):
             db.get_last_ca_count_query).fetchall()[0][0]))
     else:
         return int(__clean_db_response(connection.execute(
-            db.get_last_self_sign_count_query).fetchall()[0][0])
+            db.get_last_self_sign_count_query).fetchall()[0][0]))
 
 
 def get_latest_list_results(connection, type='CA'):
