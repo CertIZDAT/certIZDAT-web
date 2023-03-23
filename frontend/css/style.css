@@ -180,3 +180,7 @@ ul {
 .not-found-egg {
   opacity: 0.33;
 }
+
+.beta-note {
+  top: -1.8em;
+}
