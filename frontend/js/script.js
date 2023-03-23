@@ -13,6 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
             project_info_block.style.display = "none";
         }
     });
+
+    // Set the selected index to -1 on page load
+    const list_of_select = document.getElementById('list-of');
+    list_of_select.selectedIndex = 0;
 });
 
 // Setup download dump button action
