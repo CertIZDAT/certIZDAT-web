@@ -138,9 +138,34 @@
 @media screen and (max-width: 934px) {
   @-moz-document url-prefix() {
 
-    .form-column,
     .main-text-area {
       width: 340px;
+    }
+
+    .form-column {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 934px) {
+  @-moz-document url-prefix() {
+
+    .form-column {
+      width: 300px;
+    }
+  }
+}
+
+@media screen and (max-width: 872px) {
+  @-moz-document url-prefix() {
+
+    .setup-form {
+      display: block;
+    }
+
+    .form-column {
+      margin-bottom: 20px;
     }
   }
 }
