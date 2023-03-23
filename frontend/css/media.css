@@ -54,6 +54,9 @@
   .form-column {
     width: 370px;
   }
+  .download-column {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 1242px) {
