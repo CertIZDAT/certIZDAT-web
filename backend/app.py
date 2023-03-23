@@ -25,7 +25,6 @@ def index():
                            stats=stats)
 
 
-# Downloads section
 @app.route('/download_dump')
 def download_dump():
     file_path = os.path.join(
@@ -56,7 +55,24 @@ def download_self_sign_list():
     return send_file(file_path, as_attachment=True, mimetype='text/plain')
 
 
+@app.route('/process/russian-trusted-ca')
+def russian_trusted_ca():
+    connection = db.get_db_connection('../analyser/statistics.db')
+    list = common.get_latest_list_results(connection, 'CA')
+    connection.close()
+    return list
+
+
+@app.route('/process/self-sign')
+def self_sign():
+    connection = db.get_db_connection('../analyser/statistics.db')
+    list = common.get_latest_list_results(connection, 'SS')
+    connection.close()
+    return list
+
 # 404 page
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404

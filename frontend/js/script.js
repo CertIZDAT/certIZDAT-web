@@ -17,6 +17,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set the selected index to -1 on page load
     const list_of_select = document.getElementById('list-of');
     list_of_select.selectedIndex = 0;
+
+    // Set '#list-of' on change action
+    const form = document.getElementById('list-form');
+    const select = document.getElementById('list-of');
+    const textarea = document.getElementById('site-list');
+
+    select.addEventListener('change', (event) => {
+        const selectedValue = event.target.value;
+        const url = `/process/${selectedValue}`;
+
+        fetch(url)
+            .then(response => response.text())
+            .then(data => {
+                textarea.value = data;
+                console.log(data);
+            })
+            .catch(error => console.error(error));
+    });
 });
 
 // Setup download dump button action
