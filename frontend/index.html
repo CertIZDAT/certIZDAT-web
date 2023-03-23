@@ -63,8 +63,9 @@
       </h1>
       <section class="main-section diagram">
         <h2 class="visually-hidden">Statistic</h2>
-        <p class="main-text update-time">Last update time: {{ update_time }}</p>
+        <p class="main-text stats">Last update time: {{ update_time }}</p>
         <div class="statistic"></div>
+        <p class="main-text stats">CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1] * 100) }}% of all sites require Russian Trusted CA</p>
       </section>
       <section class="main-section setup">
         <h2 class="visually-hidden">Form Setup</h2>

@@ -9,13 +9,11 @@ def __clean_db_response(response):
 def get_latest_counts(connection, type='CA'):
     # Get counts for CA and self-signed
     if type == 'CA':
-        res = __clean_db_response(connection.execute(
-            db.get_last_ca_count_query).fetchall()[0][0])
-        print(f'ca_count: {res}')
+        return int(__clean_db_response(connection.execute(
+            db.get_last_ca_count_query).fetchall()[0][0]))
     else:
-        res = __clean_db_response(connection.execute(
+        return int(__clean_db_response(connection.execute(
             db.get_last_self_sign_count_query).fetchall()[0][0])
-        print(f'self_count: {res}')
 
 
 def get_latest_list_results(connection, type='CA'):
@@ -31,3 +29,8 @@ def get_latest_list_results(connection, type='CA'):
 def get_last_update_time(connection):
     return connection.execute(
         db.get_last_update_date_time).fetchall()[0][0]
+
+
+def get_total_dataset_size(connection):
+    return connection.execute(
+        db.get_dataset_size).fetchall()[0][0]

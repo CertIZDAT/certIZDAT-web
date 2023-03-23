@@ -44,7 +44,6 @@ ul {
 .main-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
   margin: 0 auto;
 }
 
@@ -73,7 +72,7 @@ ul {
   display: flex;
 }
 
-.update-time {
+.stats {
   align-self: flex-start;
 }
 

@@ -16,8 +16,13 @@ def index():
     site_list = common.get_latest_list_results(connection, 'CA')
     update_time = common.get_last_update_time(connection)
 
+    stats = (common.get_latest_counts(
+        connection, 'CA'), common.get_total_dataset_size(connection))
+
     connection.close()
-    return render_template('index.html', site_list=site_list, update_time=update_time)
+    return render_template('index.html', site_list=site_list,
+                           update_time=update_time,
+                           stats=stats)
 
 
 # Downloads section
