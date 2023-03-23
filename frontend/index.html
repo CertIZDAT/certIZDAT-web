@@ -59,14 +59,15 @@
       </ul>
     </header>
     <main class="main-container">
-      <h1 class="main-content-title visually-hidden">
-        CertIZDAT main page
-      </h1>
+      <h1 class="main-content-title visually-hidden">CertIZDAT main page</h1>
       <section class="main-section diagram">
         <h2 class="visually-hidden">Statistic</h2>
         <p class="main-text stats">Last update time: {{ update_time }}</p>
         <div class="statistic"></div>
-        <p class="main-text stats">CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1] * 100) }}% of all sites require Russian Trusted CA</p>
+        <p class="main-text stats">
+          CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1]
+          * 100) }}% of all sites require Russian Trusted CA
+        </p>
       </section>
       <section class="main-section setup">
         <h2 class="visually-hidden">Form Setup</h2>
@@ -131,19 +132,27 @@
               </button>
             </div>
             <p class="main-text project-info" id="project-info-id">
-              Russian banks and companies cannot get SSL certificates from
-              certification centres (CAs) because all CA’s have refused to work
-              with them. The Ministry of Communications has set up its own
-              "trusted" certification centre, which issues certificates, but no
-              browsers consider them secure, except Russian ones of course.
-              Using Russian certificates is dangerous because we do not know if
-              they are created according to standards, and it is possible that
-              the FSB may have access to private keys.
+              It appears that some companies are currently experiencing
+              difficulties in obtaining SSL Certificates from Certification
+              Authorities. The Ministry of Communications has set up its own
+              "trusted" certification centre to issue certificates, but these
+              certificates are not considered secure by most browsers, except
+              for Russian ones. It is important to note that there may be
+              "unforeseen consequences" associated with using these certificates, as it is
+              uncertain whether they are created according to international
+              standards and there may be concerns about the privacy of the
+              private keys, given the possibility of access by the
+              "authorities".
             </p>
           </div>
         </form>
       </section>
-      <a href="http://github.com/certIZDAT/" class="sources-link" target="_blank">sources</a>
+      <a
+        href="http://github.com/certIZDAT/"
+        class="sources-link"
+        target="_blank"
+        >sources</a
+      >
       <button
         type="button"
         id="show-btn-id"
