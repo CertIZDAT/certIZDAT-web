@@ -48,12 +48,17 @@
   .setup {
     width: 1000px;
   }
+
+  .main-text-area {
+    width: 426px;
+  }
 }
 
 @media screen and (max-width: 1242px) {
   .form-column {
     width: 370px;
   }
+
   .download-column {
     margin-bottom: 20px;
   }
@@ -66,6 +71,16 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .main-text-area {
+    width: 370px;
+  }
+
+  .out-column {
+    width: 370px;
+  }
+}
+
 @media screen and (max-width: 950px) {
   .out-column {
     width: 350px;
@@ -74,6 +89,10 @@
 
 @media screen and (max-width: 920px) {
   .out-column {
+    width: 320px;
+  }
+
+  .main-text-area {
     width: 320px;
   }
 }
