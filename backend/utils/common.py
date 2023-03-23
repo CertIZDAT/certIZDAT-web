@@ -3,7 +3,7 @@ from utils import db
 
 def __clean_db_response(response):
     items = [item.strip() for item in str(response).split(",")]
-    return "\n".join([str(item[0]).strip("(),") if isinstance(item, tuple) and len(item) == 1 else item for item in items])
+    return "\n".join([str(item[0]).strip("(),") if isinstance(item, tuple) and len(item) == 1 else item.split(' ')[0] for item in items])
 
 
 def get_latest_counts(connection, type='CA'):
