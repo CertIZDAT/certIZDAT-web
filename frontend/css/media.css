@@ -109,6 +109,10 @@
       width: 280px;
     }
 
+    .out-column {
+      margin-bottom: 0;
+    }
+
     .out-column,
     .main-text-area {
       width: 340px;
