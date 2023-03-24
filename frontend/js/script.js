@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
             btn.style.backgroundColor = "#FF0000";
             project_info_block.style.display = "block";
         } else {
-            btn.style.backgroundColor = "#FFE5E5";
+            btn.style.backgroundColor = "gray";
             project_info_block.style.display = "none";
         }
     });

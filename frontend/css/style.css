@@ -69,7 +69,7 @@ ul {
 }
 
 .wrapper {
-  width: 1200px;
+  width: 1000px;
   height: 320px;
 }
 
@@ -87,6 +87,7 @@ ul {
   border-radius: 5px;
   background-color: #ff0000;
   border: none;
+  color: #ffffff;
 }
 
 .main-button:hover {
@@ -102,6 +103,10 @@ ul {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.setup {
+  /* max-width: 1000px; */
 }
 
 .form-column {
@@ -165,7 +170,8 @@ ul {
   bottom: 20px;
   right: 20px;
   font-size: medium;
-  background-color: #ffe5e5;
+  background-color: gray;
+  opacity: 0.6;
 }
 
 .sources-link {
