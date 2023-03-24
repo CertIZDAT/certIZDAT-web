@@ -68,7 +68,9 @@
       <section class="main-section diagram">
         <h2 class="visually-hidden">Statistic</h2>
         <p class="main-text stats">Last update time: {{ update_time }}</p>
-        <canvas class="statistic" id="statistic-chart"></canvas>
+        <div class="wrapper">
+          <canvas class="statistic" id="statistic-chart"></canvas>
+        </div>
         <p class="main-text stats">
           CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1]
           * 100) }}% of all government associated sites require Russian Trusted CA

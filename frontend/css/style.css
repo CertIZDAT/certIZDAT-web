@@ -68,6 +68,11 @@ ul {
   border-radius: 15px;
 }
 
+.wrapper {
+  width: 1200px;
+  height: 320px;
+}
+
 .diagram {
   display: flex;
 }

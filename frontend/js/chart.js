@@ -16,6 +16,7 @@ new Chart(ctx, {
     },
     options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
             x: {
                 min: 1,
