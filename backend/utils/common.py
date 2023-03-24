@@ -37,5 +37,11 @@ def get_total_dataset_size(connection):
 
 
 def get_last_month_history_counts(connection):
-    return connection.execute(
+    r = connection.execute(
         db.get_ca_count_for_last_month).fetchall()
+    return ", ".join([str(x[0]) for x in r])
+
+
+def get_dates_for_last_month(connection):
+    return [t[0] for t in connection.execute(
+        db.get_dates_for_last_month).fetchall()]

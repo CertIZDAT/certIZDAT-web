@@ -20,12 +20,15 @@ def index():
         connection, 'CA'), common.get_total_dataset_size(connection))
 
     history_count_last_month = common.get_last_month_history_counts(connection)
-    print(history_count_last_month)
+    dates_for_last_month = common.get_dates_for_last_month(connection)
+    dates_for_last_month = [date[5:] for date in dates_for_last_month]
 
     connection.close()
     return render_template('index.html', site_list=site_list,
                            update_time=update_time,
-                           stats=stats, data=history_count_last_month)
+                           stats=stats,
+                           data=history_count_last_month,
+                           dates=dates_for_last_month)
 
 
 @app.route('/download_dump')

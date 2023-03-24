@@ -71,7 +71,7 @@
         <canvas class="statistic" id="statistic-chart"></canvas>
         <p class="main-text stats">
           CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1]
-          * 100) }}% of all sites require Russian Trusted CA
+          * 100) }}% of all government associated sites require Russian Trusted CA
         </p>
       </section>
       <section class="main-section setup">
@@ -169,7 +169,8 @@
     </main>
   </body>
   <script>
-    var data = "{{ data|safe }}";
+    const data = "{{ data|safe }}";
+    const dates = "{{ dates|safe }}";
   </script>
   <script
     src="{{ url_for('static', filename='js/chart.js')}}"

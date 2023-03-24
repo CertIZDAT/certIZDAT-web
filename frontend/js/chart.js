@@ -1,28 +1,42 @@
-console.log(data);
+const data_array = data.split(", ").map(Number)
+const dates_array = dates.split(", ").map(String)
 
 const ctx = document.getElementById('statistic-chart');
 new Chart(ctx, {
     type: 'line',
     data: {
-        labels: ['2023-03-20', '21', '22', '23', '24', '25', '26', '27', '28', '29'],
+        labels: dates_array,
         datasets: [{
             label: 'CA Amount',
-            data: [12, 19, 3, 5, 2, 3],
+            data: data_array,
             borderWidth: 1,
             borderColor: 'rgb(255, 0, 0)',
-            tension: 0.5
+            tension: 0.1
         }]
     },
     options: {
+        responsive: true,
         scales: {
+            x: {
+                min: 1,
+                max: 31,
+                ticks: {
+                    maxRotation: 75,
+                    minRotation: 75
+                }
+            },
             y: {
-                beginAtZero: true
-            }
-        },
-        onClick: (e) => {
-            const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
-            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
-            const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
+                beginAtZero: true,
+                min: 0,
+                max: 1500
+            },
+            yAxes: [{
+                ticks: {
+                    autoSkip: false,
+                    maxRotation: 90,
+                    minRotation: 90
+                }
+            }]
         }
     }
 });
