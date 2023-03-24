@@ -31,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.text())
             .then(data => {
                 textarea.value = data;
-                console.log(data);
             })
             .catch(error => console.error(error));
     });
