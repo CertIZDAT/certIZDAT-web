@@ -1,3 +1,5 @@
+console.log(data);
+
 const ctx = document.getElementById('statistic-chart');
 new Chart(ctx, {
     type: 'line',

@@ -36,10 +36,6 @@
     type="module"
     src="{{ url_for('static', filename='js/script.js')}}"
   ></script>
-  <script
-    type="module"
-    src="{{ url_for('static', filename='js/chart.js')}}"
-  ></script>
   </head>
   <body>
     <header class="main-header">
@@ -174,6 +170,8 @@
   </body>
   <script>
     var data = "{{ data|safe }}";
-    console.log(data);
   </script>
+  <script
+    src="{{ url_for('static', filename='js/chart.js')}}"
+  ></script>
 </html>
