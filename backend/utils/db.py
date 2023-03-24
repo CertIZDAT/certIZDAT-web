@@ -13,6 +13,8 @@ get_last_update_date_time = 'SELECT date_time FROM statistic_table ORDER BY date
 
 get_dataset_size = 'SELECT total_ds_size FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
 
+get_ca_count_for_last_month = 'SELECT trusted_ca_count from statistic_table WHERE date(date_time) >= date(\'now\', \'-1 month\')'
+
 
 def get_db_connection(db_name):
     connect = sqlite3.connect(db_name)

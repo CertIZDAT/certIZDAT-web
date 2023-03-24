@@ -31,6 +31,15 @@
       type="text/javascript"
       src="{{ url_for('static', filename='js/script.js')}}"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
+    <script
+    type="module"
+    src="{{ url_for('static', filename='js/script.js')}}"
+  ></script>
+  <script
+    type="module"
+    src="{{ url_for('static', filename='js/chart.js')}}"
+  ></script>
   </head>
   <body>
     <header class="main-header">
@@ -63,7 +72,7 @@
       <section class="main-section diagram">
         <h2 class="visually-hidden">Statistic</h2>
         <p class="main-text stats">Last update time: {{ update_time }}</p>
-        <div class="statistic"></div>
+        <canvas class="statistic" id="statistic-chart"></canvas>
         <p class="main-text stats">
           CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1]
           * 100) }}% of all sites require Russian Trusted CA
@@ -163,4 +172,8 @@
       </button>
     </main>
   </body>
+  <script>
+    var data = "{{ data|safe }}";
+    console.log(data);
+  </script>
 </html>

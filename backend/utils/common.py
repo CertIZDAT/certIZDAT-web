@@ -34,3 +34,8 @@ def get_last_update_time(connection):
 def get_total_dataset_size(connection):
     return connection.execute(
         db.get_dataset_size).fetchall()[0][0]
+
+
+def get_last_month_history_counts(connection):
+    return connection.execute(
+        db.get_ca_count_for_last_month).fetchall()

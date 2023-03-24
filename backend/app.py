@@ -19,10 +19,13 @@ def index():
     stats = (common.get_latest_counts(
         connection, 'CA'), common.get_total_dataset_size(connection))
 
+    history_count_last_month = common.get_last_month_history_counts(connection)
+    print(history_count_last_month)
+
     connection.close()
     return render_template('index.html', site_list=site_list,
                            update_time=update_time,
-                           stats=stats)
+                           stats=stats, data=history_count_last_month)
 
 
 @app.route('/download_dump')
