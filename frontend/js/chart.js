@@ -29,15 +29,13 @@ new Chart(ctx, {
             y: {
                 beginAtZero: true,
                 min: 0,
-                max: 1500
-            },
-            yAxes: [{
+                max: 1500,
                 ticks: {
                     autoSkip: false,
                     maxRotation: 90,
                     minRotation: 90
                 }
-            }]
+            }
         }
     }
 });
