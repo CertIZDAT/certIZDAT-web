@@ -1,37 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=1200">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1200" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CertIZDAT βeta</title>
     <link
       rel="shortcut icon"
       type="image/x-icon"
       href="{{ url_for('static', filename='images/fav.ico') }}"
-    >
+    />
     <link
       rel="icon"
       type="image/x-icon"
       href="{{ url_for('static', filename='images/fav.ico') }}"
-    >
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css')}}"
-    >
+    />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css')}}"
-    >
-    <link
+    />
+    <!-- <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/media.css')}}"
-    >
+    > -->
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='js/script.js')}}"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.2.1/dist/chart.umd.min.js"></script>
   </head>
   <body>
     <header class="main-header">
@@ -43,7 +42,7 @@
             width="144"
             height="25"
             class="nav-logo"
-          >
+          />
           <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">
@@ -61,95 +60,102 @@
     </header>
     <main class="main-container">
       <h1 class="main-content-title visually-hidden">CertIZDAT main page</h1>
-      <section class="main-section diagram">
+      <section class="main-section">
         <h2 class="visually-hidden">Statistic</h2>
-        <p class="main-text stats">Last update time: {{ update_time }}</p>
-        <div class="wrapper">
-          <canvas class="statistic" id="statistic-chart"></canvas>
-        </div>
-        <p class="main-text stats">
-          CA statistics: {{ stats[0] }}, {{ "{:.1f}".format(stats[0] / stats[1]
-          * 100) }}% of all government associated sites require Russian Trusted CA
-        </p>
-      </section>
-      <section class="main-section setup">
-        <h2 class="visually-hidden">Form Setup</h2>
+        <table class="stats-table">
+          <tbody>
+            <tr>
+              <th></th>
+              <th class="table-category">Government Sites</th>
+              <th class="table-category">Social Sites</th>
+              <th class="table-category">Top-100 Sites</th>
+            </tr>
+            <tr>
+              <td class="first-column">Total Sites</td>
+              <td>24128</td>
+              <td>312</td>
+              <td>100</td>
+            </tr>
+            <tr>
+              <td class="first-column">CA/..%</td>
+              <td>717 / 3.2%</td>
+              <td>32 / 6.2%</td>
+              <td>4 / 4%</td>
+            </tr>
+            <tr>
+              <td class="first-column">SS/..%</td>
+              <td>72 / 1.2%</td>
+              <td>14 / 3%</td>
+              <td>0 / 0%</td>
+            </tr>
+          </tbody>
+        </table>
+
         <form id="list-form" class="setup-form">
-          <div class="form-column first-column">
-            <label for="scale-input">Scale of graph</label>
-            <select class="drop-select" name="scale-input" id="scale-input">
-              <option value="by-month">by month</option>
-              <option value="by-year" disabled>by year</option>
-            </select>
-            <label for="time-period-input">Choose time period</label>
-            <input
-              class="drop-select time-select"
-              id="time-period-input"
-              type="date"
-              disabled
-            >
-          </div>
-          <div class="form-column out-column">
-            <label for="list-of">List of:</label>
+          <label for="scale-input">Data for </label>
+          <select class="drop-select" name="scale-input" id="scale-input">
+            <option value="by-month">month</option>
+            <option value="by-year" disabled>year</option>
+          </select>
+          <select class="drop-select" name="month-select" id="month-select">
+            <option value="january" disabled>January</option>
+            <option value="february" disabled>February</option>
+            <option value="march">March</option>
+            <option value="april" disabled>April</option>
+            <option value="may" disabled>May</option>
+            <option value="june" disabled>June</option>
+            <option value="july" disabled>July</option>
+            <option value="august" disabled>August</option>
+            <option value="september" disabled>September</option>
+            <option value="october" disabled>October</option>
+            <option value="november" disabled>November</option>
+            <option value="december" disabled>December</option>
+          </select>
+          <select class="drop-select" name="year-select" id="year-select">
+            <option value="2023" disabled>2023</option>
+          </select>
+        </form>
+        <p class="diff-info">Total diff with last month:</p>
+      </section>
+
+      <section class="main-section">
+        <div class="form-column">
+          <label for="site-list" class="visually-hidden">Quick Search: </label>
+          <div class="q-search">
+            <label for="list-of" class="list-of">Quick Search for:</label>
             <select class="drop-select" name="list-of" id="list-of">
               <option value="russian-trusted-ca">Russian Trusted CA</option>
               <option value="self-sign">Russian Self Signed</option>
             </select>
-            <label for="site-list" class="visually-hidden"
-              >List of sites:
-            </label>
-            <textarea
-              id="site-list"
-              class="main-text-area"
-              placeholder="List will be here..."
-              name="site-list"
-              rows="9"
-              cols="48"
-              style="resize: none"
-              readonly
-            >{{ site_list }}</textarea>
           </div>
-          <div class="form-column download-column">
-            <div class="download-group">
-              <p class="main-text">Download sites with Russian Trusted CA</p>
-              <button
-                type="button"
-                name="download-ca"
-                onclick="download_ca_list()"
-                class="main-button download-dump"
-              >
-                download
-              </button>
-            </div>
-            <div class="download-group">
-              <p class="main-text">
-                Download sites with self signed certificate
-              </p>
-              <button
-                type="button"
-                name="download-ca"
-                onclick="download_self_sign_list()"
-                class="main-button download-dump"
-              >
-                download
-              </button>
-            </div>
-            <p class="main-text project-info" id="project-info-id">
-              It appears that some companies are currently experiencing
-              difficulties in obtaining SSL Certificates from Certification
-              Authorities. The Ministry of Communications has set up its own
-              "trusted" certification centre to issue certificates, but these
-              certificates are not considered secure by most browsers, except
-              for Russian ones. It is important to note that there may be
-              "unforeseen consequences" associated with using these certificates, as it is
-              uncertain whether they are created according to international
-              standards and there may be concerns about the privacy of the
-              private keys, given the possibility of access by the
-              "authorities".
-            </p>
-          </div>
-        </form>
+
+          <textarea
+            id="site-list"
+            class="main-text-area"
+            placeholder="List will be here..."
+            name="site-list"
+            rows="16"
+            cols="66"
+            style="resize: none"
+            readonly
+          >
+{{ site_list }}</textarea
+          >
+        </div>
+        <p class="search-note">Press cmd/ctrl + f to search the list</p>
       </section>
+      <p class="main-text project-info" id="project-info-id">
+        It appears that some companies are currently experiencing difficulties
+        in obtaining SSL Certificates from Certification Authorities. The
+        Ministry of Communications has set up its own "trusted" certification
+        centre to issue certificates, but these certificates are not considered
+        secure by most browsers, except for Russian ones. It is important to
+        note that there may be "unforeseen consequences" associated with using
+        these certificates, as it is uncertain whether they are created
+        according to international standards and there may be concerns about the
+        privacy of the private keys, given the possibility of access by the
+        "authorities".
+      </p>
       <a
         href="http://github.com/certIZDAT/"
         class="sources-link"
@@ -170,7 +176,4 @@
     const data = "{{ data|safe }}";
     const dates = "{{ dates|safe }}";
   </script>
-  <script
-    src="{{ url_for('static', filename='js/chart.js')}}"
-  ></script>
 </html>

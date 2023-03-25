@@ -16,6 +16,27 @@
   .statistic {
     width: 900px;
   }
+  .wrapper {
+    width: 870px;
+  }
+}
+
+@media screen and (max-width: px) {
+  .statistic {
+    width: 900px;
+  }
+  .wrapper {
+    width: 870px;
+  }
+}
+
+@media screen and (max-width: 1148px) {
+  .download-column {
+    margin-top: 40px;
+  }
+  .form-column {
+    margin-bottom: 20px;
+  }
 }
 
 @media screen and (max-width: 934px) {
