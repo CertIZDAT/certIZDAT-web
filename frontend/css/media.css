@@ -5,71 +5,14 @@
   }
 }
 
-/* Statistic section */
-@media screen and (max-width: 1242px) {
-  .statistic {
-    width: 1000px;
-  }
-}
-
-@media screen and (max-width: 1038px) {
-  .statistic {
-    width: 900px;
-  }
-  .wrapper {
-    width: 870px;
-  }
-}
-
-@media screen and (max-width: px) {
-  .statistic {
-    width: 900px;
-  }
-  .wrapper {
-    width: 870px;
-  }
-}
-
 @media screen and (max-width: 1148px) {
-  .download-column {
-    margin-top: 40px;
-  }
   .form-column {
     margin-bottom: 20px;
   }
 }
 
-@media screen and (max-width: 934px) {
-  .statistic {
-    width: 780px;
-  }
-}
-
-/* Main diagram */
-@media screen and (max-width: 1242px) {
-  .diagram {
-    width: 1000px;
-  }
-}
-
-@media screen and (max-width: 1038px) {
-  .diagram {
-    width: 900px;
-  }
-}
-
-@media screen and (max-width: 934px) {
-  .diagram {
-    width: 780px;
-  }
-}
-
 /* Setup section */
 @media screen and (max-width: 1242px) {
-  .setup {
-    width: 1000px;
-  }
-
   .main-text-area {
     width: 426px;
   }
@@ -79,114 +22,22 @@
   .form-column {
     width: 370px;
   }
-
-  .download-column {
-    margin-bottom: 20px;
-  }
-}
-
-@media screen and (max-width: 1242px) {
-  .out-column {
-    width: 370px;
-    margin-bottom: 30px;
-  }
 }
 
 @media screen and (max-width: 1000px) {
   .main-text-area {
     width: 370px;
   }
-
-  .out-column {
-    width: 370px;
-  }
-}
-
-@media screen and (max-width: 950px) {
-  .out-column {
-    width: 350px;
-  }
 }
 
 @media screen and (max-width: 920px) {
-  .out-column {
-    width: 320px;
-  }
-
   .main-text-area {
     width: 320px;
   }
 }
 
 /* Hack for Firefox */
-@media screen and (max-width: 1232px) {
-  @-moz-document url-prefix() {
-
-    .diagram {
-      max-height: 380px;
-    }
-
-    .form-column {
-      width: 280px;
-    }
-
-    .out-column {
-      margin-bottom: 0;
-    }
-
-    .out-column,
-    .main-text-area {
-      width: 340px;
-    }
-
-    .download-group {
-      width: 350px;
-      text-align: start;
-    }
-  }
-}
 
 @media screen and (max-width: 1148px) {
-  @-moz-document url-prefix() {
-
-    .form-column,
-    .main-text-area {
-      width: 370px;
-    }
-  }
-}
-
-@media screen and (max-width: 934px) {
-  @-moz-document url-prefix() {
-
-    .main-text-area {
-      width: 340px;
-    }
-
-    .form-column {
-      width: 300px;
-    }
-  }
-}
-
-@media screen and (max-width: 934px) {
-  @-moz-document url-prefix() {
-
-    .form-column {
-      width: 300px;
-    }
-  }
-}
-
-@media screen and (max-width: 872px) {
-  @-moz-document url-prefix() {
-
-    .setup-form {
-      display: block;
-    }
-
-    .form-column {
-      margin-bottom: 20px;
-    }
-  }
+  @-moz-document url-prefix() {}
 }
