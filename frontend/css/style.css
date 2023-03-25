@@ -58,7 +58,32 @@ ul {
 }
 
 .nav-item {
+  display: flex;
+  align-items: center;
   margin: 0px;
+}
+
+.nav-link {
+  color: #ff0000;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #e23030;
+}
+
+.nav-link:visited {
+  color: #a22a2a;
+}
+
+.disabled-link {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: gainsboro;
+}
+
+.disabled-link:visited {
+  color: gainsboro;
 }
 
 .statistic {
