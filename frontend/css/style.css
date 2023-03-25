@@ -151,6 +151,7 @@ th {
   gap: 10px;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 20px;
 }
 
 .form-column {
@@ -241,4 +242,34 @@ th {
 
 .download-column {
   display: none;
+}
+
+.diff-container {
+  display: flex;
+  min-width: 400px;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.diff-text {
+  margin: 0;
+}
+
+.diff-out {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.diff-out p {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.diff-out-ca {
+  color: #ff0000;
+}
+
+.diff-out-ss {
+  color: green;
 }
