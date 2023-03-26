@@ -296,3 +296,8 @@ th {
 .beta-note {
   top: -1.8em;
 }
+
+.table-disabled {
+  cursor: none;
+  color: gray;
+}

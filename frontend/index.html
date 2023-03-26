@@ -73,26 +73,26 @@
             <tr>
               <th></th>
               <th class="table-category">Government Sites</th>
-              <th class="table-category">Social Sites</th>
-              <th class="table-category">Top-100 Sites</th>
+              <th class="table-category table-disabled">Social Sites</th>
+              <th class="table-category table-disabled">Top-100 Sites</th>
             </tr>
             <tr>
               <td class="first-column">Total Sites</td>
               <td>24128</td>
-              <td>312</td>
-              <td>100</td>
+              <td class="table-disabled">---</td>
+              <td class="table-disabled">---</td>
             </tr>
             <tr>
               <td class="first-column">CA/..%</td>
               <td>717 / 3.2%</td>
-              <td>32 / 6.2%</td>
-              <td>4 / 4%</td>
+              <td class="table-disabled">-- / ---%</td>
+              <td class="table-disabled">--- / ---%</td>
             </tr>
             <tr>
               <td class="first-column">SS/..%</td>
               <td>72 / 1.2%</td>
-              <td>14 / 3%</td>
-              <td>0 / 0%</td>
+              <td class="table-disabled">--- / ---%</td>
+              <td class="table-disabled">--- / ---%</td>
             </tr>
           </tbody>
         </table>
@@ -125,6 +125,7 @@
         <div class="diff-container">
           <p class="diff-text">Total diff with last month:</p>
           <div class="diff-out">
+            <!-- link back -->
             <p class="diff-out-ca">+717 / 100% CA</p>
             <p class="diff-out-ss">-4 / 2% SS</p>
           </div>
@@ -186,8 +187,4 @@
       </button>
     </main>
   </body>
-  <script>
-    const data = "{{ data|safe }}";
-    const dates = "{{ dates|safe }}";
-  </script>
 </html>
