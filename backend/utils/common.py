@@ -22,8 +22,10 @@ def get_latest_list_results(connection, type='CA'):
         return __clean_db_response(connection.execute(
             db.get_last_ca_list).fetchall()[0][0])
     else:
-        return __clean_db_response(connection.execute(
-            db.get_last_self_sign_list).fetchall()[0][0])
+        response = connection.execute(
+            db.get_last_self_sign_list).fetchall()[0][0]
+        items = [item.strip() for item in str(response).split(",")]
+        return "\n".join([item for item in items])
 
 
 def get_last_update_time(connection):
