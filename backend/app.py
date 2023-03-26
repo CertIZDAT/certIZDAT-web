@@ -28,6 +28,9 @@ def index():
         ss_count_last_month = common.get_latest_counts(connection, 'SS')
         ss_stats = (ss_count_last_month,
                     ss_count_last_month * 100 / dataset_size)
+
+        # setup analysis later
+        diff = ('773 / 3.44%', '176 / 0.78%')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
     finally:
@@ -37,7 +40,8 @@ def index():
                            site_list=site_list,
                            dataset_size=dataset_size,
                            ca_stats=ca_stats,
-                           ss_stats=ss_stats)
+                           ss_stats=ss_stats,
+                           diff=diff)
 
 
 @app.route('/download_dump')

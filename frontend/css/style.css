@@ -278,7 +278,8 @@ th {
 }
 
 .diff-out-ss {
-  color: green;
+  /* color: green; */
+  color: #ff0000;
 }
 
 
