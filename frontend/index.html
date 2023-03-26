@@ -78,19 +78,19 @@
             </tr>
             <tr>
               <td class="first-column">Total Sites</td>
-              <td>24128</td>
+              <td>{{ dataset_size }}</td>
               <td class="table-disabled">---</td>
               <td class="table-disabled">---</td>
             </tr>
             <tr>
               <td class="first-column">CA/..%</td>
-              <td>717 / 3.2%</td>
+              <td>{{ ca_stats[0] }} / {{ '{:.2f}'.format( ca_stats[1]) }}%</td>
               <td class="table-disabled">-- / ---%</td>
               <td class="table-disabled">--- / ---%</td>
             </tr>
             <tr>
               <td class="first-column">SS/..%</td>
-              <td>72 / 1.2%</td>
+              <td>{{ ss_stats[0] }} / {{ '{:.2f}'.format( ss_stats[1]) }}%</td>
               <td class="table-disabled">--- / ---%</td>
               <td class="table-disabled">--- / ---%</td>
             </tr>

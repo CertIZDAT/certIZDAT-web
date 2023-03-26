@@ -17,16 +17,27 @@ def index():
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
 
-    site_list = common.get_latest_list_results(connection, 'CA')
-    update_time = common.get_last_update_time(connection)
+    try:
+        dataset_size = common.get_total_dataset_size(connection)
+        site_list = common.get_latest_list_results(connection, 'CA')
 
-    stats = (common.get_latest_counts(
-        connection, 'CA'), common.get_total_dataset_size(connection))
+        ca_count_last_month = common.get_latest_counts(connection, 'CA')
+        ca_stats = (ca_count_last_month,
+                    ca_count_last_month * 100 / dataset_size)
 
-    connection.close()
-    return render_template('index.html', site_list=site_list,
-                           update_time=update_time,
-                           stats=stats)
+        ss_count_last_month = common.get_latest_counts(connection, 'SS')
+        ss_stats = (ss_count_last_month,
+                    ss_count_last_month * 100 / dataset_size)
+    except sqlite3.Error as e:
+        print(f'get db connection error: {e}')
+    finally:
+        connection.close()
+
+    return render_template('index.html',
+                           site_list=site_list,
+                           dataset_size=dataset_size,
+                           ca_stats=ca_stats,
+                           ss_stats=ss_stats)
 
 
 @app.route('/download_dump')
