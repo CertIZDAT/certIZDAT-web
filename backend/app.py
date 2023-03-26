@@ -1,4 +1,5 @@
 import os
+import sqlite3
 
 from flask import Flask, render_template, send_file
 
@@ -11,7 +12,10 @@ app = Flask(__name__, template_folder='../frontend/',
 @app.route('/')
 def index():
     # TODO: Read db_name from what??
-    connection = db.get_db_connection('../analyser/statistics.db')
+    try:
+        connection = db.get_db_connection('../analyser/statistics.db')
+    except sqlite3.Error as e:
+        print(f'get db connection error: {e}')
 
     site_list = common.get_latest_list_results(connection, 'CA')
     update_time = common.get_last_update_time(connection)
