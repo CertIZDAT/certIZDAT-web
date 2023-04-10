@@ -16,7 +16,7 @@ def index():
         connection = db.get_db_connection('../analyser/statistics.db')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
-
+    err_info = ''
     try:
         dataset_size = common.get_total_dataset_size(connection)
         site_list = common.get_latest_list_results(connection, 'CA')
@@ -32,9 +32,13 @@ def index():
         # setup analysis later
         diff = ('773 / 3.44%', '176 / 0.78%')
     except sqlite3.Error as e:
-        print(f'get db connection error: {e}')
+        print(f'db connection error: {e}')
+        err_info = f'db connection error: {e}'
     finally:
         connection.close()
+
+    if err_info:
+        return render_template('err.html', err_info=err_info)
 
     return render_template('index.html',
                            site_list=site_list,
@@ -77,9 +81,9 @@ def download_self_sign_list():
 @app.route('/process/russian-trusted-ca')
 def russian_trusted_ca():
     connection = db.get_db_connection('../analyser/statistics.db')
-    list = common.get_latest_list_results(connection, 'CA')
+    res = common.get_latest_list_results(connection, 'CA')
     connection.close()
-    return list
+    return res
 
 
 @app.route('/process/self-sign')
@@ -88,6 +92,7 @@ def self_sign():
     list = common.get_latest_list_results(connection, 'SS')
     connection.close()
     return list
+
 
 # 404 page
 
