@@ -16,6 +16,7 @@ def index():
         connection = db.get_db_connection(f'../analyser/{db_name}')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
+
     err_info = ''
     try:
         dataset_size = common.get_total_dataset_size(connection)
@@ -98,7 +99,7 @@ def self_sign():
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found():
     return render_template('404.html'), 404
 
 
