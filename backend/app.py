@@ -3,6 +3,7 @@ import sqlite3
 
 from flask import Flask, render_template, send_file
 
+from analyser.check import db_name as db_name
 from utils import common, db
 
 app = Flask(__name__, template_folder='../frontend/',
@@ -11,9 +12,8 @@ app = Flask(__name__, template_folder='../frontend/',
 
 @app.route('/')
 def index():
-    # TODO: Read db_name from what??
     try:
-        connection = db.get_db_connection('../analyser/statistics.db')
+        connection = db.get_db_connection(f'../analyser/{db_name}')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
     err_info = ''
