@@ -3,7 +3,12 @@ import sqlite3
 
 from flask import Flask, render_template, send_file
 
-from analyser.check import db_name as db_name
+# Add the root directory to the Python path
+# root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+# print(f'root_path: {root_path}')
+# sys.path.insert(0, root_path)
+
+# from analyser.check import db_name
 from utils import common, db
 
 app = Flask(__name__, template_folder='../frontend/',
@@ -13,7 +18,7 @@ app = Flask(__name__, template_folder='../frontend/',
 @app.route('/')
 def index():
     try:
-        connection = db.get_db_connection(f'../analyser/{db_name}')
+        connection = db.get_db_connection(f'../analyser/statistics.db')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
 
