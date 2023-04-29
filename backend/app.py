@@ -89,9 +89,9 @@ def russian_trusted_ca():
 @app.route('/process/self-sign')
 def self_sign():
     connection = db.get_db_connection('../analyser/statistics.db')
-    list = common.get_latest_list_results(connection, 'SS')
+    res_list = common.get_latest_list_results(connection, 'SS')
     connection.close()
-    return list
+    return res_list
 
 
 # 404 page
