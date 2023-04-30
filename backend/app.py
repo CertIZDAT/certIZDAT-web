@@ -24,19 +24,13 @@ def index():
 
     err_info = ''
     try:
-        dataset_size = common.get_total_dataset_size(connection)
-        site_list = common.get_latest_list_results(connection, 'CA')
+        gov_stats: tuple = ''
+        social_stats: tuple = ''
+        top_stats: tuple = ''
 
-        ca_count_last_month = common.get_latest_counts(connection, 'CA')
-        ca_stats = (ca_count_last_month,
-                    ca_count_last_month * 100 / dataset_size)
+        # site_list = common.get_latest_list_results(connection, 'CA')
+        stats = common.get_gov_stats(connection)
 
-        ss_count_last_month = common.get_latest_counts(connection, 'SS')
-        ss_stats = (ss_count_last_month,
-                    ss_count_last_month * 100 / dataset_size)
-
-        # setup analysis later
-        diff = ('773 / 3.44%', '176 / 0.78%')
     except sqlite3.Error as e:
         print(f'db connection error: {e}')
         err_info = f'db connection error: {e}'
@@ -47,11 +41,12 @@ def index():
         return render_template('err.html', err_info=err_info)
 
     return render_template('index.html',
-                           site_list=site_list,
-                           dataset_size=dataset_size,
-                           ca_stats=ca_stats,
-                           ss_stats=ss_stats,
-                           diff=diff)
+                           site_list="site_list",
+                           # dataset_size=dataset_size,
+                           # ca_stats=ca_stats,
+                           # ss_stats=ss_stats,
+                           # diff=diff)
+                           )
 
 
 @app.route('/download_dump')

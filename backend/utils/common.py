@@ -1,19 +1,17 @@
+from sqlite3 import Connection
+
 from utils import db
 
 
-def __clean_db_response(response):
-    items = [item.strip() for item in str(response).split(",")]
-    return "\n".join([str(item[0]).strip("(),") if isinstance(item, tuple) and len(item) == 1 else item.split(' ')[0] for item in items])
+def get_total_stats(connection: Connection):
+    gov_stats: tuple[str] = connection.execute(db.get_gov_stats_for_last_month).fetchone()
+    social_stats: tuple[str] = connection.execute(db.get_gov_stats_for_last_month).fetchone()
+    top_stats: tuple[str] = connection.execute(db.get_gov_stats_for_last_month).fetchone()
 
-
-def get_latest_counts(connection, type='CA'):
-    # Get counts for CA and self-signed
-    if type == 'CA':
-        return int(__clean_db_response(connection.execute(
-            db.get_last_ca_count_query).fetchall()[0][0]))
-    else:
-        return int(__clean_db_response(connection.execute(
-            db.get_last_self_sign_count_query).fetchall()[0][0]))
+    if connection.execute(db.get_row_count).fetchone() >= 2:
+        gov_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
+        social_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
+        top_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
 
 
 def get_latest_list_results(connection, type='CA'):
@@ -28,22 +26,8 @@ def get_latest_list_results(connection, type='CA'):
         return "\n".join([item for item in items])
 
 
-def get_last_update_time(connection):
-    return connection.execute(
-        db.get_last_update_date_time).fetchall()[0][0]
-
-
-def get_total_dataset_size(connection):
-    return connection.execute(
-        db.get_dataset_size).fetchall()[0][0]
-
-
-def get_last_month_history_counts(connection):
-    r = connection.execute(
-        db.get_ca_count_for_last_month).fetchall()
-    return ", ".join([str(x[0]) for x in r])
-
-
-def get_dates_for_last_month(connection):
-    return [t[0] for t in connection.execute(
-        db.get_dates_for_last_month).fetchall()]
+def __clean_db_response(response):
+    items = [item.strip() for item in str(response).split(",")]
+    return "\n".join(
+        [str(item[0]).strip("(),") if isinstance(item, tuple) and len(item) == 1 else item.split(' ')[0] for item in
+         items])

@@ -1,164 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1200" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=1200"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>CertIZDAT βeta</title>
     <link
-      rel="shortcut icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='images/fav.ico') }}"
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="{{ url_for('static', filename='images/fav.ico') }}"
     />
     <link
-      rel="icon"
-      type="image/x-icon"
-      href="{{ url_for('static', filename='images/fav.ico') }}"
+            rel="icon"
+            type="image/x-icon"
+            href="{{ url_for('static', filename='images/fav.ico') }}"
     />
     <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css')}}"
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/style.css') }}"
     />
     <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/normalize.css')}}"
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/normalize.css') }}"
     />
-    <!-- <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/media.css')}}"
-    > -->
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/media.css') }}"
+    >
     <script
-      type="text/javascript"
-      src="{{ url_for('static', filename='js/script.js')}}"
+            type="text/javascript"
+            src="{{ url_for('static', filename='js/script.js') }}"
     ></script>
-  </head>
-  <body>
-    <header class="main-header">
-      <ul class="nav">
+</head>
+<body>
+<header class="main-header">
+    <ul class="nav">
         <li class="nav-item">
-          <img
-            src="{{ url_for('static', filename='images/main-logo.png') }}"
-            alt="CertIZDAT Logo"
-            width="144"
-            height="25"
-            class="nav-logo"
-          />
-          <sup class="beta-note">β</sup>
+            <img
+                    src="{{ url_for('static', filename='images/main-logo.png') }}"
+                    alt="CertIZDAT Logo"
+                    width="144"
+                    height="25"
+                    class="nav-logo"
+            />
+            <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">
-          <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
         </li>
         <li class="nav-item">
-          <a href="availability.html" class="nav-link disabled-link">Availability</a>
+            <a href="availability.html" class="nav-link disabled-link">Availability</a>
         </li>
         <li class="nav-item">
-          <span class="main-text">Download full dump: </span>
-          <button
-            type="button"
-            name="download-dump"
-            onclick="download_dump()"
-            class="main-button download-dump"
-          >
-            download
-          </button>
+            <span class="main-text">Download full dump: </span>
+            <button
+                    type="button"
+                    name="download-dump"
+                    onclick="download_dump()"
+                    class="main-button download-dump"
+            >
+                download
+            </button>
         </li>
-      </ul>
-    </header>
-    <main class="main-container">
-      <h1 class="main-content-title visually-hidden">CertIZDAT main page</h1>
-      <section class="main-section">
+    </ul>
+</header>
+<main class="main-container">
+    <h1 class="main-content-title visually-hidden">CertIZDAT main page</h1>
+    <section class="main-section">
         <h2 class="visually-hidden">Statistic</h2>
         <table class="stats-table">
-          <tbody>
+            <tbody>
             <tr>
-              <th></th>
-              <th class="table-category">Government Sites</th>
-              <th class="table-category table-disabled">Social Sites</th>
-              <th class="table-category table-disabled">Top-100 Sites</th>
+                <th></th>
+                <th class="table-category">Government Sites</th>
+                <th class="table-category">Social Sites</th>
+                <th class="table-category">Top-100 Sites</th>
             </tr>
             <tr>
-              <td class="first-column">Total Sites</td>
-              <td>{{ dataset_size }}</td>
-              <td class="table-disabled">---</td>
-              <td class="table-disabled">---</td>
+                <td class="first-column">Total Sites</td>
+                {#              <td>{{ dataset_size }}</td>#}
+                <td class="table-disabled">---</td>
+                <td class="table-disabled">---</td>
+                <td class="table-disabled">---</td>
             </tr>
             <tr>
-              <td class="first-column">CA/..%</td>
-              <td>{{ ca_stats[0] }} / {{ '{:.2f}'.format( ca_stats[1]) }}%</td>
-              <td class="table-disabled">-- / ---%</td>
-              <td class="table-disabled">--- / ---%</td>
+                <td class="first-column">CA/..%</td>
+                {#              <td>{{ ca_stats[0] }} / {{ '{:.2f}'.format( ca_stats[1]) }}%</td>#}
+                <td class="table-disabled">-- / ---%</td>
+                <td class="table-disabled">-- / ---%</td>
+                <td class="table-disabled">--- / ---%</td>
             </tr>
             <tr>
-              <td class="first-column">SS/..%</td>
-              <td>{{ ss_stats[0] }} / {{ '{:.2f}'.format( ss_stats[1]) }}%</td>
-              <td class="table-disabled">--- / ---%</td>
-              <td class="table-disabled">--- / ---%</td>
+                <td class="first-column">SS/..%</td>
+                {#              <td>{{ ss_stats[0] }} / {{ '{:.2f}'.format( ss_stats[1]) }}%</td>#}
+                <td class="table-disabled">-- / ---%</td>
+                <td class="table-disabled">--- / ---%</td>
+                <td class="table-disabled">--- / ---%</td>
             </tr>
-          </tbody>
+            </tbody>
         </table>
 
         <form id="list-form" class="setup-form">
-          <label for="scale-input">Data for </label>
-          <select class="drop-select" name="scale-input" id="scale-input">
-            <option value="by-month">month</option>
-            <option value="by-year" disabled>year</option>
-          </select>
-          <select class="drop-select" name="month-select" id="month-select">
-            <option value="january" disabled>January</option>
-            <option value="february" disabled>February</option>
-            <option value="march">March</option>
-            <option value="april" disabled>April</option>
-            <option value="may" disabled>May</option>
-            <option value="june" disabled>June</option>
-            <option value="july" disabled>July</option>
-            <option value="august" disabled>August</option>
-            <option value="september" disabled>September</option>
-            <option value="october" disabled>October</option>
-            <option value="november" disabled>November</option>
-            <option value="december" disabled>December</option>
-          </select>
-          <select class="drop-select" name="year-select" id="year-select">
-            <option value="2023" disabled>2023</option>
-          </select>
+            <label for="scale-input">Data for </label>
+            <select class="drop-select" name="scale-input" id="scale-input">
+                <option value="by-month">month</option>
+                <option value="by-year" disabled>year</option>
+            </select>
+            <select class="drop-select" name="month-select" id="month-select">
+                <option value="january" disabled>January</option>
+                <option value="february" disabled>February</option>
+                <option value="march">March</option>
+                <option value="april" disabled>April</option>
+                <option value="may" disabled>May</option>
+                <option value="june" disabled>June</option>
+                <option value="july" disabled>July</option>
+                <option value="august" disabled>August</option>
+                <option value="september" disabled>September</option>
+                <option value="october" disabled>October</option>
+                <option value="november" disabled>November</option>
+                <option value="december" disabled>December</option>
+            </select>
+            <select class="drop-select" name="year-select" id="year-select">
+                <option value="2023" disabled>2023</option>
+            </select>
         </form>
 
         <div class="diff-container">
-          <p class="diff-text">Total diff with last month:</p>
-          <div class="diff-out">
-            <p class="diff-out-ca">{{ diff[0] }} CA</p>
-            <p class="diff-out-ss">{{ diff[1] }} SS</p>
-          </div>
+            <p class="diff-text">Total diff with last month:</p>
+            <div class="diff-out">
+                {#            <p class="diff-out-ca">{{ diff[0] }} CA</p>#}
+                {#            <p class="diff-out-ss">{{ diff[1] }} SS</p>#}
+            </div>
         </div>
-      
-      </section>
 
-      <section class="main-section">
+    </section>
+
+    <section class="main-section">
         <div class="form-column">
-          <label for="site-list" class="visually-hidden">Quick Search: </label>
-          <div class="q-search">
-            <label for="list-of" class="list-of">Quick Search for:</label>
-            <select class="drop-select" name="list-of" id="list-of">
-              <option value="russian-trusted-ca">Russian Trusted CA</option>
-              <option value="self-sign">Russian Self Signed</option>
-            </select>
-          </div>
+            <label for="site-list" class="visually-hidden">Quick Search: </label>
+            <div class="q-search">
+                <label for="list-of" class="list-of">Quick Search for:</label>
+                <select class="drop-select" name="list-of" id="list-of">
+                    <option value="russian-trusted-ca">Russian Trusted CA</option>
+                    <option value="self-sign">Russian Self Signed</option>
+                </select>
+            </div>
 
-          <textarea
-            id="site-list"
-            class="main-text-area"
-            placeholder="List will be here..."
-            name="site-list"
-            rows="16"
-            cols="66"
-            style="resize: none"
-            readonly
-          >
+            <textarea
+                    id="site-list"
+                    class="main-text-area"
+                    placeholder="List will be here..."
+                    name="site-list"
+                    rows="16"
+                    cols="66"
+                    style="resize: none"
+                    readonly
+            >
 {{ site_list }}</textarea
-          >
+            >
         </div>
         <p class="search-note">Press cmd/ctrl + f to search the list</p>
-      </section>
-      <p class="main-text project-info" id="project-info-id">
+    </section>
+    <p class="main-text project-info" id="project-info-id">
         It appears that some companies are currently experiencing difficulties
         in obtaining SSL Certificates from Certification Authorities. The
         Ministry of Communications has set up its own "trusted" certification
@@ -169,21 +172,21 @@
         according to international standards and there may be concerns about the
         privacy of the private keys, given the possibility of access by the
         "authorities".
-      </p>
-      <a
-        href="http://github.com/certIZDAT/"
-        class="sources-link"
-        target="_blank"
-        >sources</a
-      >
-      <button
-        type="button"
-        id="show-btn-id"
-        name="show-project-info"
-        class="main-button project-info-button"
-      >
+    </p>
+    <a
+            href="http://github.com/certIZDAT/"
+            class="sources-link"
+            target="_blank"
+    >sources</a
+    >
+    <button
+            type="button"
+            id="show-btn-id"
+            name="show-project-info"
+            class="main-button project-info-button"
+    >
         What's for this project?
-      </button>
-    </main>
-  </body>
+    </button>
+</main>
+</body>
 </html>
