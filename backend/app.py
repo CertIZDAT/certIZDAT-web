@@ -29,7 +29,7 @@ def index():
         top_stats: tuple = ''
 
         # site_list = common.get_latest_list_results(connection, 'CA')
-        stats = common.get_gov_stats(connection)
+        stats = common.get_total_stats(connection)
 
     except sqlite3.Error as e:
         print(f'db connection error: {e}')
