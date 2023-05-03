@@ -39,7 +39,6 @@ def get_total_stats(connection: Connection) -> StatsState:
                        social_stats_prev=social_stats_prev,
                        top_stats_prev=top_stats_prev)
 
-    state.verify_data()
     return state
 
 

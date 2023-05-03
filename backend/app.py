@@ -22,9 +22,12 @@ def index():
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
 
+    state = None
     err_info = ''
+
     try:
         state = common.get_total_stats(connection)
+        print(state)
 
     except sqlite3.Error as e:
         print(f'db connection error: {e}')
