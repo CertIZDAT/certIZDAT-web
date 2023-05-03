@@ -24,12 +24,7 @@ def index():
 
     err_info = ''
     try:
-        gov_stats: tuple = ''
-        social_stats: tuple = ''
-        top_stats: tuple = ''
-
-        # site_list = common.get_latest_list_results(connection, 'CA')
-        stats = common.get_total_stats(connection)
+        state = common.get_total_stats(connection)
 
     except sqlite3.Error as e:
         print(f'db connection error: {e}')

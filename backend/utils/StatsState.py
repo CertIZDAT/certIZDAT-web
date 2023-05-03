@@ -39,4 +39,9 @@ class StatsState:
 
     def verify_data(self):
         # Compare past month statistics with actual, is same –> set None to 'nonable' fields.
-        pass
+        if self.tuple_of_actual_gov_detected_sites == self.len_of_prev_gov_detected_sites:
+            self.len_of_prev_gov_detected_sites = None
+        if self.tuple_of_actual_social_detected_sites == self.tuple_of_past_month_social_detected_sites:
+            self.tuple_of_past_month_social_detected_sites = None
+        if self.tuple_of_actual_top_detected_sites == self.tuple_of_past_month_top_detected_sites:
+            self.tuple_of_past_month_top_detected_sites = None

@@ -2,7 +2,7 @@ from sqlite3 import Connection
 
 from utils import db
 
-from backend.utils.StatsState import StatsState
+from utils.StatsState import StatsState
 
 
 def get_total_stats(connection: Connection) -> StatsState:
@@ -10,21 +10,25 @@ def get_total_stats(connection: Connection) -> StatsState:
                                                connection.execute(db.get_stats_count('social', 'now')).fetchone(),
                                                connection.execute(db.get_stats_count('top', 'now')).fetchone())
     # Get the tuple of the 'Russian Trusted CA' and self-signed sites
-    gov_stats: tuple[str, str] = (connection.execute(db.get_list_of('gov', 'ca')).fetchone(),
-                                  connection.execute(db.get_list_of('gov', 'ss')).fetchone())
+    gov_stats: tuple[str, str] = (connection.execute(db.get_list_of('gov', 'ca', 'now')).fetchone(),
+                                  connection.execute(db.get_list_of('gov', 'ss', 'now')).fetchone())
 
-    social_stats: tuple[str, str] = (connection.execute(db.get_list_of('social', 'ca')).fetchone(),
-                                     connection.execute(db.get_list_of('social', 'ss')).fetchone())
+    social_stats: tuple[str, str] = (connection.execute(db.get_list_of('social', 'ca', 'now')).fetchone(),
+                                     connection.execute(db.get_list_of('social', 'ss', 'now')).fetchone())
 
-    top_stats: tuple[str, str] = (connection.execute(db.get_list_of('top', 'ca')).fetchone(),
-                                  connection.execute(db.get_list_of('top', 'ss')).fetchone())
+    top_stats: tuple[str, str] = (connection.execute(db.get_list_of('top', 'ca', 'now')).fetchone(),
+                                  connection.execute(db.get_list_of('top', 'ss', 'now')).fetchone())
 
     dataset_count_prev: tuple[int, int, int] = (connection.execute(db.get_stats_count('gov', 'prev')).fetchone(),
                                                 connection.execute(db.get_stats_count('social', 'prev')).fetchone(),
                                                 connection.execute(db.get_stats_count('top', 'prev')).fetchone())
-    gov_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
-    social_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
-    top_stats_prev: tuple[str] = connection.execute(db.get_gov_stats_for_prev_month).fetchone()
+
+    gov_stats_prev: tuple[str, str] = (connection.execute(db.get_list_of('gov', 'ca', 'prev')).fetchone(),
+                                       connection.execute(db.get_list_of('gov', 'ss', 'prev')).fetchone())
+    social_stats_prev: tuple[str, str] = (connection.execute(db.get_list_of('social', 'ca', 'prev')).fetchone(),
+                                          connection.execute(db.get_list_of('social', 'ss', 'prev')).fetchone())
+    top_stats_prev: tuple[str, str] = (connection.execute(db.get_list_of('top', 'ca', 'prev')).fetchone(),
+                                       connection.execute(db.get_list_of('top', 'ss', 'prev')).fetchone())
 
     state = StatsState(dataset_count_now=dataset_count_now,
                        gov_stats=gov_stats,
