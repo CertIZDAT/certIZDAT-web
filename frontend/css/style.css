@@ -78,7 +78,10 @@ ul {
 
 .disabled-link {
   cursor: not-allowed;
-  pointer-events: none;
+  color: gainsboro;
+}
+
+.disabled-link:hover {
   color: gainsboro;
 }
 
