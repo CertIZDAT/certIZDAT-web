@@ -21,6 +21,9 @@ def index():
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
         return render_template('err.html', err_info=e)
+    finally:
+        if 'connection' in locals():
+            connection.close()
 
     try:
         current_date: date = date.today()
