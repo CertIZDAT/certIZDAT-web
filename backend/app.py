@@ -1,18 +1,17 @@
 import os
 import sqlite3
+from datetime import date
 
 from flask import Flask, render_template, send_file
 
-# Add the root directory to the Python path
-# root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-# print(f'root_path: {root_path}')
-# sys.path.insert(0, root_path)
-
-# from analyser.check import db_name
 from utils import common, db
+from utils.StatsState import StatsState
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
+
+state = StatsState()
+state.init_cache()
 
 
 @app.route('/')
@@ -21,22 +20,17 @@ def index():
         connection = db.get_db_connection(f'../analyser/statistics.db')
     except sqlite3.Error as e:
         print(f'get db connection error: {e}')
-
-    state = None
-    err_info = ''
+        return render_template('err.html', err_info=e)
 
     try:
-        state = common.get_total_stats(connection)
-        print(state)
+        current_date: date = date.today()
+        state.update_cache(current_date)
 
     except sqlite3.Error as e:
         print(f'db connection error: {e}')
-        err_info = f'db connection error: {e}'
+        return render_template('err.html', err_info=e)
     finally:
         connection.close()
-
-    if err_info:
-        return render_template('err.html', err_info=err_info)
 
     return render_template('index.html',
                            site_list="site_list",
