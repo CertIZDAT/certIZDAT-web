@@ -1,7 +1,6 @@
 import sqlite3
 from dataclasses import dataclass
 from datetime import date, timedelta
-from sqlite3 import Connection
 
 from utils import db
 
@@ -29,27 +28,43 @@ class StatsState:
         self.prev_social_domains_stats: tuple[str, str]
         self.prev_top_domains_stats: tuple[str, str]
 
-    def __get_data_from_db(self, connection: Connection):
-        pass
-
-    def init_cache(self):
+    def __get_data_from_db(self):
         try:
             connection = db.get_db_connection(f'../analyser/statistics.db')
-            self.__get_data_from_db(connection)
         except sqlite3.Error as e:
-            print(f'get db connection error: {e}')
-        finally:
-            if 'connection' in locals():
-                connection.close()
+            print(f'func: __get_data_from_db\nget db connection error: {e}')
+            return
+
+        self.actual_entries_count = (connection.execute(db.get_stats_count('gov', 'now')).fetchone(),
+                                     connection.execute(db.get_stats_count('social', 'now')).fetchone(),
+                                     connection.execute(db.get_stats_count('top', 'now')).fetchone())
+
+        self.actual_government_domains_stats = (connection.execute(db.get_list_of('gov', 'ca', 'now')).fetchone(),
+                                                connection.execute(db.get_list_of('gov', 'ss', 'now')).fetchone())
+        self.actual_social_domains_stats = (connection.execute(db.get_list_of('social', 'ca', 'now')).fetchone(),
+                                            connection.execute(db.get_list_of('social', 'ss', 'now')).fetchone())
+        self.actual_top_domains_stats = (connection.execute(db.get_list_of('top', 'ca', 'now')).fetchone(),
+                                         connection.execute(db.get_list_of('top', 'ss', 'now')).fetchone())
+
+        self.prev_entries_count = (connection.execute(db.get_stats_count('gov', 'prev')).fetchone(),
+                                   connection.execute(db.get_stats_count('social', 'prev')).fetchone(),
+                                   connection.execute(db.get_stats_count('top', 'prev')).fetchone())
+
+        self.prev_government_domains_stats = (connection.execute(db.get_list_of('gov', 'ca', 'prev')).fetchone(),
+                                              connection.execute(db.get_list_of('gov', 'ss', 'prev')).fetchone())
+        self.prev_social_domains_stats = (connection.execute(db.get_list_of('social', 'ca', 'prev')).fetchone(),
+                                          connection.execute(db.get_list_of('social', 'ss', 'prev')).fetchone())
+        self.prev_top_domains_stats = (connection.execute(db.get_list_of('top', 'ca', 'prev')).fetchone(),
+                                       connection.execute(db.get_list_of('top', 'ss', 'prev')).fetchone())
+
+        connection.close()
+
+    def init_cache(self):
+        self.__get_data_from_db()
 
     def update_cache(self, current_date: date) -> None:
         outdated_interval = timedelta(days=7)
         diff = current_date - self.cache_update_date
         if diff >= outdated_interval:
-            self.cache_update_date = current_date
-
-            try:
-                connection = db.get_db_connection(f'../analyser/statistics.db')
-            except sqlite3.Error as e:
-                pass
             self.__get_data_from_db()
+            self.cache_update_date = current_date

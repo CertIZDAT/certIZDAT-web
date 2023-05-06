@@ -63,6 +63,10 @@ ul {
   margin: 0px;
 }
 
+.nav-item > .main-text {
+  margin-right: 4px;
+}
+
 .nav-link {
   color: #ff0000;
   text-decoration: none;

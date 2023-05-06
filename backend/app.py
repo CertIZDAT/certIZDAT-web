@@ -1,5 +1,4 @@
 import os
-import sqlite3
 from datetime import date
 
 from flask import Flask, render_template, send_file
@@ -16,31 +15,21 @@ state.init_cache()
 
 @app.route('/')
 def index():
-    try:
-        connection = db.get_db_connection(f'../analyser/statistics.db')
-    except sqlite3.Error as e:
-        print(f'get db connection error: {e}')
-        return render_template('err.html', err_info=e)
-    finally:
-        if 'connection' in locals():
-            connection.close()
+    state.update_cache(date.today())
 
-    try:
-        current_date: date = date.today()
-        state.update_cache(current_date)
+    total_count_in_categories = state.actual_entries_count
 
-    except sqlite3.Error as e:
-        print(f'db connection error: {e}')
-        return render_template('err.html', err_info=e)
-    finally:
-        connection.close()
+    total_actual_gov_stats = state.actual_government_domains_stats
+    total_actual_social_stats = state.actual_social_domains_stats
+    total_actual_top_stats = state.actual_top_domains_stats
+
+    total_prev_gov_stats = state.prev_government_domains_stats
+    total_prev_social_stats = state.prev_social_domains_stats
+    total_prev_top_stats = state.prev_top_domains_stats
 
     return render_template('index.html',
                            site_list="site_list",
-                           # dataset_size=dataset_size,
-                           # ca_stats=ca_stats,
-                           # ss_stats=ss_stats,
-                           # diff=diff)
+                           total_count=total_count_in_categories
                            )
 
 
@@ -52,26 +41,6 @@ def download_dump():
         'analyser',
         'statistics.db')
     return send_file(file_path, as_attachment=True, mimetype='application/x-sqlite3')
-
-
-@app.route('/download_ca_list')
-def download_ca_list():
-    file_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        '..',
-        'analyser',
-        'ssl_cert_err.txt')
-    return send_file(file_path, as_attachment=True, mimetype='text/plain')
-
-
-@app.route('/download_self_sign_list')
-def download_self_sign_list():
-    file_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        '..',
-        'analyser',
-        'ssl_self_sign_err.txt')
-    return send_file(file_path, as_attachment=True, mimetype='text/plain')
 
 
 @app.route('/process/russian-trusted-ca')
@@ -91,8 +60,6 @@ def self_sign():
 
 
 # 404 page
-
-
 @app.errorhandler(404)
 def page_not_found():
     return render_template('404.html'), 404
