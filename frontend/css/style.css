@@ -102,6 +102,7 @@ ul {
 td {
   margin: 0;
   padding: 0;
+  align-content: center;
 }
 
 .table-category {

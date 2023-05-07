@@ -78,23 +78,33 @@
             </tr>
             <tr>
                 <td class="first-column">Total Sites</td>
-                <td>{{ "{}".format(*total_count[0]) }}</td>
-                <td>{{ "{}".format(*total_count[1]) }}</td>
-                <td>{{ "{}".format(*total_count[2]) }}</td>
+                <td>{{ "{}".format(*actual_entries_count[0]) }}</td>
+                <td>{{ "{}".format(*actual_entries_count[1]) }}</td>
+                <td>{{ "{}".format(*actual_entries_count[2]) }}</td>
             </tr>
             <tr>
                 <td class="first-column">CA/..%</td>
-                {#              <td>{{ ca_stats[0] }} / {{ '{:.2f}'.format( ca_stats[1]) }}%</td>#}
-                <td>-- / ---%</td>
-                <td>-- / ---%</td>
-                <td>--- / ---%</td>
+                <td>{{ gov_ca_count }}
+                    / {{ round( gov_ca_count / int("{}".format(*actual_entries_count[0])) * 100, 1 ) }}%
+                </td>
+                <td>{{ social_ca_count }}
+                    / {{ round( social_ca_count / int("{}".format(*actual_entries_count[1])) * 100, 1 ) }}%
+                </td>
+                <td>{{ top_ca_count }}
+                    / {{ round( top_ca_count / int("{}".format(*actual_entries_count[2])) * 100, 1 ) }}%
+                </td>
             </tr>
             <tr>
                 <td class="first-column">SS/..%</td>
-                {#              <td>{{ ss_stats[0] }} / {{ '{:.2f}'.format( ss_stats[1]) }}%</td>#}
-                <td>-- / ---%</td>
-                <td>--- / ---%</td>
-                <td>--- / ---%</td>
+                <td>{{ gov_ss_count }}
+                    / {{ round( gov_ss_count / int("{}".format(*actual_entries_count[0])) * 100, 1 ) }}%
+                </td>
+                <td>{{ social_ss_count }}
+                    / {{ round( social_ss_count / int("{}".format(*actual_entries_count[1])) * 100, 1 ) }}%
+                </td>
+                <td>{{ top_ss_count }}
+                    / {{ round( top_ss_count / int("{}".format(*actual_entries_count[2])) * 100, 1 ) }}%
+                </td>
             </tr>
             </tbody>
         </table>
@@ -154,9 +164,8 @@
                     cols="66"
                     style="resize: none"
                     readonly
-            >
-{{ site_list }}</textarea
-            >
+            >{{ site_list }}
+            </textarea>
         </div>
         <p class="search-note">Press cmd/ctrl + f to search the list</p>
     </section>

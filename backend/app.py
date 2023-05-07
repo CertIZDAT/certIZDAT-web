@@ -17,20 +17,30 @@ state.init_cache()
 def index():
     state.update_cache(date.today())
 
-    total_count_in_categories = state.actual_entries_count
+    prev_government_domains_stats = state.prev_government_domains_stats
+    prev_social_domains_stats = state.prev_social_domains_stats
+    prev_top_domains_stats = state.prev_top_domains_stats
 
-    total_actual_gov_stats = state.actual_government_domains_stats
-    total_actual_social_stats = state.actual_social_domains_stats
-    total_actual_top_stats = state.actual_top_domains_stats
+    context = {
+        'site_list': 'site_list',
+        'actual_entries_count': state.actual_entries_count,
+        'gov_ca_count': 0 if len(state.actual_government_domains_stats[0][0]) == 0 else len(
+            state.actual_government_domains_stats[0][0].split(',')),
+        'gov_ss_count': 0 if len(state.actual_government_domains_stats[1][0]) == 0 else len(
+            state.actual_government_domains_stats[1][0].split(',')),
+        'social_ca_count': 0 if len(state.actual_social_domains_stats[0][0]) == 0 else len(
+            state.actual_social_domains_stats[0][0].split(',')),
+        'social_ss_count': 0 if len(state.actual_social_domains_stats[1][0]) == 0 else len(
+            state.actual_social_domains_stats[1][0].split(',')),
+        'top_ca_count': 0 if len(state.actual_top_domains_stats[0][0]) == 0 else len(
+            state.actual_top_domains_stats[0][0].split(',')),
+        'top_ss_count': 0 if len(state.actual_top_domains_stats[1][0]) == 0 else len(
+            state.actual_top_domains_stats[1][0].split(',')),
+        'int': int,  # pass the int() function to the context
+        'round': round  # pass the abs() function to the context
+    }
 
-    total_prev_gov_stats = state.prev_government_domains_stats
-    total_prev_social_stats = state.prev_social_domains_stats
-    total_prev_top_stats = state.prev_top_domains_stats
-
-    return render_template('index.html',
-                           site_list="site_list",
-                           total_count=total_count_in_categories
-                           )
+    return render_template('index.html', **context)
 
 
 @app.route('/download_dump')
