@@ -17,15 +17,15 @@
     >
     <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='css/style.css')}}"
+            href="{{ url_for('static', filename='css/style.css') }}"
     >
     <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='css/normalize.css')}}"
+            href="{{ url_for('static', filename='css/normalize.css') }}"
     >
     <link
             rel="stylesheet"
-            href="{{ url_for('static', filename='css/media.css')}}"
+            href="{{ url_for('static', filename='css/media.css') }}"
     >
 </head>
 <body>
@@ -65,11 +65,11 @@
     </section>
 </main>
 <script type="text/javascript">
-        const backButton = document.querySelector('button[name="go-back"]');
-        const logo = document.getElementsByClassName('404-logo');
-        backButton.addEventListener('click', () => {
+    const backButton = document.querySelector('button[name="go-back"]');
+    const logo = document.getElementsByClassName('404-logo');
+    backButton.addEventListener('click', () => {
         window.location.href = '/';
-        });
-    </script>
+    });
+</script>
 </body>
 </html>

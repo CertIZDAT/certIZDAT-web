@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=1200">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,98 +10,98 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/media.css">
-  </head>
-  <body>
-    <header class="main-header">
-      <ul class="nav">
+</head>
+<body>
+<header class="main-header">
+    <ul class="nav">
         <li class="nav-item">
-          <!-- Ugly hack, replace with <a> globally -->
-          <img
-            src="images/main-logo.png"
-            alt="CertIZDAT Logo"
-            width="144"
-            height="25"
-            class="nav-logo link-logo"
-            onclick="window.location.href = '/';"
-            style="cursor: pointer"
-          >
-          <sup class="beta-note">β</sup>
+            <!-- Ugly hack, replace with <a> globally -->
+            <img
+                    src="images/main-logo.png"
+                    alt="CertIZDAT Logo"
+                    width="144"
+                    height="25"
+                    class="nav-logo link-logo"
+                    onclick="window.location.href = '/';"
+                    style="cursor: pointer"
+            >
+            <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">
-          <button type="button" name="go-back" class="main-button">
-            Go back
-          </button>
+            <button type="button" name="go-back" class="main-button">
+                Go back
+            </button>
         </li>
-      </ul>
-    </header>
-    <main class="main-container">
-      <h1 class="main-content-title visually-hidden">CertIZDAT FAQ page</h1>
-      <section class="main-section">
+    </ul>
+</header>
+<main class="main-container">
+    <h1 class="main-content-title visually-hidden">CertIZDAT FAQ page</h1>
+    <section class="main-section">
         <h2 class="faq-page">Explanation about certificates</h2>
         <ul class="faq-list">
-          <li class="faq-li">
-            <span class="title-faq">What is certificate?</span><br>
-            <p class="faq-text">
-              An SSL (Secure Sockets Layer) certificate is a digital certificate
-              that establishes a secure, encrypted connection between a web
-              server and a web browser. When a website has an SSL certificate
-              installed, it means that all data exchanged between the server and
-              the browser is encrypted and secure from unauthorized access. This
-              helps to protect sensitive information, such as login credentials,
-              credit card details, and other personal information, from being
-              intercepted by malicious third parties. You can tell if a website
-              has an SSL certificate by looking for the padlock icon in the
-              browser address bar and the "https" prefix in the website URL.
-            </p>
-          </li>
-          <li class="faq-li">
-            <span class="title-faq">What is Russian Trusted CA</span>
-            <p class="faq-text">
-              It appears that some companies are currently experiencing
-              difficulties in obtaining SSL Certificates from Certification
-              Authorities. The Ministry of Communications has set up its own
-              "trusted" certification centre to issue certificates, but these
-              certificates are not considered secure by most browsers, except
-              for Russian ones.<br>
-              Since we do not know the conditions under which certificates are
-              created in the Russian CA, and they certainly do not meet the
-              standards for normal CAs, we cannot trust them. Maybe they are
-              doing well there, or maybe they are creating special additional
-              "private keys" for the other "authorities".
-            </p>
-          </li>
-          <li class="faq-li">
-            <span class="title-faq">What is Self Signed Certificates</span>
-            <p class="faq-text">
-              Self-signed web certificates are created and signed by the website
-              owner instead of a trusted Certificate Authority, which can pose a
-              security risk as the site's identity cannot be verified. Attackers
-              can also create fake self-signed certificates to intercept and
-              potentially modify information transmitted between the user and
-              the website, known as a Man-in-the-Middle attack.
-            </p>
-          </li>
-          <li class="faq-li">
+            <li class="faq-li">
+                <span class="title-faq">What is certificate?</span><br>
+                <p class="faq-text">
+                    An SSL (Secure Sockets Layer) certificate is a digital certificate
+                    that establishes a secure, encrypted connection between a web
+                    server and a web browser. When a website has an SSL certificate
+                    installed, it means that all data exchanged between the server and
+                    the browser is encrypted and secure from unauthorized access. This
+                    helps to protect sensitive information, such as login credentials,
+                    credit card details, and other personal information, from being
+                    intercepted by malicious third parties. You can tell if a website
+                    has an SSL certificate by looking for the padlock icon in the
+                    browser address bar and the "https" prefix in the website URL.
+                </p>
+            </li>
+            <li class="faq-li">
+                <span class="title-faq">What is Russian Trusted CA</span>
+                <p class="faq-text">
+                    It appears that some companies are currently experiencing
+                    difficulties in obtaining SSL Certificates from Certification
+                    Authorities. The Ministry of Communications has set up its own
+                    "trusted" certification centre to issue certificates, but these
+                    certificates are not considered secure by most browsers, except
+                    for Russian ones.<br>
+                    Since we do not know the conditions under which certificates are
+                    created in the Russian CA, and they certainly do not meet the
+                    standards for normal CAs, we cannot trust them. Maybe they are
+                    doing well there, or maybe they are creating special additional
+                    "private keys" for the other "authorities".
+                </p>
+            </li>
+            <li class="faq-li">
+                <span class="title-faq">What is Self Signed Certificates</span>
+                <p class="faq-text">
+                    Self-signed web certificates are created and signed by the website
+                    owner instead of a trusted Certificate Authority, which can pose a
+                    security risk as the site's identity cannot be verified. Attackers
+                    can also create fake self-signed certificates to intercept and
+                    potentially modify information transmitted between the user and
+                    the website, known as a Man-in-the-Middle attack.
+                </p>
+            </li>
+            <li class="faq-li">
             <span class="title-faq"
-              >Some of the strange detected CA in Russia</span
+            >Some of the strange detected CA in Russia</span
             >
-            <p class="faq-text italic">
-              CA: SberCA, St. Petersburg, VTB Group, Bank GPB, Администрация
-              Партизанского городского округа, Kaliningrad, Sigma-REZERV,
-              Moscow, Stavrolop, Saint Petersburg, Petrozavodsk, Bryansk, sklif,
-              SAMARA, Samara, SPb, Vladimir, s-t-ORK, Donetsk, Karelia,
-              favr.ru, Plesk, Stavropol
-            </p>
-          </li>
+                <p class="faq-text italic">
+                    CA: SberCA, St. Petersburg, VTB Group, Bank GPB, Администрация
+                    Партизанского городского округа, Kaliningrad, Sigma-REZERV,
+                    Moscow, Stavrolop, Saint Petersburg, Petrozavodsk, Bryansk, sklif,
+                    SAMARA, Samara, SPb, Vladimir, s-t-ORK, Donetsk, Karelia,
+                    favr.ru, Plesk, Stavropol
+                </p>
+            </li>
         </ul>
-      </section>
-    </main>
-    <script type="text/javascript">
-      const backButton = document.querySelector('button[name="go-back"]');
-      const logo = document.getElementsByClassName("link-logo");
-      backButton.addEventListener("click", () => {
+    </section>
+</main>
+<script type="text/javascript">
+    const backButton = document.querySelector('button[name="go-back"]');
+    const logo = document.getElementsByClassName("link-logo");
+    backButton.addEventListener("click", () => {
         window.location.href = "/";
-      });
-    </script>
-  </body>
+    });
+</script>
+</body>
 </html>

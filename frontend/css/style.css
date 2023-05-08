@@ -5,7 +5,7 @@
 
 body {
   font-family: iosevka-regular, sans-serif;
-  margin: 0px 0px 20px 0px;
+  margin: 0 0 20px 0;
   background-color: #ffffff;
 }
 
@@ -60,7 +60,7 @@ ul {
 .nav-item {
   display: flex;
   align-items: center;
-  margin: 0px;
+  margin: 0;
 }
 
 .nav-item > .main-text {
@@ -145,19 +145,6 @@ th {
 .first-column:hover::before {
   opacity: 1;
 }
-
-/* .first-column::before:hover::after {
-  content: "Tooltip text";
-  display: block;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 5px;
-  background-color: black;
-  color: red;
-  border-radius: 5px;
-} */
 
 .q-search {
   display: flex;
