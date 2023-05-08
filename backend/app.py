@@ -5,6 +5,7 @@ from flask import Flask, render_template, send_file
 
 from utils import common, db
 from utils.StatsState import StatsState
+from utils.common import get_diff_and_color
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
@@ -17,15 +18,14 @@ state.init_cache()
 def index():
     state.update_cache(date.today())
 
-    support_context = {
-        'int': int,  # pass the int() function to the context
-        'round': round  # pass the abs() function to the context
-    }
-
-    gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if state.actual_government_domains_stats[0][0] else 0
-    gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if state.actual_government_domains_stats[1][0] else 0
-    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if state.actual_social_domains_stats[0][0] else 0
-    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][0] else 0
+    gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if \
+        state.actual_government_domains_stats[0][0] else 0
+    gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if \
+        state.actual_government_domains_stats[1][0] else 0
+    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if state.actual_social_domains_stats[0][
+        0] else 0
+    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][
+        0] else 0
     top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if state.actual_top_domains_stats[0][0] else 0
     top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if state.actual_top_domains_stats[1][0] else 0
 
@@ -40,32 +40,33 @@ def index():
         'top_ss_count': top_ss_count
     }
 
+    # Get the government diffs
+    gov_ca_diff, gov_ca_color = get_diff_and_color(
+        state.actual_government_domains_stats[0][0], state.prev_government_domains_stats[0][0])
+    gov_ss_diff, gov_ss_color = get_diff_and_color(
+        state.actual_government_domains_stats[1][0], state.prev_government_domains_stats[1][0])
+
+    # Get the social diffs
+    social_ca_diff, social_ca_color = get_diff_and_color(
+        state.actual_social_domains_stats[0][0], state.prev_social_domains_stats[0][0])
+    social_ss_diff, social_ss_color = get_diff_and_color(
+        state.actual_social_domains_stats[1][0], state.prev_social_domains_stats[1][0])
+
+    # Get the top diffs
+    top_ca_diff, top_ca_color = get_diff_and_color(
+        state.actual_top_domains_stats[0][0], state.prev_top_domains_stats[0][0])
+    top_ss_diff, top_ss_color = get_diff_and_color(
+        state.actual_top_domains_stats[1][0], state.prev_top_domains_stats[1][0])
+
     prev_context = {
-        # Context for the previous month
-        'prev_gov_ca_count': 0 if len(state.prev_government_domains_stats[0][0]) == 0 else len(
-            state.actual_government_domains_stats[0][0].split(',')),
-        'prev_gov_ca_color': 'red' if len(state.prev_government_domains_stats[0][0]) < len(
-            state.actual_government_domains_stats[0][0]) else 'green',
-        'prev_gov_ss_count': 0 if len(state.prev_government_domains_stats[1][0]) == 0 else len(
-            state.actual_government_domains_stats[1][0].split(',')),
-        'prev_gov_ss_color': 'red' if len(state.prev_government_domains_stats[1][0]) < len(
-            state.actual_government_domains_stats[1][0]) else 'green',
-        'prev_social_ca_count': 0 if len(state.prev_social_domains_stats[0][0]) == 0 else len(
-            state.actual_social_domains_stats[0][0].split(',')),
-        'prev_social_ca_color': 'red' if len(state.prev_social_domains_stats[0][0]) < len(
-            state.actual_social_domains_stats[0][0]) else 'green',
-        'prev_social_ss_count': 0 if len(state.prev_social_domains_stats[1][0]) == 0 else len(
-            state.actual_social_domains_stats[1][0].split(',')),
-        'prev_social_ss_color': 'red' if len(state.prev_social_domains_stats[1][0]) < len(
-            state.actual_social_domains_stats[1][0]) else 'green',
-        'prev_top_ca_count': 0 if len(state.prev_top_domains_stats[0][0]) == 0 else len(
-            state.actual_top_domains_stats[0][0].split(',')),
-        'prev_top_ca_color': 'red' if len(state.prev_top_domains_stats[0][0]) < len(
-            state.actual_top_domains_stats[0][0]) else 'green',
-        'prev_top_ss_count': 0 if len(state.prev_top_domains_stats[1][0]) == 0 else len(
-            state.actual_top_domains_stats[1][0].split(',')),
-        'prev_top_ss_color': 'red' if len(state.prev_top_domains_stats[1][0]) < len(
-            state.actual_top_domains_stats[1][0]) else 'green'
+        'gov_diff': (gov_ca_diff, gov_ca_color, gov_ss_diff, gov_ss_color),
+        'social_diff': (social_ca_diff, social_ca_color, social_ss_diff, social_ss_color),
+        'top_diff': (top_ca_diff, top_ca_color, top_ss_diff, top_ss_color),
+    }
+
+    support_context = {
+        'int': int,  # pass the int() function to the context
+        'round': round  # pass the abs() function to the context
     }
 
     context.update(prev_context)

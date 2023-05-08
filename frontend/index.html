@@ -113,20 +113,20 @@
             <p class="diff-text">Total diff with last month:</p>
             <div class="diff-out">
                 <p class="diff-out-ca">CA:
-                    <span style="color: {{ prev_gov_ca_color }}">{{ prev_gov_ca_count }}</span> / <span
-                            style="color: {{ prev_gov_ca_color }}">--</span>%,
-                    <span style="color: {{ prev_social_ca_color }}">{{ prev_social_ca_count }}</span> / <span
-                            style="color: {{ prev_social_ca_color }}">--</span>%,
-                    <span style="color: {{ prev_top_ca_color }}">{{ prev_top_ca_count }}</span> / <span
-                            style="color: {{ prev_top_ca_color }}">--</span>%
+                    <span style="color: {{ gov_diff[1] }}">{{ gov_diff[0] }}</span> / <span
+                            style="color: {{ gov_diff[1] }}">--</span>%,
+                    <span style="color: {{ social_diff[1] }}">{{ social_diff[0] }}</span> / <span
+                            style="color: {{ social_diff[1] }}">--</span>%,
+                    <span style="color: {{ top_diff[1] }}">{{ top_diff[0] }}</span> / <span
+                            style="color: {{ top_diff[1] }}">--</span>%
                 </p>
                 <p class="diff-out-ss">SS:
-                    <span style="color: {{ prev_gov_ss_color }}">{{ prev_gov_ss_count }}</span> / <span
-                            style="color: {{ prev_gov_ss_color }}">--</span>%,
-                    <span style="color: {{ prev_social_ss_color }}">{{ prev_social_ss_count }}</span> / <span
-                            style="color: {{ prev_social_ss_color }}">--</span>%,
-                    <span style="color: {{ prev_top_ss_color }}">{{ prev_top_ss_count }}</span> / <span
-                            style="color: {{ prev_top_ss_color }}">--</span>%
+                    <span style="color: {{ gov_diff[3] }}">{{ gov_diff[2] }}</span> / <span
+                            style="color: {{ gov_diff[3] }}">--</span>%,
+                    <span style="color: {{ social_diff[3] }}">{{ social_diff[2] }}</span> / <span
+                            style="color: {{ social_diff[3] }}">--</span>%,
+                    <span style="color: {{ top_diff[3] }}">{{ top_diff[2] }}</span> / <span
+                            style="color: {{ top_diff[3] }}">--</span>%
                 </p>
             </div>
         </div>
