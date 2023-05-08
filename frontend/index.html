@@ -129,12 +129,16 @@
 
     <section class="main-section">
         <div class="form-column">
-            <label for="site-list" class="visually-hidden">Quick Search: </label>
+            <label for="site-list" class="visually-hidden">Quick search: </label>
             <div class="q-search">
-                <label for="list-of" class="list-of">Quick Search for:</label>
+                <label for="list-of" class="list-of">Quick search for:</label>
                 <select class="drop-select" name="list-of" id="list-of">
-                    <option value="russian-trusted-ca">Russian Trusted CA</option>
-                    <option value="self-sign">Russian Self Signed</option>
+                    <option value="gov-ca">Gov sites with Russian Trusted CA</option>
+                    <option value="gov-ss">Gov sites with self-signed cert</option>
+                    <option value="social-ca">Social sites with Russian Trusted CA</option>
+                    <option value="social-ss">Social sites with self-signed cert</option>
+                    <option value="top-ca">Top-100 sites with Russian Trusted CA</option>
+                    <option value="top-ss">Top-100 sites with self-signed cert</option>
                 </select>
             </div>
 

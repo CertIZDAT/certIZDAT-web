@@ -77,7 +77,7 @@ def index():
 
 @app.route('/download_dump')
 def download_dump():
-    file_path = os.path.join(
+    file_path: str = os.path.join(
         os.path.dirname(os.path.realpath(__file__)),
         '..',
         'analyser',
@@ -88,7 +88,7 @@ def download_dump():
 @app.route('/process/russian-trusted-ca')
 def russian_trusted_ca():
     connection = db.get_db_connection('../analyser/statistics.db')
-    res = common.get_latest_list_results(connection, 'CA')
+    res: str = common.get_latest_list_results(connection, 'CA')
     connection.close()
     return res
 
@@ -96,7 +96,7 @@ def russian_trusted_ca():
 @app.route('/process/self-sign')
 def self_sign():
     connection = db.get_db_connection('../analyser/statistics.db')
-    res_list = common.get_latest_list_results(connection, 'SS')
+    res_list: str = common.get_latest_list_results(connection, 'SS')
     connection.close()
     return res_list
 
