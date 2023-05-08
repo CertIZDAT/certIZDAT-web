@@ -17,28 +17,59 @@ state.init_cache()
 def index():
     state.update_cache(date.today())
 
-    prev_government_domains_stats = state.prev_government_domains_stats
-    prev_social_domains_stats = state.prev_social_domains_stats
-    prev_top_domains_stats = state.prev_top_domains_stats
+    support_context = {
+        'int': int,  # pass the int() function to the context
+        'round': round  # pass the abs() function to the context
+    }
+
+    gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if state.actual_government_domains_stats[0][0] else 0
+    gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if state.actual_government_domains_stats[1][0] else 0
+    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if state.actual_social_domains_stats[0][0] else 0
+    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][0] else 0
+    top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if state.actual_top_domains_stats[0][0] else 0
+    top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if state.actual_top_domains_stats[1][0] else 0
 
     context = {
         'site_list': 'site_list',
         'actual_entries_count': state.actual_entries_count,
-        'gov_ca_count': 0 if len(state.actual_government_domains_stats[0][0]) == 0 else len(
-            state.actual_government_domains_stats[0][0].split(',')),
-        'gov_ss_count': 0 if len(state.actual_government_domains_stats[1][0]) == 0 else len(
-            state.actual_government_domains_stats[1][0].split(',')),
-        'social_ca_count': 0 if len(state.actual_social_domains_stats[0][0]) == 0 else len(
-            state.actual_social_domains_stats[0][0].split(',')),
-        'social_ss_count': 0 if len(state.actual_social_domains_stats[1][0]) == 0 else len(
-            state.actual_social_domains_stats[1][0].split(',')),
-        'top_ca_count': 0 if len(state.actual_top_domains_stats[0][0]) == 0 else len(
-            state.actual_top_domains_stats[0][0].split(',')),
-        'top_ss_count': 0 if len(state.actual_top_domains_stats[1][0]) == 0 else len(
-            state.actual_top_domains_stats[1][0].split(',')),
-        'int': int,  # pass the int() function to the context
-        'round': round  # pass the abs() function to the context
+        'gov_ca_count': gov_ca_count,
+        'gov_ss_count': gov_ss_count,
+        'social_ca_count': social_ca_count,
+        'social_ss_count': social_ss_count,
+        'top_ca_count': top_ca_count,
+        'top_ss_count': top_ss_count
     }
+
+    prev_context = {
+        # Context for the previous month
+        'prev_gov_ca_count': 0 if len(state.prev_government_domains_stats[0][0]) == 0 else len(
+            state.actual_government_domains_stats[0][0].split(',')),
+        'prev_gov_ca_color': 'red' if len(state.prev_government_domains_stats[0][0]) < len(
+            state.actual_government_domains_stats[0][0]) else 'green',
+        'prev_gov_ss_count': 0 if len(state.prev_government_domains_stats[1][0]) == 0 else len(
+            state.actual_government_domains_stats[1][0].split(',')),
+        'prev_gov_ss_color': 'red' if len(state.prev_government_domains_stats[1][0]) < len(
+            state.actual_government_domains_stats[1][0]) else 'green',
+        'prev_social_ca_count': 0 if len(state.prev_social_domains_stats[0][0]) == 0 else len(
+            state.actual_social_domains_stats[0][0].split(',')),
+        'prev_social_ca_color': 'red' if len(state.prev_social_domains_stats[0][0]) < len(
+            state.actual_social_domains_stats[0][0]) else 'green',
+        'prev_social_ss_count': 0 if len(state.prev_social_domains_stats[1][0]) == 0 else len(
+            state.actual_social_domains_stats[1][0].split(',')),
+        'prev_social_ss_color': 'red' if len(state.prev_social_domains_stats[1][0]) < len(
+            state.actual_social_domains_stats[1][0]) else 'green',
+        'prev_top_ca_count': 0 if len(state.prev_top_domains_stats[0][0]) == 0 else len(
+            state.actual_top_domains_stats[0][0].split(',')),
+        'prev_top_ca_color': 'red' if len(state.prev_top_domains_stats[0][0]) < len(
+            state.actual_top_domains_stats[0][0]) else 'green',
+        'prev_top_ss_count': 0 if len(state.prev_top_domains_stats[1][0]) == 0 else len(
+            state.actual_top_domains_stats[1][0].split(',')),
+        'prev_top_ss_color': 'red' if len(state.prev_top_domains_stats[1][0]) < len(
+            state.actual_top_domains_stats[1][0]) else 'green'
+    }
+
+    context.update(prev_context)
+    context.update(support_context)
 
     return render_template('index.html', **context)
 

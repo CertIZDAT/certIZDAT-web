@@ -63,7 +63,7 @@ class StatsState:
         self.__get_data_from_db()
 
     def update_cache(self, current_date: date) -> None:
-        outdated_interval = timedelta(days=7)
+        outdated_interval = timedelta(days=1)
         diff = current_date - self.cache_update_date
         if diff >= outdated_interval:
             self.__get_data_from_db()

@@ -260,10 +260,11 @@ th {
 }
 
 .diff-container {
-  display: flex;
   min-width: 400px;
-  justify-content: space-between;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .diff-text {
@@ -280,16 +281,6 @@ th {
   margin-top: 0;
   margin-bottom: 4px;
 }
-
-.diff-out-ca {
-  color: #ff0000;
-}
-
-.diff-out-ss {
-  /* color: green; */
-  color: #ff0000;
-}
-
 
 /* 404 page */
 .not-found {

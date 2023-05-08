@@ -109,36 +109,25 @@
             </tbody>
         </table>
 
-        {#        <form id="list-form" class="setup-form">#}
-        {#            <label for="scale-input">Data for </label>#}
-        {#            <select class="drop-select" name="scale-input" id="scale-input">#}
-        {#                <option value="by-month">month</option>#}
-        {#                <option value="by-year" disabled>year</option>#}
-        {#            </select>#}
-        {#            <select class="drop-select" name="month-select" id="month-select">#}
-        {#                <option value="january" disabled>January</option>#}
-        {#                <option value="february" disabled>February</option>#}
-        {#                <option value="march">March</option>#}
-        {#                <option value="april" disabled>April</option>#}
-        {#                <option value="may" disabled>May</option>#}
-        {#                <option value="june" disabled>June</option>#}
-        {#                <option value="july" disabled>July</option>#}
-        {#                <option value="august" disabled>August</option>#}
-        {#                <option value="september" disabled>September</option>#}
-        {#                <option value="october" disabled>October</option>#}
-        {#                <option value="november" disabled>November</option>#}
-        {#                <option value="december" disabled>December</option>#}
-        {#            </select>#}
-        {#            <select class="drop-select" name="year-select" id="year-select">#}
-        {#                <option value="2023" disabled>2023</option>#}
-        {#            </select>#}
-        {#        </form>#}
-
         <div class="diff-container">
             <p class="diff-text">Total diff with last month:</p>
             <div class="diff-out">
-                {#            <p class="diff-out-ca">{{ diff[0] }} CA</p>#}
-                {#            <p class="diff-out-ss">{{ diff[1] }} SS</p>#}
+                <p class="diff-out-ca">CA:
+                    <span style="color: {{ prev_gov_ca_color }}">{{ prev_gov_ca_count }}</span> / <span
+                            style="color: {{ prev_gov_ca_color }}">--</span>%,
+                    <span style="color: {{ prev_social_ca_color }}">{{ prev_social_ca_count }}</span> / <span
+                            style="color: {{ prev_social_ca_color }}">--</span>%,
+                    <span style="color: {{ prev_top_ca_color }}">{{ prev_top_ca_count }}</span> / <span
+                            style="color: {{ prev_top_ca_color }}">--</span>%
+                </p>
+                <p class="diff-out-ss">SS:
+                    <span style="color: {{ prev_gov_ss_color }}">{{ prev_gov_ss_count }}</span> / <span
+                            style="color: {{ prev_gov_ss_color }}">--</span>%,
+                    <span style="color: {{ prev_social_ss_color }}">{{ prev_social_ss_count }}</span> / <span
+                            style="color: {{ prev_social_ss_color }}">--</span>%,
+                    <span style="color: {{ prev_top_ss_color }}">{{ prev_top_ss_count }}</span> / <span
+                            style="color: {{ prev_top_ss_color }}">--</span>%
+                </p>
             </div>
         </div>
 
