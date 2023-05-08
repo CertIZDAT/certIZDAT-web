@@ -3,7 +3,6 @@ from datetime import date
 
 from flask import Flask, render_template, send_file
 
-from utils import common, db
 from utils.StatsState import StatsState
 from utils.common import get_diff_and_color
 
@@ -30,7 +29,7 @@ def index():
     top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if state.actual_top_domains_stats[1][0] else 0
 
     context = {
-        'site_list': 'site_list',
+        'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
         'actual_entries_count': state.actual_entries_count,
         'gov_ca_count': gov_ca_count,
         'gov_ss_count': gov_ss_count,
@@ -85,20 +84,37 @@ def download_dump():
     return send_file(file_path, as_attachment=True, mimetype='application/x-sqlite3')
 
 
-@app.route('/process/russian-trusted-ca')
-def russian_trusted_ca():
-    connection = db.get_db_connection('../analyser/statistics.db')
-    res: str = common.get_latest_list_results(connection, 'CA')
-    connection.close()
-    return res
+# Government lists
+@app.route('/process/gov-ca')
+def gov_ca():
+    return state.actual_government_domains_stats[0][0].replace(',', '\n')
 
 
-@app.route('/process/self-sign')
-def self_sign():
-    connection = db.get_db_connection('../analyser/statistics.db')
-    res_list: str = common.get_latest_list_results(connection, 'SS')
-    connection.close()
-    return res_list
+@app.route('/process/gov-ss')
+def gov_ss():
+    return state.actual_government_domains_stats[1][0].replace(',', '\n')
+
+
+# Social lists
+@app.route('/process/social-ca')
+def social_ca():
+    return state.actual_social_domains_stats[0][0].replace(',', '\n')
+
+
+@app.route('/process/social-ss')
+def social_ss():
+    return state.actual_social_domains_stats[1][0].replace(',', '\n')
+
+
+# Top-100 lists
+@app.route('/process/top-ca')
+def top_ca():
+    return state.actual_top_domains_stats[0][0].replace(',', '\n')
+
+
+@app.route('/process/top-ss')
+def top_ss():
+    return state.actual_top_domains_stats[1][0].replace(',', '\n')
 
 
 # 404 page
