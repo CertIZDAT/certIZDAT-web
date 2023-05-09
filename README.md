@@ -1,6 +1,9 @@
 # certIZDAT-web
 
 ## Running
+
+Run the following command in the POSIX-compatible shell
+
     git clone https://github.com/CertIZDAT/certIZDAT-web.git
     cd certIZDAT-web/
     git submodule update --init
