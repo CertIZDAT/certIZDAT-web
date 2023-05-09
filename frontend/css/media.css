@@ -34,5 +34,6 @@
 /* Hack for Firefox */
 
 @media screen and (max-width: 1148px) {
-  @-moz-document url-prefix() {}
+    @-moz-document url-prefix() {
+    }
 }
