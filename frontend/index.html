@@ -80,13 +80,13 @@
                 <th class="table-category">Top-100 Sites</th>
             </tr>
             <tr>
-                <td class="first-column">Total Sites</td>
+                <td class="first-column">Total Sites Checked</td>
                 <td>{{ "{}".format(*actual_entries_count[0]) }}</td>
                 <td>{{ "{}".format(*actual_entries_count[1]) }}</td>
                 <td>{{ "{}".format(*actual_entries_count[2]) }}</td>
             </tr>
             <tr>
-                <td class="first-column">CA/..%</td>
+                <td class="first-column">Russian Trusted CA/..%</td>
                 <td>{{ gov_ca_count }}
                     / {{ round( gov_ca_count / int("{}".format(*actual_entries_count[0])) * 100, 1 ) }}%
                 </td>
@@ -98,7 +98,7 @@
                 </td>
             </tr>
             <tr>
-                <td class="first-column">SS/..%</td>
+                <td class="first-column">Self-Signed/..%</td>
                 <td>{{ gov_ss_count }}
                     / {{ round( gov_ss_count / int("{}".format(*actual_entries_count[0])) * 100, 1 ) }}%
                 </td>
