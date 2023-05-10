@@ -9,6 +9,7 @@ from utils import db
 class StatsState:
     def __init__(self) -> None:
         self.cache_update_date: date = date.today()
+        self.last_analysis_time: str
         # This field contains the count of entries in each category (gov, social, top-100)
         # for the last available date-time in the database.
         self.actual_entries_count: tuple[int, int, int]
@@ -34,6 +35,8 @@ class StatsState:
         except sqlite3.Error as e:
             print(f'func: __get_data_from_db\nget db connection error: {e}')
             return
+
+        self.last_analysis_time = connection.execute(db.get_last_update_time()).fetchone()[0].split(' ')[0]
 
         self.actual_entries_count = (connection.execute(db.get_stats_count('gov', 'now')).fetchone(),
                                      connection.execute(db.get_stats_count('social', 'now')).fetchone(),

@@ -176,16 +176,6 @@ th {
     background-color: #a22a2a;
 }
 
-.setup-form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
 .form-column {
     display: flex;
     flex-direction: column;
@@ -193,16 +183,16 @@ th {
     gap: 10px;
 }
 
-.drop-select {
-    width: 356px;
-    border-radius: 5px;
-    border: 2px solid black;
-    background-color: #ffffff;
+.last-update-container {
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
 }
 
-.time-select {
-    width: 206px;
-    border: 2px solid black;
+.last-update {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: gray;
 }
 
 .main-text-area {
@@ -240,10 +230,6 @@ th {
     bottom: 20px;
     left: 20px;
     color: gray;
-}
-
-.download-column {
-    display: none;
 }
 
 .diff-container {

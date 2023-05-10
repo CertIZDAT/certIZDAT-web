@@ -39,6 +39,12 @@ def get_stats_count(category: str, time: str) -> str:
     exit(1)
 
 
+def get_last_update_time():
+    return f'SELECT date_time ' \
+           'FROM statistic_table ' \
+           'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
+
+
 def get_db_connection(db_name: str) -> Connection:
     connect = sqlite3.connect(db_name)
     return connect
