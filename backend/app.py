@@ -1,56 +1,83 @@
 import os
-import sqlite3
+from datetime import date
 
 from flask import Flask, render_template, send_file
 
-from utils import common, db
+from utils.StatsState import StatsState
+from utils.common import get_diff_and_color
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
 
+state = StatsState()
+state.init_cache()
+
 
 @app.route('/')
 def index():
-    # TODO: Read db_name from what??
-    try:
-        connection = db.get_db_connection('../analyser/statistics.db')
-    except sqlite3.Error as e:
-        print(f'get db connection error: {e}')
-    err_info = ''
-    try:
-        dataset_size = common.get_total_dataset_size(connection)
-        site_list = common.get_latest_list_results(connection, 'CA')
+    state.update_cache(date.today())
 
-        ca_count_last_month = common.get_latest_counts(connection, 'CA')
-        ca_stats = (ca_count_last_month,
-                    ca_count_last_month * 100 / dataset_size)
+    gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if \
+        state.actual_government_domains_stats[0][0] else 0
+    gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if \
+        state.actual_government_domains_stats[1][0] else 0
+    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if state.actual_social_domains_stats[0][
+        0] else 0
+    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][
+        0] else 0
+    top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if state.actual_top_domains_stats[0][0] else 0
+    top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if state.actual_top_domains_stats[1][0] else 0
 
-        ss_count_last_month = common.get_latest_counts(connection, 'SS')
-        ss_stats = (ss_count_last_month,
-                    ss_count_last_month * 100 / dataset_size)
+    context = {
+        'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
+        'last_update_time': state.last_analysis_time,
+        'actual_entries_count': state.actual_entries_count,
+        'gov_ca_count': gov_ca_count,
+        'gov_ss_count': gov_ss_count,
+        'social_ca_count': social_ca_count,
+        'social_ss_count': social_ss_count,
+        'top_ca_count': top_ca_count,
+        'top_ss_count': top_ss_count
+    }
 
-        # setup analysis later
-        diff = ('773 / 3.44%', '176 / 0.78%')
-    except sqlite3.Error as e:
-        print(f'db connection error: {e}')
-        err_info = f'db connection error: {e}'
-    finally:
-        connection.close()
+    # Get the government diffs
+    gov_ca_diff, gov_ca_color = get_diff_and_color(
+        state.actual_government_domains_stats[0][0], state.prev_government_domains_stats[0][0])
+    gov_ss_diff, gov_ss_color = get_diff_and_color(
+        state.actual_government_domains_stats[1][0], state.prev_government_domains_stats[1][0])
 
-    if err_info:
-        return render_template('err.html', err_info=err_info)
+    # Get the social diffs
+    social_ca_diff, social_ca_color = get_diff_and_color(
+        state.actual_social_domains_stats[0][0], state.prev_social_domains_stats[0][0])
+    social_ss_diff, social_ss_color = get_diff_and_color(
+        state.actual_social_domains_stats[1][0], state.prev_social_domains_stats[1][0])
 
-    return render_template('index.html',
-                           site_list=site_list,
-                           dataset_size=dataset_size,
-                           ca_stats=ca_stats,
-                           ss_stats=ss_stats,
-                           diff=diff)
+    # Get the top diffs
+    top_ca_diff, top_ca_color = get_diff_and_color(
+        state.actual_top_domains_stats[0][0], state.prev_top_domains_stats[0][0])
+    top_ss_diff, top_ss_color = get_diff_and_color(
+        state.actual_top_domains_stats[1][0], state.prev_top_domains_stats[1][0])
+
+    prev_context = {
+        'gov_diff': (gov_ca_diff, gov_ca_color, gov_ss_diff, gov_ss_color),
+        'social_diff': (social_ca_diff, social_ca_color, social_ss_diff, social_ss_color),
+        'top_diff': (top_ca_diff, top_ca_color, top_ss_diff, top_ss_color),
+    }
+
+    support_context = {
+        'int': int,  # pass the int() function to the context
+        'round': round  # pass the abs() function to the context
+    }
+
+    context.update(prev_context)
+    context.update(support_context)
+
+    return render_template('index.html', **context)
 
 
 @app.route('/download_dump')
 def download_dump():
-    file_path = os.path.join(
+    file_path: str = os.path.join(
         os.path.dirname(os.path.realpath(__file__)),
         '..',
         'analyser',
@@ -58,47 +85,43 @@ def download_dump():
     return send_file(file_path, as_attachment=True, mimetype='application/x-sqlite3')
 
 
-@app.route('/download_ca_list')
-def download_ca_list():
-    file_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        '..',
-        'analyser',
-        'ssl_cert_err.txt')
-    return send_file(file_path, as_attachment=True, mimetype='text/plain')
+# Government lists
+@app.route('/process/gov-ca')
+def gov_ca():
+    return state.actual_government_domains_stats[0][0].replace(',', '\n')
 
 
-@app.route('/download_self_sign_list')
-def download_self_sign_list():
-    file_path = os.path.join(
-        os.path.dirname(os.path.realpath(__file__)),
-        '..',
-        'analyser',
-        'ssl_self_sign_err.txt')
-    return send_file(file_path, as_attachment=True, mimetype='text/plain')
+@app.route('/process/gov-ss')
+def gov_ss():
+    return state.actual_government_domains_stats[1][0].replace(',', '\n')
 
 
-@app.route('/process/russian-trusted-ca')
-def russian_trusted_ca():
-    connection = db.get_db_connection('../analyser/statistics.db')
-    res = common.get_latest_list_results(connection, 'CA')
-    connection.close()
-    return res
+# Social lists
+@app.route('/process/social-ca')
+def social_ca():
+    return state.actual_social_domains_stats[0][0].replace(',', '\n')
 
 
-@app.route('/process/self-sign')
-def self_sign():
-    connection = db.get_db_connection('../analyser/statistics.db')
-    list = common.get_latest_list_results(connection, 'SS')
-    connection.close()
-    return list
+@app.route('/process/social-ss')
+def social_ss():
+    return state.actual_social_domains_stats[1][0].replace(',', '\n')
+
+
+# Top-100 lists
+@app.route('/process/top-ca')
+def top_ca():
+    return state.actual_top_domains_stats[0][0].replace(',', '\n')
+
+
+@app.route('/process/top-ss')
+def top_ss():
+    return state.actual_top_domains_stats[1][0].replace(',', '\n')
 
 
 # 404 page
-
-
 @app.errorhandler(404)
 def page_not_found(e):
+    print(f'404 error: {e}')
     return render_template('404.html'), 404
 
 

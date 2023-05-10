@@ -1,22 +1,50 @@
 import sqlite3
-
-# List of possible queries
-get_all_ca_count_array = 'SELECT trusted_ca_count FROM statistic_table;'
-
-get_last_ca_count_query = 'SELECT trusted_ca_count FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-get_last_self_sign_count_query = 'SELECT self_signed_count FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-
-get_last_ca_list = 'SELECT list_of_trusted_ca FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-get_last_self_sign_list = 'SELECT list_of_self_sign FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-
-get_last_update_date_time = 'SELECT date_time FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-
-get_dataset_size = 'SELECT total_ds_size FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
-
-get_ca_count_for_last_month = 'SELECT trusted_ca_count from statistic_table WHERE date(date_time) >= date(\'now\', \'-1 month\')'
-get_dates_for_last_month = 'SELECT date(date_time) AS date_only FROM statistic_table WHERE date(date_time) >= date(\'now\', \'-1 month\')'
+from sqlite3 import Connection
 
 
-def get_db_connection(db_name):
+# Get list of the government/social/top sites that use Russian Trusted CA/self-signed certificates
+def get_list_of(category: str, ssl_case: str, time: str) -> str:
+    if category in ['gov', 'social', 'top'] and ssl_case in ['ca', 'ss'] and time in ['now', 'prev']:
+        if time == 'now':
+            return f'SELECT {category}_{ssl_case}_list FROM statistic_table ORDER BY date_time DESC LIMIT 1;'
+        elif time == 'prev':
+            return f'SELECT {category}_{ssl_case}_list FROM statistic_table ' \
+                   'WHERE strftime(\'%Y-%m\', date_time) = strftime(\'%Y-%m\', date(\'now\', ' \
+                   '\'-1 month\')) ' \
+                   'OR (SELECT MAX(strftime(\'%Y-%m\', date_time)) ' \
+                   'FROM statistic_table) < strftime(\'%Y-%m\', date(\'now\', \'-1 month\')) ' \
+                   'ORDER BY date_time DESC ' \
+                   'LIMIT 1;'
+    print(f'ERROR: error in get_list_of – category: {category}, ssl_case: {ssl_case}')
+    exit(1)
+
+
+# Get total count of all government/social/top sites
+def get_stats_count(category: str, time: str) -> str:
+    if category in ['gov', 'social', 'top'] and time in ['now', 'prev']:
+        if time == 'now':
+            return f'SELECT {category}_count ' \
+                   'FROM statistic_table ' \
+                   'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
+        elif time == 'prev':
+            return f'SELECT {category}_count ' \
+                   'FROM statistic_table ' \
+                   'WHERE strftime(\'%Y-%m\', date_time) = strftime(\'%Y-%m\', date(\'now\', ' \
+                   '\'-1 month\')) ' \
+                   'OR (SELECT MAX(strftime(\'%Y-%m\', date_time)) ' \
+                   'FROM statistic_table) < strftime(\'%Y-%m\', date(\'now\', \'-1 month\')) ' \
+                   'ORDER BY date_time DESC ' \
+                   'LIMIT 1;'
+    print(f'ERROR: error in get_stats_count – category: {category}, time: {time}')
+    exit(1)
+
+
+def get_last_update_time():
+    return f'SELECT date_time ' \
+           'FROM statistic_table ' \
+           'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
+
+
+def get_db_connection(db_name: str) -> Connection:
     connect = sqlite3.connect(db_name)
     return connect
