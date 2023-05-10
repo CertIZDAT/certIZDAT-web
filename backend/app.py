@@ -120,7 +120,8 @@ def top_ss():
 
 # 404 page
 @app.errorhandler(404)
-def page_not_found():
+def page_not_found(e):
+    print(f'404 error: {e}')
     return render_template('404.html'), 404
 
 
