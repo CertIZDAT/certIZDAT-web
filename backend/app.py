@@ -3,6 +3,7 @@ from datetime import date
 import sys
 
 from flask import Flask, render_template, send_file
+from flask_sslify import SSLify
 
 from utils.StatsState import StatsState
 from utils.common import get_diff_and_color
@@ -12,6 +13,7 @@ from analyser.utils.web_consts import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
+sslify = SSLify(app)
 
 state = StatsState()
 state.init_cache()
