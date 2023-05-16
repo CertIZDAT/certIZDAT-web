@@ -1,5 +1,6 @@
-@font-face { font-family: 'body';
-    src: url('../fonts/iosevka-fixed-ss18-regular.woff2') format('woff'); 
+@font-face {
+    font-family: 'body';
+    src: url('../fonts/iosevka-fixed-ss18-regular.woff2') format('woff');
 }
 
 body {
@@ -195,7 +196,7 @@ th {
 .project-info {
     position: absolute;
     width: 394px;
-    height: 280px;
+    height: 306px;
     padding: 14px;
     right: 20px;
     bottom: 4px;
