@@ -1,12 +1,11 @@
-@font-face {
-    font-family: iosevka-regular;
-    src: url("../fonts/iosevka-fixed-ss18-regular.ttf") format("truetype");
+@font-face { font-family: 'body';
+    src: url('../fonts/iosevka-fixed-ss18-regular.ttf') format('woff'); 
 }
 
 body {
-    font-family: iosevka-regular, sans-serif;
     margin: 0 0 20px 0;
     background-color: #ffffff;
+    font: 16px body, sans-serif;
 }
 
 ul {
