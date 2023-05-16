@@ -1,7 +1,7 @@
 /* Header */
 @media screen and (max-width: 820px) {
     .main-header {
-        padding: 0 6px;
+        padding: 0 8px;
     }
 }
 
@@ -28,6 +28,14 @@
 @media screen and (max-width: 582px) {
     .main-text-area {
         width: 488px;
+    }
+}
+
+@media screen and (max-width: 558px) {
+    /* Reduce main logo size */
+    .nav-logo {
+        width: 90px;
+        height: auto;
     }
 }
 
