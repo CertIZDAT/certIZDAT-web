@@ -1,5 +1,5 @@
 @font-face { font-family: 'body';
-    src: url('../fonts/iosevka-fixed-ss18-regular.ttf') format('woff'); 
+    src: url('../fonts/iosevka-fixed-ss18-regular.woff2') format('woff'); 
 }
 
 body {
