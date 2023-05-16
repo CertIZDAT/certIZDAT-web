@@ -1,10 +1,14 @@
 import os
 from datetime import date
+import sys
 
 from flask import Flask, render_template, send_file
 
 from utils.StatsState import StatsState
 from utils.common import get_diff_and_color
+
+sys.path.append("../")
+from analyser.utils.web_consts import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
@@ -25,8 +29,10 @@ def index():
         0] else 0
     social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][
         0] else 0
-    top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if state.actual_top_domains_stats[0][0] else 0
-    top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if state.actual_top_domains_stats[1][0] else 0
+    top_ca_count = len(state.actual_top_domains_stats[0][0].split(
+        ',')) if state.actual_top_domains_stats[0][0] else 0
+    top_ss_count = len(state.actual_top_domains_stats[1][0].split(
+        ',')) if state.actual_top_domains_stats[1][0] else 0
 
     context = {
         'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
@@ -73,6 +79,12 @@ def index():
     context.update(support_context)
 
     return render_template('index.html', **context)
+
+
+@app.route('/faq.html')
+def faq_page():
+    clean_res = ', '.join(i for i in ss_list)
+    return render_template('faq.html', ss_list=clean_res)
 
 
 @app.route('/download_dump')
