@@ -63,7 +63,7 @@ ul {
     margin: 0;
 }
 
-.nav-item > .main-text {
+.nav-item>.main-text {
     margin-right: 4px;
 }
 
@@ -128,8 +128,17 @@ th {
 }
 
 .q-search {
+    min-height: 22px;
     display: flex;
-    align-items: center;
+    align-items: start;
+}
+
+@-moz-document url-prefix() {
+    .q-search {
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .list-of {
