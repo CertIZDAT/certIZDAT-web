@@ -130,7 +130,7 @@ th {
 .q-search {
     min-height: 22px;
     display: flex;
-    align-items: start;
+    align-items: baseline;
 }
 
 @-moz-document url-prefix() {
