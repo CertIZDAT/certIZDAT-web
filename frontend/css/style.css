@@ -30,7 +30,7 @@ ul {
     text-align: center;
     justify-content: center;
     min-height: 50px;
-    margin: 0 auto 40px;
+    margin: 0 auto 26px;
 }
 
 .main-section {
@@ -96,7 +96,7 @@ ul {
 .stats-table {
     max-width: 1000px;
     max-height: 320px;
-    margin-bottom: 26px;
+    margin-bottom: 4px;
 }
 
 td {
@@ -177,10 +177,11 @@ th {
     width: 80%;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 20px;
 }
 
 .last-update {
-    margin-bottom: 0;
+    margin: 0;
     font-size: 14px;
     color: gray;
 }
