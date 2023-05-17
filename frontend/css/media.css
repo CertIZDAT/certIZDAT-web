@@ -11,6 +11,14 @@
     }
 }
 
+/* Reduce main logo size */
+@media screen and (max-width: 558px) {
+    .nav-logo {
+        width: 90px;
+        height: auto;
+    }
+}
+
 /* Statistics table */
 @media screen and (max-width: 1024px) {
     .first-column {
@@ -31,17 +39,8 @@
     }
 }
 
-@media screen and (max-width: 558px) {
-    /* Reduce main logo size */
-    .nav-logo {
-        width: 90px;
-        height: auto;
-    }
-}
-
-/* Hack for Firefox */
-
-@media screen and (max-width: 1148px) {
-    @-moz-document url-prefix() {
+@media screen and (max-width: 1092px) {
+    .main-container {
+        margin-bottom: 16px;
     }
 }
