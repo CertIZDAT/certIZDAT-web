@@ -63,7 +63,7 @@ ul {
     margin: 0;
 }
 
-.nav-item>.main-text {
+.nav-item > .main-text {
     margin-right: 4px;
 }
 
@@ -83,6 +83,7 @@ ul {
 .disabled-link {
     cursor: not-allowed;
     color: gainsboro;
+    pointer-events: none;
 }
 
 .disabled-link:hover {
