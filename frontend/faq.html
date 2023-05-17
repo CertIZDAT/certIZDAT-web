@@ -15,22 +15,21 @@
 <header class="main-header">
     <ul class="nav">
         <li class="nav-item">
-            <!-- Ugly hack, replace with <a> globally -->
-            <img
-                    src="images/main-logo.png"
-                    alt="CertIZDAT Logo"
-                    width="144"
-                    height="25"
-                    class="nav-logo link-logo"
-                    onclick="window.location.href = '/';"
-                    style="cursor: pointer"
-            >
+            <a href="/" class="logo-link">
+                <img
+                        src="images/main-logo.png"
+                        alt="CertIZDAT Logo"
+                        width="144"
+                        height="25"
+                        class="nav-logo link-logo"
+                >
+            </a>
             <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">
-            <button type="button" name="go-back" class="main-button">
+            <a href="/" class="main-button main-button-link">
                 Go back
-            </button>
+            </a>
         </li>
     </ul>
 </header>
@@ -92,12 +91,5 @@
         </ul>
     </section>
 </main>
-<script type="text/javascript">
-    const backButton = document.querySelector('button[name="go-back"]');
-    const logo = document.getElementsByClassName("link-logo");
-    backButton.addEventListener("click", () => {
-        window.location.href = "/";
-    });
-</script>
 </body>
 </html>

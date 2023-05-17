@@ -36,13 +36,15 @@
 <header class="main-header">
     <ul class="nav">
         <li class="nav-item">
-            <img
-                    src="{{ url_for('static', filename='images/main-logo.png') }}"
-                    alt="CertIZDAT Logo"
-                    width="144"
-                    height="25"
-                    class="nav-logo"
-            />
+            <a href="/" class="disabled-link">
+                <img
+                        src="{{ url_for('static', filename='images/main-logo.png') }}"
+                        alt="CertIZDAT Logo"
+                        width="144"
+                        height="25"
+                        class="nav-logo"
+                />
+            </a>
             <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">

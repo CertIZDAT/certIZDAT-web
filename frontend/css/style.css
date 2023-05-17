@@ -170,6 +170,13 @@ th {
     background-color: #a22a2a;
 }
 
+.main-button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
 .form-column {
     display: flex;
     flex-direction: column;
