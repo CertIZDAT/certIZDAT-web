@@ -19,26 +19,6 @@
     }
 }
 
-/* Statistics table */
-@media screen and (max-width: 1024px) {
-    .first-column {
-        width: 160px;
-    }
-}
-
-@media screen and (max-width: 756px) {
-    .first-column {
-        width: 140px;
-    }
-}
-
-/* Quick search */
-@media screen and (max-width: 582px) {
-    .main-text-area {
-        width: 488px;
-    }
-}
-
 @media screen and (max-width: 1092px) {
     .main-container {
         margin-bottom: 16px;

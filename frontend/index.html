@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=1200"/>
+    <meta name="viewport" content="width=auto"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>CertIZDAT</title>
     <link
@@ -131,7 +131,18 @@
         </div>
 
     </section>
-
+    <p class="main-text project-info" id="project-info-id">
+        It appears that some companies are currently experiencing difficulties
+        in obtaining SSL Certificates from Certification Authorities. The
+        Ministry of Communications has set up its own "trusted" certification
+        centre to issue certificates, but these certificates are not considered
+        secure by most browsers, except for Russian ones. It is important to
+        note that there may be "unforeseen consequences" associated with using
+        these certificates, as it is uncertain whether they are created
+        according to international standards and there may be concerns about the
+        privacy of the private keys, given the possibility of access by the
+        "authorities".
+    </p>
     <section class="main-section">
         <div class="form-column">
             <label for="site-list" class="visually-hidden">Quick search: </label>
@@ -152,27 +163,14 @@
                     class="main-text-area"
                     placeholder="List will be here..."
                     name="site-list"
-                    rows="16"
-                    cols="72"
-                    style="resize: none"
+                    rows="22"
+                    cols="88"
                     readonly
             >{{ site_list }}
             </textarea>
         </div>
         <p class="search-note">Press cmd/ctrl + f to search the list</p>
     </section>
-    <p class="main-text project-info" id="project-info-id">
-        It appears that some companies are currently experiencing difficulties
-        in obtaining SSL Certificates from Certification Authorities. The
-        Ministry of Communications has set up its own "trusted" certification
-        centre to issue certificates, but these certificates are not considered
-        secure by most browsers, except for Russian ones. It is important to
-        note that there may be "unforeseen consequences" associated with using
-        these certificates, as it is uncertain whether they are created
-        according to international standards and there may be concerns about the
-        privacy of the private keys, given the possibility of access by the
-        "authorities".
-    </p>
     <a
             href="http://github.com/certIZDAT/"
             class="sources-link"
