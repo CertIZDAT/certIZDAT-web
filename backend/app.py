@@ -80,13 +80,13 @@ def index():
     context.update(prev_context)
     context.update(support_context)
 
-    return render_template('index.html', **context)
+    return render_template('index.min.html', **context)
 
 
 @app.route('/faq.html')
 def faq_page():
     clean_res = ', '.join(i for i in ss_list)
-    return render_template('faq.html', ss_list=clean_res)
+    return render_template('faq.min.html', ss_list=clean_res)
 
 
 @app.route('/download_dump')
@@ -136,7 +136,7 @@ def top_ss():
 @app.errorhandler(404)
 def page_not_found(e):
     print(f'404 error: {e}')
-    return render_template('404.html'), 404
+    return render_template('404.min.html'), 404
 
 # Handle internal errors
 @app.errorhandler(Exception)
