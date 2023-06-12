@@ -138,11 +138,13 @@ def page_not_found(e):
     print(f'404 error: {e}')
     return render_template('404.min.html'), 404
 
+
 # Handle internal errors
 @app.errorhandler(Exception)
 def internal_error(e):
     print(f'Internal error: {e}')
     return render_template('err.min.html', err_info=e)
+
 
 if __name__ == '__main__':
     app.run()
