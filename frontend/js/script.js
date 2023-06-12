@@ -14,6 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const close_btn = document.getElementById("close-btn");
+    close_btn.addEventListener("click", function () {
+        let project_info_block = document.getElementById("project-info-id");
+            btn.style.backgroundColor = "gray";
+            project_info_block.style.display = "none";
+    });
+
     // Set the selected index to -1 on page load
     const list_of_select = document.getElementById('list-of');
     list_of_select.selectedIndex = 0;

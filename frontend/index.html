@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=auto"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=auto">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CertIZDAT</title>
     <link
             rel="shortcut icon"
@@ -37,6 +37,7 @@
     <ul class="nav">
         <li class="nav-item">
             <a href="/" class="disabled-link">
+                <span class="hidden-text">certIZDAT Logo</span>
                 <img
                         src="{{ url_for('static', filename='images/main-logo.png') }}"
                         alt="CertIZDAT Logo"
@@ -115,7 +116,7 @@
         </div>
 
         <div class="diff-container">
-            <p class="diff-text">Total diff with last month:</p>
+            <p class="diff-text">Total diff with last analysis date:</p>
             <div class="diff-out">
                 <p class="diff-out-ca">CA:
                     <span style="color: {{ gov_diff[1] }}">{{ gov_diff[0] }}</span>,&ensp;
@@ -142,8 +143,10 @@
         according to international standards and there may be concerns about the
         privacy of the private keys, given the possibility of access by the
         "authorities".
+        <span class="close-btn" id="close-btn" style="color: black;">❌</span>
     </p>
     <section class="main-section">
+        <h2 class="hidden-text">Search analyzed sites</h2>
         <div class="form-column">
             <label for="site-list" class="visually-hidden">Quick search: </label>
             <div class="q-search">
@@ -171,8 +174,10 @@
         </div>
         <p class="search-note">Press cmd/ctrl + f to search the list</p>
     </section>
+</main>
+<footer class="main-footer">
     <a
-            href="http://github.com/certIZDAT/"
+    href="http://github.com/certIZDAT/"
             class="sources-link"
             target="_blank"
     >sources</a
@@ -185,6 +190,6 @@
     >
         What's for this project?
     </button>
-</main>
+</footer>
 </body>
 </html>

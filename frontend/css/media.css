@@ -19,8 +19,22 @@
     }
 }
 
-@media screen and (max-width: 1092px) {
-    .main-container {
-        margin-bottom: 16px;
+
+/* Footer */
+@media screen and (max-width: 1080px) {
+    .main-footer {
+        max-width: 800px;
+    }
+}
+
+@media screen and (max-width: 924px) {
+    .main-footer {
+        max-width: 738px;
+    }
+}
+
+@media screen and (max-width: 756px) {
+    .main-footer {
+        max-width: 660px;
     }
 }

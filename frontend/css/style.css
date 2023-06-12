@@ -28,6 +28,20 @@ ul {
     visibility: hidden;
 }
 
+.hidden-text {
+    visibility: hidden;
+    text-decoration: none;
+    text-indent: -9999px;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    border: 0;
+}
+
 .main-header {
     display: flex;
     text-align: center;
@@ -47,7 +61,7 @@ ul {
 
 .main-container {
     display: flex;
-    max-width: 1200px;
+    max-width: 1000px;
     flex-direction: column;
     margin: 0 auto;
 }
@@ -205,6 +219,14 @@ th {
     font-size: medium;
 }
 
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 10px auto;
+}
+
 .project-info {
     position: fixed;
     width: 494px;
@@ -221,20 +243,22 @@ th {
 }
 
 .project-info-button {
-    position: fixed;
     width: 220px;
     height: 36px;
-    bottom: 20px;
-    right: 20px;
     font-size: 14px;
     background-color: gray;
     opacity: 0.6;
 }
 
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
 .sources-link {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
     color: gray;
 }
 
