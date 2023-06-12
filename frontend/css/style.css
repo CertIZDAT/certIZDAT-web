@@ -253,20 +253,38 @@ th {
 
 .close-btn {
     position: absolute;
-    top: 0;
-    right: 8px;
-    font-size: 22px;
     color: black;
     cursor: pointer;
 }
 
+/* Firefox close button fix */
 @-moz-document url-prefix() {
     .close-btn {
         font-size: 12px;
         top: 4px;
         right: 6px;
     }
-  }
+}
+
+/* Chromium based browsers close button fix */
+@supports (-webkit-appearance:none) {
+    .close-btn {
+        font-size: 12px;
+        top: 4px;
+        right: 6px;
+    }
+}
+
+/* Safari close button fix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    _::-webkit-full-page-media,
+    _:future,
+    .close-btn {
+        top: 0;
+        right: 8px;
+        font-size: 22px;
+    }
+}
 
 .sources-link {
     color: gray;
