@@ -228,6 +228,7 @@ th {
 }
 
 .project-info {
+    z-index: 1;
     position: fixed;
     width: 494px;
     height: 266px;
@@ -254,7 +255,8 @@ th {
     position: absolute;
     top: 0;
     right: 8px;
-    font-size: 28px;
+    font-size: 18px;
+    color: black;
     cursor: pointer;
 }
 
