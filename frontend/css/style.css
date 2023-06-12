@@ -229,6 +229,7 @@ th {
 
 .project-info {
     z-index: 1;
+    display: none;
     position: fixed;
     width: 494px;
     height: 266px;
