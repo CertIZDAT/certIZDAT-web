@@ -40,6 +40,7 @@ def index():
         'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
         'last_update_time': state.last_analysis_time,
         'actual_entries_count': state.actual_entries_count,
+        'data_changed': state.data_changed,
         'gov_ca_count': gov_ca_count,
         'gov_ss_count': gov_ss_count,
         'social_ca_count': social_ca_count,

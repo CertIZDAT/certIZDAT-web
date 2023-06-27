@@ -44,6 +44,11 @@ def get_last_update_time():
            'FROM statistic_table ' \
            'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
 
+def is_data_changed():
+    return f'SELECT is_dataset_updated ' \
+           'FROM statistic_table ' \
+           'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
+
 
 def get_db_connection(db_name: str) -> Connection:
     connect = sqlite3.connect(db_name)

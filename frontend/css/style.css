@@ -114,7 +114,7 @@ ul {
 .stats-table {
     max-width: 1000px;
     max-height: 320px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 td {
@@ -199,14 +199,16 @@ th {
     gap: 10px;
 }
 
-.last-update-container {
+.notes-container {
     width: 80%;
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
     margin-bottom: 20px;
 }
 
-.last-update {
+.stats-notes {
     margin: 0;
     font-size: 14px;
     color: gray;
