@@ -39,7 +39,7 @@ class StatsState:
 
         self.last_analysis_time = connection.execute(db.get_last_update_time()).fetchone()[0].split(' ')[0]
 
-        self.data_changed = 'yes' if connection.execute(db.is_data_changed()).fetchone()[0] == 1 else 'no'
+        self.data_changed = 'yes' if connection.execute(db.is_data_changed()).fetchone()[0] else 'no'
 
         self.actual_entries_count = (connection.execute(db.get_stats_count('gov', 'now')).fetchone(),
                                      connection.execute(db.get_stats_count('social', 'now')).fetchone(),
