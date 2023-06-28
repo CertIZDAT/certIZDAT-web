@@ -269,7 +269,7 @@ th {
     .close-btn {
         font-size: 12px;
         top: 4px;
-        right: 6px;
+        right: 4px;
     }
 }
 
@@ -278,7 +278,7 @@ th {
     .close-btn {
         font-size: 12px;
         top: 4px;
-        right: 6px;
+        right: 5px;
     }
 }
 
@@ -288,7 +288,7 @@ th {
     _:future,
     .close-btn {
         top: 0;
-        right: 8px;
+        right: 7px;
         font-size: 22px;
     }
 }
