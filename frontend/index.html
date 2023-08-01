@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#" xmlns:og="http://opengraphprotocol.org/schema/">
+<html
+  lang="en"
+  prefix="og: http://ogp.me/ns#"
+  xmlns:og="http://opengraphprotocol.org/schema/"
+  >
   <head>
     <meta name="viewport" content="width=1000">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
@@ -13,6 +17,11 @@
       content="Public monitoring service for the use of Russian Trusted CA and self-signed certificates among Russian government and public websites."
     >
     <title>CertIZDAT</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link
+      href="https://fonts.bunny.net/css?family=ibm-plex-mono:300,400,500"
+      rel="stylesheet"
+    >
     <link
       rel="shortcut icon"
       type="image/x-icon"
@@ -25,16 +34,16 @@
     >
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.min.css') }}"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
     >
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/normalize.min.css') }}"
+      href="{{ url_for('static', filename='css/style.css') }}"
     >
-    <link
+    <!-- <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/media.min.css') }}"
-    >
+      href="{{ url_for('static', filename='css/media.css') }}"
+    > -->
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='js/script.min.js') }}"
@@ -52,7 +61,7 @@
               width="144"
               height="25"
               class="nav-logo"
-            >
+           >
           </a>
           <sup class="beta-note">β</sup>
         </li>
@@ -128,8 +137,14 @@
           </tbody>
         </table>
         <div class="notes-container">
-          <p class="stats-notes">Last analysis date: {{ last_update_time }}</p>
-          <p class="stats-notes">Dataset/certificate list changed compared to the last measurement: {{ data_changed }}</p>
+          <p class="stats-notes">
+            Last analysis date:
+            <span class="accent">{{ last_update_time }}</span>
+          </p>
+          <p class="stats-notes">
+            Has the dataset/certificate list changed from the last measurement:
+            <span class="accent">{{ data_changed }}</span>
+          </p>
         </div>
 
         <div class="diff-container">
@@ -157,17 +172,17 @@
         </div>
       </section>
       <p class="main-text project-info" id="project-info-id">
-        It appears that some companies are currently experiencing difficulties
+        It appears that some Russian companies are currently experiencing difficulties
         in obtaining SSL Certificates from Certification Authorities. The
         Ministry of Communications has set up its own "trusted" certification
         centre to issue certificates, but these certificates are not considered
         secure by most browsers, except for Russian ones. It is important to
         note that there may be "unforeseen consequences" associated with using
         these certificates, as it is uncertain whether they are created
-        according to international standards and there may be concerns about the
+        according to international standards and there may be some concerns about the
         privacy of the private keys, given the possibility of access by the
         "authorities".
-        <span class="close-btn" id="close-btn">❌</span>
+        <span class="close-btn" id="close-btn">&times;</span>
       </p>
       <section class="main-section">
         <h2 class="hidden-text">Search analyzed sites</h2>
@@ -180,19 +195,19 @@
                 Government sites with Russian Trusted CA
               </option>
               <option value="gov-ss">
-                Government sites with self-signed cert
+                Government sites with Self-Signed certificate
               </option>
               <option value="social-ca">
                 Social sites with Russian Trusted CA
               </option>
               <option value="social-ss">
-                Social sites with self-signed cert
+                Social sites with Self-Signed certificate
               </option>
               <option value="top-ca">
                 Top-100 sites with Russian Trusted CA
               </option>
               <option value="top-ss">
-                Top-100 sites with self-signed cert
+                Top-100 sites with Self-Signed certificate
               </option>
             </select>
           </div>
@@ -203,7 +218,7 @@
             placeholder="List will be here..."
             name="site-list"
             rows="22"
-            cols="88"
+            cols="76"
             readonly
           >
 {{ site_list }}
@@ -214,20 +229,22 @@
       </section>
     </main>
     <footer class="main-footer">
-      <a
-        href="https://github.com/orgs/CertIZDAT/repositories/"
-        class="sources-link"
-        target="_blank"
-        >sources</a
-      >
-      <button
-        type="button"
-        id="show-btn-id"
-        name="show-project-info"
-        class="main-button project-info-button"
-      >
-        What's for this project?
-      </button>
+      <section class="footer-container">
+        <a
+          href="https://github.com/orgs/CertIZDAT/repositories/"
+          class="sources-link"
+          target="_blank"
+          >sources</a
+        >
+        <button
+          type="button"
+          id="show-btn-id"
+          name="show-project-info"
+          class="main-button project-info-button"
+        >
+          What's this project for?
+        </button>
+      </section>
     </footer>
   </body>
 </html>
