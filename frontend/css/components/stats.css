@@ -11,7 +11,7 @@ td {
 }
 
 .table-category {
-    color: #ff0000;
+    color: var(--main-red-color);
     font-size: 17px;
     height: 20px;
     font-weight: normal;

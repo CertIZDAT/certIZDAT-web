@@ -25,14 +25,14 @@
 }
 
 .nav-link {
-    color: #ff0000;
+    color: var(--main-red-color);
     text-decoration: none;
 }
 
 .nav-link:hover {
-    color: #e23030;
+    color: var(--alt-red-color);
 }
 
 .nav-link:visited {
-    color: #a22a2a;
+    color: var(--active-red-color);
 }

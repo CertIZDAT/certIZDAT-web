@@ -9,29 +9,29 @@
 }
 
 .disabled-link:hover {
-    color: gainsboro;
+    color: var(--inactive-gray-color);
 }
 
 .disabled-link:visited {
-    color: gainsboro;
+    color: var(--inactive-gray-color);
 }
 
 .main-button {
     width: 92px;
     height: 36px;
     border-radius: 5px;
-    background-color: #ff0000;
+    background-color: var(--main-red-color);
     border: none;
-    color: #ffffff;
+    color: var(--main-white-color);
     cursor: pointer;
 }
 
 .main-button:hover {
-    background-color: #e23030;
+    background-color: var(--alt-red-color);
 }
 
 .main-button:active {
-    background-color: #a22a2a;
+    background-color: var(--active-red-color);
 }
 
 .main-button-link {
@@ -44,5 +44,5 @@
 
 /* footer */
 .sources-link {
-    color: gray;
+    color: var(--main-gray-color);
 }
