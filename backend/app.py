@@ -81,7 +81,7 @@ def index():
     context.update(prev_context)
     context.update(support_context)
 
-    return render_template('index.min.html', **context)
+    return render_template('index.html', **context)
 
 
 @app.route('/faq.html')
