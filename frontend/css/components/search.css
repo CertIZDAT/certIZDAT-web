@@ -3,7 +3,15 @@
     margin-bottom: 6px;
 }
 
+/* Firefox search selector fix */
 @-moz-document url-prefix() {
+    .q-search {
+        align-items: center;
+    }
+}
+
+/* Chromium based browsers search selector fix */
+@supports (-webkit-appearance:none) {
     .q-search {
         align-items: center;
     }
