@@ -9,19 +9,24 @@
 .nav {
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    align-items: center;
+    width: 840px;
     padding-left: 0;
     margin-bottom: 0;
 }
 
 .nav-item {
+    font-size: 16px;
+    font-weight: 400;
     display: flex;
     align-items: center;
     margin: 0;
 }
 
 .nav-item>.main-text {
-    margin-right: 4px;
+    margin-right: 16px;
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .nav-link {

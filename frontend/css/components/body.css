@@ -37,19 +37,17 @@ ul {
 }
 
 .main-container {
+    width: 100%;
+    /* margin: 0 auto; */
     display: flex;
-    max-width: 1000px;
     flex-direction: column;
-    margin: 0 auto;
 }
 
 .main-section {
+    width: 840px;
+    margin: 0 auto;
     display: flex;
-    max-width: 1000px;
     flex-direction: column;
-    margin: 0 auto 20px;
-    align-items: center;
-    text-align: center;
 }
 
 .italic {
@@ -57,5 +55,5 @@ ul {
 }
 
 .bold {
-    font-weight: 700;
+    font-weight: 500;
 }
