@@ -1,17 +1,9 @@
 @import '../variables.css';
 
-@font-face {
-    font-family: 'body';
-    src: local("iosevka"), url('/fonts/iosevka-fixed-ss18-regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
 body {
     margin: 0 0 20px 0;
     background-color: var(--light-bg-color);
-    font-family: 'body', Helvetica, Arial, sans-serif;
+    font-family: 'IBM Plex Mono', monospace, Helvetica, Arial, sans-serif;
 }
 
 ul {
