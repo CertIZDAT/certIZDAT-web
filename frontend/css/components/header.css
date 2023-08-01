@@ -40,3 +40,9 @@
 .nav-link:active {
     color: var(--active-red-color);
 }
+
+/* 404 and FAQ page */
+
+.logo-link:hover {
+    opacity: 0.8;
+}
