@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" prefix="og: http://ogp.me/ns#" xmlns:og="http://opengraphprotocol.org/schema/">
+<html
+  lang="en"
+  prefix="og: http://ogp.me/ns#"
+  xmlns:og="http://opengraphprotocol.org/schema/"
+>
   <head>
     <meta name="viewport" content="width=1000">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
@@ -11,32 +15,35 @@
     <meta
       property="og:description"
       content="Public monitoring service for the use of Russian Trusted CA and self-signed certificates among Russian government and public websites."
-    >
+   >
     <title>CertIZDAT</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=ibm-plex-mono:300,400,500" rel="stylesheet" />
+    <link
+      href="https://fonts.bunny.net/css?family=ibm-plex-mono:300,400,500"
+      rel="stylesheet"
+   >
     <link
       rel="shortcut icon"
       type="image/x-icon"
       href="{{ url_for('static', filename='images/fav.ico') }}"
-    >
+   >
     <link
       rel="icon"
       type="image/x-icon"
       href="{{ url_for('static', filename='images/fav.ico') }}"
-    >
+   >
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css') }}"
-    >
+   >
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
-    >
+   >
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/media.css') }}"
-    >
+   >
     <script
       type="text/javascript"
       src="{{ url_for('static', filename='js/script.js') }}"
@@ -54,7 +61,7 @@
               width="144"
               height="25"
               class="nav-logo"
-            >
+           >
           </a>
           <sup class="beta-note">β</sup>
         </li>
@@ -130,8 +137,14 @@
           </tbody>
         </table>
         <div class="notes-container">
-          <p class="stats-notes">Last analysis date: <span class="accent">{{ last_update_time }}</span></p>
-          <p class="stats-notes">Has the dataset/certificate list changed from the last measurement: <span class="accent">{{ data_changed }}</span></p>
+          <p class="stats-notes">
+            Last analysis date:
+            <span class="accent">{{ last_update_time }}</span>
+          </p>
+          <p class="stats-notes">
+            Has the dataset/certificate list changed from the last measurement:
+            <span class="accent">{{ data_changed }}</span>
+          </p>
         </div>
 
         <div class="diff-container">
@@ -159,14 +172,14 @@
         </div>
       </section>
       <p class="main-text project-info" id="project-info-id">
-        It appears that some companies are currently experiencing difficulties
+        It appears that some Russian companies are currently experiencing difficulties
         in obtaining SSL Certificates from Certification Authorities. The
         Ministry of Communications has set up its own "trusted" certification
         centre to issue certificates, but these certificates are not considered
         secure by most browsers, except for Russian ones. It is important to
         note that there may be "unforeseen consequences" associated with using
         these certificates, as it is uncertain whether they are created
-        according to international standards and there may be concerns about the
+        according to international standards and there may be some concerns about the
         privacy of the private keys, given the possibility of access by the
         "authorities".
         <span class="close-btn" id="close-btn">❌</span>
@@ -216,20 +229,22 @@
       </section>
     </main>
     <footer class="main-footer">
-      <a
-        href="https://github.com/orgs/CertIZDAT/repositories/"
-        class="sources-link"
-        target="_blank"
-        >sources</a
-      >
-      <button
-        type="button"
-        id="show-btn-id"
-        name="show-project-info"
-        class="main-button project-info-button"
-      >
-        What's for this project?
-      </button>
+      <section class="footer-container">
+        <a
+          href="https://github.com/orgs/CertIZDAT/repositories/"
+          class="sources-link"
+          target="_blank"
+          >sources</a
+        >
+        <button
+          type="button"
+          id="show-btn-id"
+          name="show-project-info"
+          class="main-button project-info-button"
+        >
+          What's this project for?
+        </button>
+      </section>
     </footer>
   </body>
 </html>
