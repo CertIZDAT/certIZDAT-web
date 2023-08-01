@@ -6,10 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", function () {
         let project_info_block = document.getElementById("project-info-id");
         if (project_info_block.style.display === "none") {
-            btn.style.backgroundColor = "#FF0000";
+            btn.style.backgroundColor = "var(--main-red-color)";
             project_info_block.style.display = "block";
         } else {
-            btn.style.backgroundColor = "gray";
+            btn.style.backgroundColor = "var(--main-gray-color)";
             project_info_block.style.display = "none";
         }
     });
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const close_btn = document.getElementById("close-btn");
     close_btn.addEventListener("click", function () {
         let project_info_block = document.getElementById("project-info-id");
-            btn.style.backgroundColor = "gray";
+            btn.style.backgroundColor = "var(--main-gray-color)";
             project_info_block.style.display = "none";
     });
 
