@@ -1,12 +1,17 @@
 /* 404 page */
 
+.not-found-section {
+    align-items: center;
+}
+
 .not-found {
-    margin: 60px auto 0;
+    margin: 60px auto 0px;
     color: var(--alt-red-color);
     font-size: 170px;
 }
 
 .not-found-egg {
+    margin: 0;
     opacity: 0.33;
 }
 
