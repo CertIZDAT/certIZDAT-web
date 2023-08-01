@@ -38,7 +38,6 @@ ul {
 
 .main-container {
     width: 100%;
-    /* margin: 0 auto; */
     display: flex;
     flex-direction: column;
 }
@@ -46,6 +45,7 @@ ul {
 .main-section {
     width: 840px;
     margin: 0 auto;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
 }

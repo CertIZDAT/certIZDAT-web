@@ -29,12 +29,12 @@ tr {
     min-width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .diff-text {
     margin: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
 }
 
 .diff-out {
@@ -44,8 +44,8 @@ tr {
 }
 
 .diff-out p {
-    margin-top: 0;
-    margin-bottom: 4px;
+    margin: 0;
+    margin-bottom: 5px;
 }
 
 .notes-container {
