@@ -1,23 +1,12 @@
 .q-search {
-    min-height: 22px;
     display: flex;
-    align-items: baseline;
+    margin-bottom: 6px;
 }
 
 @-moz-document url-prefix() {
     .q-search {
-        min-height: 22px;
-        display: flex;
         align-items: center;
     }
-}
-
-.list-of {
-    margin-right: 8px;
-}
-
-.search-note {
-    margin: 4px 0;
 }
 
 .form-column {
@@ -27,10 +16,23 @@
     gap: 10px;
 }
 
+.list-of {
+    margin-right: 8px;
+}
+
 .main-text-area {
-    padding: 5px;
-    border: 2px solid var(--main-black-color);
+    box-sizing: border-box;
+    width: 100%;
+    padding: 6px 10px;
+    margin-bottom: 6px;
     border-radius: 5px;
-    resize: both;
-    font-size: medium;
+    border: 1px solid var(--main-gray-color);
+    font-size: 16px;
+    resize: none;
+}
+
+.search-note {
+    width: 100%;
+    margin: 4px 0;
+    text-align: center;
 }
