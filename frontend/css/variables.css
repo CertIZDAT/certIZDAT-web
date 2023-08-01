@@ -6,6 +6,7 @@
     --active-red-color: #a22a2a;
     --main-black-color: #000000;
     --main-gray-color: #808080;
+    --alt-gray-color: #a2a1a1;
     --inactive-gray-color: #D8D8D8;
     --light-red-color: #F6DCDC;
     /* also used in /backend/utils/common.py */
