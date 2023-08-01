@@ -1,0 +1,19 @@
+/* 404 page */
+.not-found {
+    margin: 60px auto 0;
+    color: #e23030;
+    font-size: 170px;
+}
+
+.not-found-egg {
+    opacity: 0.33;
+}
+
+.beta-note {
+    top: -1.2em;
+}
+
+.table-disabled {
+    cursor: none;
+    color: gray;
+}

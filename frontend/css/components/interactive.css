@@ -1,0 +1,48 @@
+/* Contains style for global links and buttons */
+
+/* header */
+
+.disabled-link {
+    cursor: not-allowed;
+    color: gainsboro;
+    pointer-events: none;
+}
+
+.disabled-link:hover {
+    color: gainsboro;
+}
+
+.disabled-link:visited {
+    color: gainsboro;
+}
+
+.main-button {
+    width: 92px;
+    height: 36px;
+    border-radius: 5px;
+    background-color: #ff0000;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.main-button:hover {
+    background-color: #e23030;
+}
+
+.main-button:active {
+    background-color: #a22a2a;
+}
+
+.main-button-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+
+/* footer */
+.sources-link {
+    color: gray;
+}

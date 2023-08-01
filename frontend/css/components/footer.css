@@ -1,0 +1,68 @@
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 10px auto;
+}
+
+.project-info {
+    z-index: 1;
+    display: none;
+    position: fixed;
+    width: 494px;
+    height: 266px;
+    padding: 14px;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    border-radius: 5px;
+    background-color: #ffe5e5;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.project-info-button {
+    width: 220px;
+    height: 36px;
+    font-size: 14px;
+    background-color: gray;
+    opacity: 0.6;
+}
+
+.close-btn {
+    position: absolute;
+    color: black;
+    cursor: pointer;
+}
+
+/* Firefox close button fix */
+@-moz-document url-prefix() {
+    .close-btn {
+        font-size: 12px;
+        top: 4px;
+        right: 4px;
+    }
+}
+
+/* Chromium based browsers close button fix */
+@supports (-webkit-appearance:none) {
+    .close-btn {
+        font-size: 12px;
+        top: 4px;
+        right: 5px;
+    }
+}
+
+/* Safari close button fix */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+    _::-webkit-full-page-media,
+    _:future,
+    .close-btn {
+        top: 0;
+        right: 7px;
+        font-size: 22px;
+    }
+}

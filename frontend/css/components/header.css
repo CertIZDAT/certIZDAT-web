@@ -1,0 +1,38 @@
+.main-header {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    min-height: 50px;
+    margin: 0 auto 26px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.nav-item>.main-text {
+    margin-right: 4px;
+}
+
+.nav-link {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #e23030;
+}
+
+.nav-link:visited {
+    color: #a22a2a;
+}

@@ -1,0 +1,74 @@
+.stats-table {
+    max-width: 1000px;
+    max-height: 320px;
+    margin-bottom: 6px;
+}
+
+td {
+    margin: 0;
+    padding: 0;
+    align-content: center;
+}
+
+.table-category {
+    color: #ff0000;
+    font-size: 17px;
+    height: 20px;
+    font-weight: normal;
+}
+
+tr {
+    height: 22px;
+}
+
+td {
+    width: 180px;
+}
+
+th {
+    height: 40px;
+}
+
+.first-column {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.diff-container {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.diff-text {
+    margin: 0;
+}
+
+.diff-out {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.diff-out p {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.notes-container {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.stats-notes {
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+}

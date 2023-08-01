@@ -1,0 +1,36 @@
+.q-search {
+    min-height: 22px;
+    display: flex;
+    align-items: baseline;
+}
+
+@-moz-document url-prefix() {
+    .q-search {
+        min-height: 22px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.list-of {
+    margin-right: 8px;
+}
+
+.search-note {
+    margin: 4px 0;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+    gap: 10px;
+}
+
+.main-text-area {
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    resize: both;
+    font-size: medium;
+}
