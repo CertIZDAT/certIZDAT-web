@@ -27,11 +27,11 @@
     >
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
     >
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/normalize.css') }}"
+      href="{{ url_for('static', filename='css/style.css') }}"
     >
     <link
       rel="stylesheet"
@@ -130,8 +130,8 @@
           </tbody>
         </table>
         <div class="notes-container">
-          <p class="stats-notes">Last analysis date: {{ last_update_time }}</p>
-          <p class="stats-notes">Dataset/certificate list changed compared to the last measurement: {{ data_changed }}</p>
+          <p class="stats-notes">Last analysis date: <span class="accent">{{ last_update_time }}</span></p>
+          <p class="stats-notes">Has the dataset/certificate list changed from the last measurement: <span class="accent">{{ data_changed }}</span></p>
         </div>
 
         <div class="diff-container">
