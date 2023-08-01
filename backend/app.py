@@ -81,7 +81,7 @@ def index():
     context.update(prev_context)
     context.update(support_context)
 
-    return render_template('index.html', **context)
+    return render_template('index.min.html', **context)
 
 
 @app.route('/faq.html')
@@ -138,14 +138,14 @@ def top_ss():
 def page_not_found(e):
     requested_url = request.url
     print(f'404 error for URL: {requested_url}')
-    return render_template('404.html'), 404
+    return render_template('404.min.html'), 404
 
 
 # Handle internal errors
 @app.errorhandler(Exception)
 def internal_error(e):
     print(f'Internal error: {e}')
-    return render_template('err.html', err_info=e)
+    return render_template('err.min.html', err_info=e)
 
 
 if __name__ == '__main__':
