@@ -38,6 +38,6 @@
     color: var(--alt-red-color);
 }
 
-.nav-link:visited {
+.nav-link:active {
     color: var(--active-red-color);
 }
