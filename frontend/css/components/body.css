@@ -43,7 +43,7 @@ ul {
 }
 
 .main-section {
-    width: 840px;
+    width: var(--main-width);
     margin: 0 auto;
     margin-bottom: 40px;
     display: flex;

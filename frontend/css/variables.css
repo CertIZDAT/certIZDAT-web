@@ -12,4 +12,6 @@
     /* also used in /backend/utils/common.py */
     --main-green-color: #008000;
     --main-white-color: #ffffff;
+
+    --main-width: 840px;
 }
