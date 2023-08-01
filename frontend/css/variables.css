@@ -1,10 +1,12 @@
 :root {
     --light-bg-color: #F5F5F5;
+    /* also used in /backend/utils/common.py */
     --main-red-color: #FF0000;
     --alt-red-color: #FF4040;
     --main-black-color: #000000;
     --main-gray-color: #808080;
     --inactive-gray-color: #D8D8D8;
     --light-red-color: #F6DCDC;
+    /* also used in /backend/utils/common.py */
     --main-green-color: #008000;
 }
