@@ -96,9 +96,7 @@ def faq_page():
 def page_not_found(e):
     requested_url = request.url
     print(f'404 error for URL: {requested_url}')
-
     template_name = '404.html' if debug_mode else '404.min.html'
-    print('debug_mode') if template_name else print('production mode')
     return render_template(template_name), 404
 
 
