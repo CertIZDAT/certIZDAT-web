@@ -13,7 +13,8 @@ from analyser.utils.const import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
-sslify = SSLify(app)
+# Check if the DEBUG environment variable is set to '1'
+debug_mode = os.environ.get('DEBUG') == '1'
 
 state = StatsState()
 state.init_cache()
@@ -90,6 +91,25 @@ def faq_page():
     return render_template('faq.html', ss_list=clean_res)
 
 
+# 404 page
+@app.errorhandler(404)
+def page_not_found(e):
+    requested_url = request.url
+    print(f'404 error for URL: {requested_url}')
+
+    template_name = '404.html' if debug_mode else '404.min.html'
+    print('debug_mode') if template_name else print('production mode')
+    return render_template(template_name), 404
+
+
+# Handle internal errors
+@app.errorhandler(Exception)
+def internal_error(e):
+    print(f'Internal error: {e}')
+    template_name = 'err.html' if debug_mode else 'err.min.html'
+    return render_template(template_name, err_info=e)
+
+
 @app.route('/download_dump')
 def download_dump():
     file_path: str = os.path.join(
@@ -131,21 +151,6 @@ def top_ca():
 @app.route('/process/top-ss')
 def top_ss():
     return state.actual_top_domains_stats[1][0].replace(',', '\n')
-
-
-# 404 page
-@app.errorhandler(404)
-def page_not_found(e):
-    requested_url = request.url
-    print(f'404 error for URL: {requested_url}')
-    return render_template('404.min.html'), 404
-
-
-# Handle internal errors
-@app.errorhandler(Exception)
-def internal_error(e):
-    print(f'Internal error: {e}')
-    return render_template('err.min.html', err_info=e)
 
 
 if __name__ == '__main__':

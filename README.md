@@ -12,7 +12,7 @@ python3 -m venv env
 source env/bin/activate
 pip3 install -r requirements.txt 
 cd backend/
-gunicorn -c dev-config.py app:app
+DEBUG=1 gunicorn -c dev-config.py app:app
 ```
 
 See detailed technical documentation [here](https://github.com/CertIZDAT/russian-trusted-root-ca-analyzer).
