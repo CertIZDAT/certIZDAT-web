@@ -28,19 +28,19 @@ def index():
 
     gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if \
         state.actual_government_domains_stats[0][0] else 0
-    
+
     gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if \
         state.actual_government_domains_stats[1][0] else 0
-    
+
     social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if \
         state.actual_social_domains_stats[0][0] else 0
-    
+
     social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if \
         state.actual_social_domains_stats[1][0] else 0
-    
+
     top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if \
         state.actual_top_domains_stats[0][0] else 0
-    
+
     top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if \
         state.actual_top_domains_stats[1][0] else 0
 

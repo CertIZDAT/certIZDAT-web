@@ -15,7 +15,8 @@ def get_list_of(category: str, ssl_case: str, time: str) -> str:
                    'FROM statistic_table) < strftime(\'%Y-%m\', date(\'now\', \'-1 month\')) ' \
                    'ORDER BY date_time DESC ' \
                    'LIMIT 1;'
-    print(f'ERROR: error in get_list_of – category: {category}, ssl_case: {ssl_case}')
+    print(
+        f'ERROR: error in get_list_of – category: {category}, ssl_case: {ssl_case}')
     exit(1)
 
 
@@ -35,7 +36,8 @@ def get_stats_count(category: str, time: str) -> str:
                    'FROM statistic_table) < strftime(\'%Y-%m\', date(\'now\', \'-1 month\')) ' \
                    'ORDER BY date_time DESC ' \
                    'LIMIT 1;'
-    print(f'ERROR: error in get_stats_count – category: {category}, time: {time}')
+    print(
+        f'ERROR: error in get_stats_count – category: {category}, time: {time}')
     exit(1)
 
 
@@ -43,6 +45,7 @@ def get_last_update_time():
     return f'SELECT date_time ' \
            'FROM statistic_table ' \
            'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
+
 
 def is_data_changed():
     return f'SELECT is_dataset_updated ' \
