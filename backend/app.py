@@ -1,6 +1,6 @@
 import os
-from datetime import date
 import sys
+from datetime import date
 
 from flask import Flask, request, render_template, send_file
 from flask_sslify import SSLify
@@ -13,8 +13,10 @@ from analyser.utils.const import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
+# sslify = SSLify(app)
+
 # Check if the DEBUG environment variable is set to '1'
-debug_mode = os.environ.get('DEBUG') == '1'
+app.config['DEBUG'] = os.environ.get('DEBUG') == '1'
 
 state = StatsState()
 state.init_cache()
@@ -96,7 +98,7 @@ def faq_page():
 def page_not_found(e):
     requested_url = request.url
     print(f'404 error for URL: {requested_url}')
-    template_name = '404.html' if debug_mode else '404.min.html'
+    template_name = '404.html' if app.config['DEBUG'] == 1 else '404.min.html'
     return render_template(template_name), 404
 
 
@@ -104,7 +106,7 @@ def page_not_found(e):
 @app.errorhandler(Exception)
 def internal_error(e):
     print(f'Internal error: {e}')
-    template_name = 'err.html' if debug_mode else 'err.min.html'
+    template_name = 'err.html' if app.config['DEBUG'] == 1 else 'err.min.html'
     return render_template(template_name, err_info=e)
 
 
