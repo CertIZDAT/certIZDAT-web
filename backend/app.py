@@ -13,7 +13,7 @@ from analyser.utils.const import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
-# sslify = SSLify(app)
+sslify = SSLify(app)
 
 # Check if the DEBUG environment variable is set to '1'
 app.config['DEBUG'] = os.environ.get('DEBUG')
