@@ -1,0 +1,6 @@
+@media screen and (max-width: 880px) {
+    .nav {
+        /*width: var(--tablet-width);*/
+         width: 740px;
+    }
+}

@@ -28,10 +28,10 @@
     display: none;
     position: fixed;
     width: 520px;
-    height: 252px;
+    min-height: 252px;
     left: 50%;
     top: 40%;
-    padding: 8px 10px;
+    padding: 8px 20px 8px 10px;
     font-size: 16px;
     transform: translate(-50%, -50%);
     text-align: left;

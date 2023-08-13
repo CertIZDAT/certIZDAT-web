@@ -36,18 +36,35 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css') }}"
     >
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/style.css') }}"
-    >
     <!-- <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/media.css') }}"
     > -->
+
+    {% if app.config['DEBUG'] %}
+    
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    >
     <script
       type="text/javascript"
-      src="{{ url_for('static', filename='js/script.min.js') }}"
+      src="{{ url_for('static', filename='js/script.js') }}"
     ></script>
+
+    {% else %}
+
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.min.css') }}"
+    >
+    <script
+    type="text/javascript"
+    src="{{ url_for('static', filename='js/script.min.js') }}"
+    ></script>
+
+    {% endif %}
+    
   </head>
   <body>
     <header class="main-header">
@@ -225,7 +242,7 @@
             </textarea
           >
         </div>
-        <p class="search-note">Press cmd/ctrl + f to search the list</p>
+        <p class="search-note">Press <kbd>cmd/ctrl</kbd> + <kbd>f</kbd> to search the list</p>
       </section>
     </main>
     <footer class="main-footer">

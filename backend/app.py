@@ -16,7 +16,7 @@ app = Flask(__name__, template_folder='../frontend/',
 # sslify = SSLify(app)
 
 # Check if the DEBUG environment variable is set to '1'
-app.config['DEBUG'] = os.environ.get('DEBUG') == '1'
+app.config['DEBUG'] = os.environ.get('DEBUG')
 
 state = StatsState()
 state.init_cache()
@@ -28,16 +28,21 @@ def index():
 
     gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if \
         state.actual_government_domains_stats[0][0] else 0
+    
     gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if \
         state.actual_government_domains_stats[1][0] else 0
-    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if state.actual_social_domains_stats[0][
-        0] else 0
-    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if state.actual_social_domains_stats[1][
-        0] else 0
-    top_ca_count = len(state.actual_top_domains_stats[0][0].split(
-        ',')) if state.actual_top_domains_stats[0][0] else 0
-    top_ss_count = len(state.actual_top_domains_stats[1][0].split(
-        ',')) if state.actual_top_domains_stats[1][0] else 0
+    
+    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if \
+        state.actual_social_domains_stats[0][0] else 0
+    
+    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if \
+        state.actual_social_domains_stats[1][0] else 0
+    
+    top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if \
+        state.actual_top_domains_stats[0][0] else 0
+    
+    top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if \
+        state.actual_top_domains_stats[1][0] else 0
 
     context = {
         'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
@@ -84,13 +89,13 @@ def index():
     context.update(prev_context)
     context.update(support_context)
 
-    return render_template('index.html', **context)
+    return render_template('index.html', **context, app=app)
 
 
 @app.route('/faq.html')
 def faq_page():
     clean_res = ', '.join(i for i in ss_list)
-    return render_template('faq.html', ss_list=clean_res)
+    return render_template('faq.html', ss_list=clean_res, app=app)
 
 
 # 404 page
@@ -98,15 +103,15 @@ def faq_page():
 def page_not_found(e):
     requested_url = request.url
     print(f'404 error for URL: {requested_url}')
-    template_name = '404.html' if app.config['DEBUG'] == 1 else '404.min.html'
-    return render_template(template_name), 404
+    template_name = '404.html'
+    return render_template(template_name, app=app), 404
 
 
 # Handle internal errors
 @app.errorhandler(Exception)
 def internal_error(e):
     print(f'Internal error: {e}')
-    template_name = 'err.html' if app.config['DEBUG'] == 1 else 'err.min.html'
+    template_name = 'err.html'
     return render_template(template_name, err_info=e)
 
 
