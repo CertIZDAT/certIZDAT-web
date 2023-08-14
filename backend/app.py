@@ -88,14 +88,15 @@ def index():
 
     context.update(prev_context)
     context.update(support_context)
-
-    return render_template('index.html', **context, app=app)
+    template_name = 'index.html' if app.config['DEBUG'] else 'index-min.html'
+    return render_template(template_name, **context, app=app)
 
 
 @app.route('/faq.html')
 def faq_page():
     clean_res = ', '.join(i for i in ss_list)
-    return render_template('faq.html', ss_list=clean_res, app=app)
+    template_name = 'faq.html' if app.config['DEBUG'] else 'faq-min.html'
+    return render_template(template_name, ss_list=clean_res, app=app)
 
 
 # 404 page
@@ -103,7 +104,7 @@ def faq_page():
 def page_not_found(e):
     requested_url = request.url
     print(f'404 error for URL: {requested_url}')
-    template_name = '404.html'
+    template_name = '404.html' if app.config['DEBUG'] else '404-min.html'
     return render_template(template_name, app=app), 404
 
 
@@ -111,7 +112,7 @@ def page_not_found(e):
 @app.errorhandler(Exception)
 def internal_error(e):
     print(f'Internal error: {e}')
-    template_name = 'err.html'
+    template_name = 'err.html' if app.config['DEBUG'] else 'err-min.html'
     return render_template(template_name, err_info=e)
 
 
