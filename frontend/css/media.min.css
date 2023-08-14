@@ -1,1 +1,1 @@
-@media screen and (max-width:880px){.nav{width:740px}}
+@media screen and (max-width:880px){.main-section{width:var(--tablet-width)}.nav{width:var(--tablet-width)}.footer-container{width:var(--tablet-width)}}@media screen and (max-width:800px){.main-section{width:var(--mid-width)}.nav{width:var(--mid-width)}.footer-container{width:var(--mid-width)}}@media screen and (max-width:700px){.main-section{width:var(--small-width)}.nav{width:var(--small-width)}.footer-container{width:var(--small-width)}}
