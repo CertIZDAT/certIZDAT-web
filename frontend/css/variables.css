@@ -28,4 +28,7 @@
     --v-small-width: 390px;
     --v-xsmall-width: 358px;
     --v-xxsmall-width: 332px;
+
+    /* iPhone SE... */
+    --v-se-small-width: 302px;
 }

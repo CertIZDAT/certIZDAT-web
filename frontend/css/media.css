@@ -100,6 +100,10 @@
         width: var(--xsmall-width);
     }
 
+    .diff-container {
+        min-width: var(--xsmall-width) - 10px;
+    }
+
     .main-button {
         width: 84px;
         height: 32px;
@@ -145,6 +149,10 @@
     .nav-logo {
         width: 70px;
         height: auto;
+    }
+
+    .diff-container {
+        min-width: var(--xxsmall-width) - 10px;
     }
 
     .main-button {
@@ -250,6 +258,10 @@
         height: auto;
     }
 
+    .diff-container {
+        min-width: var(--v-small-width) - 10px;
+    }
+
     .beta-note {
         top: -0.8em;
         font-size: 7px;
@@ -307,6 +319,10 @@
         height: auto;
     }
 
+    .diff-container {
+        min-width: var(--v-xsmall-width) - 10px;
+    }
+
     .main-button {
         width: 60px;
         height: 20px;
@@ -339,7 +355,97 @@
         width: var(--v-xxsmall-width);
     }
 
+    .main-button {
+        font-size: 9px;
+    }
+
+    .diff-container {
+        min-width: var(--v-xxsmall-width) - 10px;
+    }
+
+    .list-of,
+    .drop-select {
+        font-size: 9px;
+    }
+
     .footer-container {
         width: var(--v-xxsmall-width);
+    }
+}
+
+/* iPhone SE vertical lol */
+
+@media screen and (max-width: 350px) {
+    .main-section {
+        width: var(--v-se-small-width);
+    }
+
+    .nav {
+        display: flex;
+        align-items: baseline;
+        width: var(--v-se-small-width);
+    }
+
+    .nav-link,
+    .nav-item>.main-text {
+        font-size: 8px;
+    }
+
+    .nav-logo {
+        width: 42px;
+        height: auto;
+    }
+
+    .beta-note {
+        top: -0.7em;
+        font-size: 6px;
+    }
+
+    .main-button {
+        width: 55px;
+        height: 18px;
+        font-size: 8px;
+    }
+
+    td {
+        font-size: 10px;
+    }
+
+    .first-column {
+        font-size: 9px;
+    }
+
+    .table-category {
+        font-size: 9px;
+    }
+
+    .stats-notes,
+    .stats-notes>.accent {
+        font-size: 10px;
+    }
+
+    .diff-text,
+    .diff-out>p,
+    .diff-out>p>span {
+        font-size: 10px;
+    }
+
+    .list-of,
+    .drop-select {
+        font-size: 8px;
+    }
+
+    .search-note {
+        font-size: 10px;
+    }
+
+    .footer-container {
+        width: var(--v-se-small-width);
+    }
+
+    /* 404 page */
+
+    .not-found-egg {
+        font-size: 12px;
     }
 }
