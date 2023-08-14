@@ -66,11 +66,62 @@
         top: 44%;
     }
 
+    .main-button {
+        height: 32px;
+    }
+
     /* 404 page */
 
     .not-found {
         margin: 14px auto 0px;
+        font-size: 146px;
     }
 }
 
 /* Horizontal, iPhone 8 resolution */
+
+@media screen and (max-width: 622px) {
+
+    .main-section {
+        width: var(--xsmall-width);
+    }
+
+    .nav-link,
+    .nav-item>.main-text {
+        font-size: 13px;
+    }
+
+    .nav-logo {
+        width: 90px;
+        height: auto;
+    }
+
+    .nav {
+        width: var(--xsmall-width);
+    }
+
+    .main-button {
+        width: 84px;
+        height: 32px;
+    }
+
+    .project-info {
+        width: 482px;
+        top: 44%;
+    }
+
+    .main-text-area {
+        font-size: 14px;
+    }
+
+    .footer-container {
+        width: var(--xsmall-width);
+    }
+
+    /* 404 page */
+
+    .not-found {
+        margin: 0 auto 0px;
+        font-size: 146px;
+    }
+}
