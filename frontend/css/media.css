@@ -286,7 +286,7 @@
     }
 }
 
-/* Vertical, iPhone 8/SE resolution */
+/* Vertical, iPhone 8 resolution */
 
 @media screen and (max-width: 410px) {
     .main-section {
@@ -328,6 +328,18 @@
     }
 }
 
+/* Vertical, iPhone SE resolution */
 
+@media screen and (max-width: 382px) {
+    .main-section {
+        width: var(--v-xxsmall-width);
+    }
 
-/* Separate font-sizes to variables.css */
+    .nav {
+        width: var(--v-xxsmall-width);
+    }
+
+    .footer-container {
+        width: var(--v-xxsmall-width);
+    }
+}
