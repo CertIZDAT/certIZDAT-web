@@ -129,10 +129,6 @@
 /* Horizontal, iPhone SE resolution */
 
 @media screen and (max-width: 560px) {
-    /* .main-text {
-        font-size: 12px;
-    } */
-
     .main-section {
         width: var(--xxsmall-width);
     }
@@ -233,6 +229,104 @@
     }
 }
 
+/* Vertical, iPhone 8 Plus resolution */
+
+@media screen and (max-width: 496px) {
+    .main-section {
+        width: var(--v-small-width);
+    }
+
+    .nav {
+        width: var(--v-small-width);
+    }
+
+    .nav-link,
+    .nav-item>.main-text {
+        font-size: 10px;
+    }
+
+    .nav-logo {
+        width: 62px;
+        height: auto;
+    }
+
+    .beta-note {
+        top: -0.8em;
+        font-size: 7px;
+    }
+
+    .main-section {
+        margin-bottom: 20px;
+    }
+
+    .list-of {
+        font-size: 10px;
+    }
+
+    .main-text-area {
+        font-size: 10px;
+    }
+
+    .search-note {
+        font-size: 10px;
+    }
+
+    .project-info {
+        width: 87%;
+    }
+
+    .footer-container {
+        width: var(--v-small-width);
+    }
+
+    /* FAQ page */
+
+    .faq-page-title {
+        margin-bottom: 12px;
+    }
+}
+
+/* Vertical, iPhone 8/SE resolution */
+
+@media screen and (max-width: 410px) {
+    .main-section {
+        width: var(--v-xsmall-width);
+    }
+
+    .nav {
+        width: var(--v-xsmall-width);
+    }
+
+    .nav-link,
+    .nav-item>.main-text {
+        font-size: 9px;
+    }
+
+    .nav-logo {
+        width: 50px;
+        height: auto;
+    }
+
+    .main-button {
+        width: 60px;
+        height: 20px;
+        font-size: 10px;
+    }
+
+    .list-of,
+    .drop-select {
+        font-size: 10px;
+    }
+
+    .project-info-button {
+        min-width: 172px;
+        padding: 2px 14px;
+    }
+
+    .footer-container {
+        width: var(--v-xsmall-width);
+    }
+}
 
 
 

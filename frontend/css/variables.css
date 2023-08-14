@@ -14,9 +14,17 @@
     --main-white-color: #ffffff;
 
     --main-width: 840px;
+
+    /* Tablets */
     --tablet-width: 760px;
     --mid-width: 640px;
+
+    /* Phones, horizontal */
     --small-width: 590px;
     --xsmall-width: 524px;
     --xxsmall-width: 472px;
+
+    /* Phones, vertical */
+    --v-small-width: 390px;
+    --v-xsmall-width: 358px;
 }
