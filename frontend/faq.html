@@ -18,8 +18,17 @@
     <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico">
     <link rel="icon" type="image/x-icon" href="images/fav.ico">
     <link rel="stylesheet" href="css/normalize.css">
+
+    {% if app.config['DEBUG'] %}
+    
     <link rel="stylesheet" href="css/style.css">
-    <!-- <link rel="stylesheet" href="css/media.css"> -->
+    
+    {% else %}
+    
+    <link rel="stylesheet" href="css/style.min.css">
+    
+    {% endif %}
+    
   </head>
   <body>
     <header class="main-header">

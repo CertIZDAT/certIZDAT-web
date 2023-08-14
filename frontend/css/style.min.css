@@ -7,5 +7,7 @@
 
 @import "./components/footer.min.css";
 
+@import "./media.min.css";
+
 @import "./components/pages/error-pages.min.css";
 @import "./components/pages/faq-page.min.css";

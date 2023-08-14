@@ -27,21 +27,23 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css') }}"
     >
+
     {% if app.config['DEBUG'] %}
+    
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     >
+
     {% else %}
+    
     <link
     rel="stylesheet"
     href="{{ url_for('static', filename='css/style.min.css') }}"
     >
+    
     {% endif %}
-    <!-- <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/media.css') }}"
-    > -->
+    
   </head>
   <body>
     <header class="main-header">
