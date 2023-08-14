@@ -125,3 +125,109 @@
         font-size: 146px;
     }
 }
+
+/* Horizontal, iPhone SE resolution */
+
+@media screen and (max-width: 560px) {
+    /* .main-text {
+        font-size: 12px;
+    } */
+
+    .main-section {
+        width: var(--xxsmall-width);
+    }
+
+    .nav-link,
+    .nav-item>.main-text {
+        font-size: 10px;
+    }
+
+    .nav {
+        width: var(--xxsmall-width);
+    }
+
+    .nav-logo {
+        width: 70px;
+        height: auto;
+    }
+
+    .main-button {
+        width: 70px;
+        height: 26px;
+        font-size: 12px;
+    }
+
+    .first-column {
+        font-size: 11px;
+    }
+
+    .table-category {
+        font-size: 10px;
+    }
+
+    td {
+        font-size: 12px;
+    }
+
+    .stats-notes,
+    .stats-notes>.accent {
+        font-size: 12px;
+    }
+
+    .diff-text,
+    .diff-out>p,
+    .diff-out>p>span {
+        font-size: 12px;
+    }
+
+    .list-of,
+    .drop-select {
+        font-size: 12px;
+    }
+
+    .search-note {
+        font-size: 12px;
+    }
+
+    .footer-container {
+        width: var(--xxsmall-width);
+    }
+
+    .sources-link,
+    .project-info-button {
+        font-size: 10px;
+    }
+
+    /* FAQ page */
+
+    .faq-page-title {
+        font-size: 16px;
+    }
+
+    .title-faq {
+        font-size: 14px;
+    }
+
+    .faq-text {
+        font-size: 12px;
+    }
+
+    .last-faq {
+        margin-bottom: 0;
+    }
+
+    .faq-section {
+        margin-bottom: 0;
+    }
+
+    /* 404 page */
+
+    .not-found {
+        font-size: 110px;
+    }
+}
+
+
+
+
+/* Separate font-sizes to variables.css */
