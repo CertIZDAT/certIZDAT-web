@@ -15,7 +15,7 @@ app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
 sslify = SSLify(app)
 
-# Check if the DEBUG environment variable is set to '1'
+# Check if the DEBUG environment variable is set
 app.config['DEBUG'] = os.environ.get('DEBUG')
 
 state = StatsState()
@@ -26,26 +26,36 @@ state.init_cache()
 def index():
     state.update_cache(date.today())
 
-    gov_ca_count = len(state.actual_government_domains_stats[0][0].split(',')) if \
-        state.actual_government_domains_stats[0][0] else 0
+    russian_trusted_ca_index = 0
+    self_signed_index = 1
 
-    gov_ss_count = len(state.actual_government_domains_stats[1][0].split(',')) if \
-        state.actual_government_domains_stats[1][0] else 0
+    gov_ca_count = \
+        len(state.actual_government_domains_stats[russian_trusted_ca_index][0].split(',')) if \
+        state.actual_government_domains_stats[russian_trusted_ca_index][0] else 0
 
-    social_ca_count = len(state.actual_social_domains_stats[0][0].split(',')) if \
-        state.actual_social_domains_stats[0][0] else 0
+    gov_ss_count = \
+        len(state.actual_government_domains_stats[self_signed_index][0].split(',')) if \
+        state.actual_government_domains_stats[self_signed_index][0] else 0
 
-    social_ss_count = len(state.actual_social_domains_stats[1][0].split(',')) if \
-        state.actual_social_domains_stats[1][0] else 0
+    social_ca_count = \
+        len(state.actual_social_domains_stats[russian_trusted_ca_index][0].split(',')) if \
+        state.actual_social_domains_stats[russian_trusted_ca_index][0] else 0
 
-    top_ca_count = len(state.actual_top_domains_stats[0][0].split(',')) if \
-        state.actual_top_domains_stats[0][0] else 0
+    social_ss_count = \
+        len(state.actual_social_domains_stats[self_signed_index][0].split(',')) if \
+        state.actual_social_domains_stats[self_signed_index][0] else 0
 
-    top_ss_count = len(state.actual_top_domains_stats[1][0].split(',')) if \
-        state.actual_top_domains_stats[1][0] else 0
+    top_ca_count = \
+        len(state.actual_top_domains_stats[russian_trusted_ca_index][0].split(',')) if \
+        state.actual_top_domains_stats[russian_trusted_ca_index][0] else 0
+
+    top_ss_count = \
+        len(state.actual_top_domains_stats[self_signed_index][0].split(',')) if \
+        state.actual_top_domains_stats[self_signed_index][0] else 0
 
     context = {
-        'site_list': state.actual_government_domains_stats[0][0].replace(',', '\n'),
+        # Initial state for site_list is government sites with russian trusted CA
+        'site_list': state.actual_government_domains_stats[russian_trusted_ca_index][0].replace(',', '\n'),
         'last_update_time': state.last_analysis_time,
         'actual_entries_count': state.actual_entries_count,
         'data_changed': state.data_changed,
@@ -59,21 +69,30 @@ def index():
 
     # Get the government diffs
     gov_ca_diff, gov_ca_color = get_diff_and_color(
-        state.actual_government_domains_stats[0][0], state.prev_government_domains_stats[0][0])
+        state.actual_government_domains_stats[russian_trusted_ca_index][0],
+        state.prev_government_domains_stats[russian_trusted_ca_index][0])
+
     gov_ss_diff, gov_ss_color = get_diff_and_color(
-        state.actual_government_domains_stats[1][0], state.prev_government_domains_stats[1][0])
+        state.actual_government_domains_stats[self_signed_index][0],
+        state.prev_government_domains_stats[self_signed_index][0])
 
     # Get the social diffs
     social_ca_diff, social_ca_color = get_diff_and_color(
-        state.actual_social_domains_stats[0][0], state.prev_social_domains_stats[0][0])
+        state.actual_social_domains_stats[russian_trusted_ca_index][0],
+        state.prev_social_domains_stats[russian_trusted_ca_index][0])
+
     social_ss_diff, social_ss_color = get_diff_and_color(
-        state.actual_social_domains_stats[1][0], state.prev_social_domains_stats[1][0])
+        state.actual_social_domains_stats[self_signed_index][0],
+        state.prev_social_domains_stats[self_signed_index][0])
 
     # Get the top diffs
     top_ca_diff, top_ca_color = get_diff_and_color(
-        state.actual_top_domains_stats[0][0], state.prev_top_domains_stats[0][0])
+        state.actual_top_domains_stats[russian_trusted_ca_index][0],
+        state.prev_top_domains_stats[russian_trusted_ca_index][0])
+
     top_ss_diff, top_ss_color = get_diff_and_color(
-        state.actual_top_domains_stats[1][0], state.prev_top_domains_stats[1][0])
+        state.actual_top_domains_stats[self_signed_index][0],
+        state.prev_top_domains_stats[self_signed_index][0])
 
     prev_context = {
         'gov_diff': (gov_ca_diff, gov_ca_color, gov_ss_diff, gov_ss_color),
@@ -103,7 +122,7 @@ def faq_page():
 @app.errorhandler(404)
 def page_not_found(e):
     requested_url = request.url
-    print(f'404 error for URL: {requested_url}')
+    print(f'404 error for URL: {requested_url}\nerror: {e}')
     template_name = '404.html' if app.config['DEBUG'] else '404-min.html'
     return render_template(template_name, app=app), 404
 
