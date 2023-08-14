@@ -37,12 +37,15 @@ class StatsState:
             print(f'func: __get_data_from_db\nget db connection error: {e}')
             return
 
-        self.last_analysis_time = connection.execute(db.get_last_update_time()).fetchone()[0].split(' ')[0]
+        self.last_analysis_time = connection.execute(
+            db.get_last_update_time()).fetchone()[0].split(' ')[0]
 
-        self.data_changed = 'Yes' if connection.execute(db.is_data_changed()).fetchone()[0] else 'No'
+        self.data_changed = 'Yes' if connection.execute(
+            db.is_data_changed()).fetchone()[0] else 'No'
 
         self.actual_entries_count = (connection.execute(db.get_stats_count('gov', 'now')).fetchone(),
-                                     connection.execute(db.get_stats_count('social', 'now')).fetchone(),
+                                     connection.execute(db.get_stats_count(
+                                         'social', 'now')).fetchone(),
                                      connection.execute(db.get_stats_count('top', 'now')).fetchone())
 
         self.actual_government_domains_stats = (connection.execute(db.get_list_of('gov', 'ca', 'now')).fetchone(),
@@ -53,7 +56,8 @@ class StatsState:
                                          connection.execute(db.get_list_of('top', 'ss', 'now')).fetchone())
 
         self.prev_entries_count = (connection.execute(db.get_stats_count('gov', 'prev')).fetchone(),
-                                   connection.execute(db.get_stats_count('social', 'prev')).fetchone(),
+                                   connection.execute(db.get_stats_count(
+                                       'social', 'prev')).fetchone(),
                                    connection.execute(db.get_stats_count('top', 'prev')).fetchone())
 
         self.prev_government_domains_stats = (connection.execute(db.get_list_of('gov', 'ca', 'prev')).fetchone(),

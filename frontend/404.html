@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=1000">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta property="og:title" content="CertIZDAT 404 Error">
@@ -28,14 +28,23 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/normalize.css') }}"
     >
+
+    {% if app.config['DEBUG'] %}
+
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/style.css') }}"
     >
-    <!-- <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/media.css') }}"
-    > -->
+
+    {% else %}
+
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.min.css') }}"
+    >
+
+    {% endif %}
+
   </head>
   <body>
     <header class="main-header">
@@ -55,7 +64,7 @@
           <sup class="beta-note">β</sup>
         </li>
         <li class="nav-item">
-          <a href="/" class="main-button main-button-link"> Go back </a>
+          <a href="/" class="main-button main-button-link"> Go home </a>
         </li>
       </ul>
     </header>

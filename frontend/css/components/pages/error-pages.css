@@ -19,7 +19,17 @@
     top: -1.2em;
 }
 
-.table-disabled {
-    cursor: none;
-    color: var(--main-gray-color);
+/* Internal error page */
+
+.err-title {
+    width: var(--main-width);
+    margin: 12px 0;
+    font-size: 32px;
+    color: var(--alt-red-color);
+}
+
+.err-text {
+    white-space: pre-wrap;
+    overflow: scroll;
+    max-width: 100%;
 }

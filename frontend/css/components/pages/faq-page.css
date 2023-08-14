@@ -1,8 +1,7 @@
 /* FAQ page */
 
 .faq-page-title {
-    margin: 0;
-    margin-bottom: 26px;
+    margin: 0 0 26px;
     font-size: 24px;
     font-weight: 500;
     color: var(--main-black-color);

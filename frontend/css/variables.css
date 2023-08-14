@@ -1,6 +1,6 @@
 :root {
     --light-bg-color: #F5F5F5;
-    /* also used in /backend/utils/common.py */
+    /* Also used in /backend/utils/common.py */
     --main-red-color: #FF0000;
     --alt-red-color: #FF4040;
     --active-red-color: #a22a2a;
@@ -9,9 +9,23 @@
     --alt-gray-color: #a2a1a1;
     --inactive-gray-color: #D8D8D8;
     --light-red-color: #F6DCDC;
-    /* also used in /backend/utils/common.py */
+    /* Also used in /backend/utils/common.py */
     --main-green-color: #008000;
     --main-white-color: #ffffff;
 
     --main-width: 840px;
+
+    /* Tablets */
+    --tablet-width: 760px;
+    --mid-width: 640px;
+
+    /* Phones, horizontal */
+    --small-width: 590px;
+    --xsmall-width: 524px;
+    --xxsmall-width: 472px;
+
+    /* Phones, vertical */
+    --v-small-width: 390px;
+    --v-xsmall-width: 358px;
+    --v-xxsmall-width: 332px;
 }

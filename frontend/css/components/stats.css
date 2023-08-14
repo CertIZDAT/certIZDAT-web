@@ -25,6 +25,11 @@ tr {
     font-weight: 500;
 }
 
+.table-disabled {
+    cursor: none;
+    color: var(--main-gray-color);
+}
+
 .diff-container {
     min-width: 400px;
     display: flex;
@@ -32,8 +37,7 @@ tr {
 }
 
 .diff-text {
-    margin: 0;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     font-size: 16px;
 }
 
@@ -44,8 +48,7 @@ tr {
 }
 
 .diff-out p {
-    margin: 0;
-    margin-bottom: 5px;
+    margin: 0 0 5px;
 }
 
 .notes-container {
@@ -58,12 +61,11 @@ tr {
 }
 
 .stats-notes {
-    margin: 0;
     display: flex;
+    margin: 0 0 5px;
     align-items: baseline;
     font-size: 16px;
     color: var(--main-gray-color);
-    margin-bottom: 5px;
 }
 
 .stats-notes>.accent {

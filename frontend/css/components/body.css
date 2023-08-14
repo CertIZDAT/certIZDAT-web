@@ -45,8 +45,7 @@ ul {
 
 .main-section {
     width: var(--main-width);
-    margin: 0 auto;
-    margin-bottom: 40px;
+    margin: 0 auto 40px;
     display: flex;
     flex-direction: column;
 }
