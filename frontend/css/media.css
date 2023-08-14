@@ -198,6 +198,12 @@
         font-size: 10px;
     }
 
+    .project-info {
+        width: 418px;
+        min-height: 218px;
+        font-size: 13px;
+    }
+
     /* FAQ page */
 
     .faq-page-title {
