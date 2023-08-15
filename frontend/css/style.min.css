@@ -1,3 +1,5 @@
+@import './variables.min.css';
+
 @import "./components/body.min.css";
 @import "./components/header.min.css";
 @import "./components/interactive.min.css";

@@ -1,3 +1,5 @@
+@import './variables.css';
+
 @import "./components/body.css";
 @import "./components/header.css";
 @import "./components/interactive.css";

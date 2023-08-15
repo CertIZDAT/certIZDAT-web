@@ -30,5 +30,6 @@
     --v-xxsmall-width: 332px;
 
     /* iPhone SE... */
+    /* FIXME: wtf minified behavior */
     --v-se-small-width: 302px;
 }
