@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta property="og:title" content="CertIZDAT 404 Error">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:url" content="https://certizdat.org/404.html">
-    <meta property="og:description" content="Page non found error.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
+    <meta property="og:title" content="CertIZDAT 404 Error" >
+    <meta property="og:locale" content="en_US" >
+    <meta property="og:url" content="https://certizdat.org/404.html" >
+    <meta property="og:description" content="Page non found error." >
     <title>CertIZDAT 404</title>
-    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link rel="preconnect" href="https://fonts.bunny.net" >
     <link
       href="https://fonts.bunny.net/css?family=ibm-plex-mono:300,400,500"
       rel="stylesheet"
@@ -39,12 +39,11 @@
     {% else %}
 
     <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='css/style.min.css') }}"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.min.css') }}"
     >
 
     {% endif %}
-
   </head>
   <body>
     <header class="main-header">
@@ -52,14 +51,19 @@
         <li class="nav-item">
           <a href="/" class="logo-link">
             <span class="hidden-text">certIZDAT Logo</span>
-            <img
-              src="{{ url_for('static', filename='images/main-logo.svg') }}"
-              alt="CertIZDAT Logo"
-              width="144"
-              height="25"
-              class="nav-logo 404-logo"
-              style="cursor: pointer"
-            >
+            <picture>
+              <source
+                srcset="{{ url_for('static', filename='images/dark-logo.svg') }}"
+                media="(prefers-color-scheme: dark)"
+              >
+              <img
+                src="{{ url_for('static', filename='images/main-logo.svg') }}"
+                alt="CertIZDAT Logo"
+                width="144"
+                height="25"
+                class="nav-logo"
+              >
+            </picture>
           </a>
           <sup class="beta-note">β</sup>
         </li>
