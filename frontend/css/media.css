@@ -42,6 +42,10 @@
         width: var(--small-width);
     }
 
+    .q-search {
+        align-items: center;
+    }
+
     .footer-container {
         width: var(--small-width);
     }
@@ -274,7 +278,7 @@
     .list-of {
         font-size: 10px;
     }
-
+    
     .main-text-area {
         font-size: 10px;
     }
