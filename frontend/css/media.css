@@ -42,6 +42,11 @@
         width: var(--small-width);
     }
 
+    .beta-note {
+        top: -1.0em;
+        font-size: 10px;
+    }
+
     .q-search {
         align-items: center;
     }
@@ -153,6 +158,10 @@
     .nav-logo {
         width: 70px;
         height: auto;
+    }
+
+    .beta-note {
+        font-size: 7px;
     }
 
     .diff-container {
@@ -278,7 +287,7 @@
     .list-of {
         font-size: 10px;
     }
-    
+
     .main-text-area {
         font-size: 10px;
     }
