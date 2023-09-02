@@ -90,7 +90,6 @@
 /* Horizontal, iPhone 8 resolution */
 
 @media screen and (max-width: 622px) {
-
     .main-section {
         width: var(--xsmall-width);
     }
@@ -191,10 +190,12 @@
         font-size: 12px;
     }
 
-    .diff-text,
-    .diff-out>p,
-    .diff-out>p>span {
-        font-size: 12px;
+    .diff-out-table {
+        max-width: 140px;
+    }
+
+    .diff-row {
+        min-width: 24px;
     }
 
     .list-of,

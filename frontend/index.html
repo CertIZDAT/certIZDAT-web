@@ -164,29 +164,22 @@
             <span class="accent">{{ data_changed }}</span>
           </p>
         </div>
-
         <div class="diff-container">
           <p class="diff-text">Total diff with previous analysis date:</p>
-          <div class="diff-out">
-            <p class="diff-out-ca">
-              CA:
-              <span style="color: {{ gov_diff[1] }}">{{ gov_diff[0] }}</span
-              >,&ensp;
-              <span style="color: {{ social_diff[1] }}"
-                >{{ social_diff[0] }}</span
-              >,&ensp;
-              <span style="color: {{ top_diff[1] }}">{{ top_diff[0] }}</span>
-            </p>
-            <p class="diff-out-ss">
-              SS:
-              <span style="color: {{ gov_diff[3] }}">{{ gov_diff[2] }}</span
-              >,&ensp;
-              <span style="color: {{ social_diff[3] }}"
-                >{{ social_diff[2] }}</span
-              >,&ensp;
-              <span style="color: {{ top_diff[3] }}">{{ top_diff[2] }}</span>
-            </p>
-          </div>
+          <table class="diff-out-table">
+            <tr>
+              <td>CA:</td>
+              <td class="diff-row" style="color: {{ gov_diff[1] }}">{{ gov_diff[0] }}</td>
+              <td class="diff-row" style="color: {{ social_diff[1] }}">{{ social_diff[0] }}</td>
+              <td class="diff-row" style="color: {{ top_diff[1] }}">{{ top_diff[0] }}</td>
+            </tr>
+            <tr>
+              <td>SS:</td>
+              <td class="diff-row" style="color: {{ gov_diff[3] }}">{{ gov_diff[2] }}</td>
+              <td class="diff-row" style="color: {{ social_diff[3] }}">{{ social_diff[2] }}</td>
+              <td class="diff-row" style="color: {{ top_diff[3] }}">{{ top_diff[2] }}</td>
+            </tr>
+          </table>
         </div>
       </section>
       <p class="main-text project-info" id="project-info-id">

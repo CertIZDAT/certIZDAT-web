@@ -36,19 +36,13 @@ tr {
     flex-direction: column;
 }
 
-.diff-text {
-    margin: 0 0 10px;
-    font-size: 16px;
+.diff-out-table {
+    max-width: 200px;
 }
 
-.diff-out {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-.diff-out p {
-    margin: 0 0 5px;
+.diff-row {
+    text-align: end;
+    min-width: 56px;
 }
 
 .notes-container {
