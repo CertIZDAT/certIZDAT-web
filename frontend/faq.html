@@ -15,8 +15,16 @@
       href="https://fonts.bunny.net/css?family=ibm-plex-mono:300,400,500"
       rel="stylesheet"
     >
-    <link rel="shortcut icon" type="image/x-icon" href="images/fav.ico" >
-    <link rel="icon" type="image/x-icon" href="images/fav.ico" >
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='images/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='images/favicon-512x512.png') }}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ url_for('static', filename='images/favicon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon-16x16.png') }}">
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="images/fav.ico"
+    >
     <link rel="stylesheet" href="css/normalize.css" >
 
     {% if app.config['DEBUG'] %}
