@@ -42,13 +42,13 @@ def get_stats_count(category: str, time: str) -> str:
 
 
 def get_last_update_time():
-    return f'SELECT date_time ' \
+    return 'SELECT date_time ' \
            'FROM statistic_table ' \
            'WHERE date_time = (SELECT MAX(date_time) FROM statistic_table);'
 
 
 def is_data_changed():
-    return f'SELECT is_dataset_updated ' \
+    return 'SELECT is_dataset_updated ' \
            'FROM statistic_table ' \
            'ORDER BY rowid DESC ' \
            'LIMIT 1;'
