@@ -20,6 +20,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Set the selected index to -1 on page load
     const list_of_select = document.getElementById('list-of');
+    // Fetch data from the server for the default index
+    if (list_of_select.selectedIndex != 0) {
+        fetch("/process/gov-ca")
+            .then(response => response.text())
+            .then(data => {
+                textarea.value = data;
+            })
+            .catch(error => console.error(error));
+    }
     list_of_select.selectedIndex = 0;
 
     // Set '#list-of' on change action
