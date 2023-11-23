@@ -1,62 +1,42 @@
-// Set behavior for the project info button
 document.addEventListener("DOMContentLoaded", function () {
-    const btn = document.getElementById("show-btn-id");
-    let project_info_block = document.getElementById("project-info-id");
-    project_info_block.style.display = "none";
-    btn.addEventListener("click", function () {
-        let project_info_block = document.getElementById("project-info-id");
-        if (project_info_block.style.display === "none") {
-            project_info_block.style.display = "block";
-        } else {
-            project_info_block.style.display = "none";
-        }
-    });
-
-    const close_btn = document.getElementById("close-btn");
-    close_btn.addEventListener("click", function () {
-        let project_info_block = document.getElementById("project-info-id");
-        project_info_block.style.display = "none";
-    });
-
-    // Set the selected index to -1 on page load
-    const list_of_select = document.getElementById('list-of');
-    // Fetch data from the server for the default index
-    if (list_of_select.selectedIndex != 0) {
-        fetch("/process/gov-ca")
-            .then(response => response.text())
-            .then(data => {
-                textarea.value = data;
-            })
-            .catch(error => console.error(error));
-    }
-    list_of_select.selectedIndex = 0;
-
-    // Set '#list-of' on change action
-    const select = document.getElementById('list-of');
+    const projectInfoBlock = document.getElementById("project-info-id");
+    const btnShow = document.getElementById("show-btn-id");
+    const btnClose = document.getElementById("close-btn");
+    const selectList = document.getElementById('list-of');
     const textarea = document.getElementById('site-list');
 
-    select.addEventListener('change', (event) => {
-        const selectedValue = event.target.value;
-        const url = `/process/${selectedValue}`;
+    projectInfoBlock.style.display = "none";
 
-        fetch(url)
+    const toggleProjectInfo = () => {
+        projectInfoBlock.style.display = projectInfoBlock.style.display === "none" ? "block" : "none";
+    };
+    btnShow.addEventListener("click", toggleProjectInfo);
+    btnClose.addEventListener("click", toggleProjectInfo);
+
+    const loadData = (endpoint) => {
+        fetch(`/process/${endpoint}`)
             .then(response => response.text())
-            .then(data => {
-                textarea.value = data;
-            })
-            .catch(error => console.error(error));
+            .then(data => textarea.value = data)
+            .catch(error => console.error('Error loading data:', error));
+    };
+
+    if (selectList.selectedIndex !== 0) {
+        loadData('gov-ca');
+    }
+    selectList.selectedIndex = 0;
+
+    selectList.addEventListener('change', (event) => {
+        loadData(event.target.value);
     });
 });
 
 // Setup download dump button action
 function download_dump() {
-    // Send a fetch request to the /download_dump endpoint
     fetch('/download_dump')
         .then(response => response.blob())
         .then(blob => {
-            // Create a new Blob object with the file data and create a download link
             const url = URL.createObjectURL(blob);
-            let a = document.createElement('a');
+            const a = document.createElement('a');
             a.href = url;
             a.download = 'statistics.db';
             document.body.appendChild(a);
