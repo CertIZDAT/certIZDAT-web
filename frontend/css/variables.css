@@ -12,6 +12,8 @@
     --alt-nonactive-gray: #C6C6C6;
     --inactive-gray-color: #D8D8D8;
 
+    --text-selection-color: #B0C4dE;
+
     /* Also used in /backend/utils/common.py */
     --main-green-color: #008000;
     --main-white-color: #ffffff;

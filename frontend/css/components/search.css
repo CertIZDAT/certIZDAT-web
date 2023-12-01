@@ -26,6 +26,11 @@
     resize: none;
 }
 
+.main-text-area::selection {
+    color: var(--main-black-color);
+    background: var(--text-selection-color);
+}
+
 .search-note {
     width: 100%;
     margin: 4px 0;
