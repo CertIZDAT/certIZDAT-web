@@ -9,7 +9,7 @@ from utils.StatsState import StatsState
 from utils.common import get_diff_and_color
 
 sys.path.append("../")
-from analyser.utils.const import SELF_SIGNED_CERTS as ss_list
+from analyser.utils.cert_references import SELF_SIGNED_CERTS as ss_list
 
 app = Flask(__name__, template_folder='../frontend/',
             static_folder='../frontend/', static_url_path='')
