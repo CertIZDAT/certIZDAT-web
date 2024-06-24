@@ -70,31 +70,49 @@ def index():
     }
 
     # Get the government diffs
-    gov_ca_diff, gov_ca_color = get_diff_and_color(
-        state.actual_government_domains_stats[russian_trusted_ca_index][0],
-        state.prev_government_domains_stats[russian_trusted_ca_index][0])
+    if state.prev_government_domains_stats is not None:
+        gov_ca_diff, gov_ca_color = get_diff_and_color(
+            state.actual_government_domains_stats[russian_trusted_ca_index][0],
+            state.prev_government_domains_stats[russian_trusted_ca_index][0])
+    else:
+        gov_ca_diff, gov_ca_color = "0", "var(--main-green-color)"
 
-    gov_ss_diff, gov_ss_color = get_diff_and_color(
-        state.actual_government_domains_stats[self_signed_index][0],
-        state.prev_government_domains_stats[self_signed_index][0])
+    if state.state.prev_government_domains_stats is not None:
+        gov_ss_diff, gov_ss_color = get_diff_and_color(
+            state.actual_government_domains_stats[self_signed_index][0],
+            state.prev_government_domains_stats[self_signed_index][0])
+    else:
+        gov_ss_diff, gov_ss_color = "0", "var(--main-green-color)"
 
     # Get the social diffs
-    social_ca_diff, social_ca_color = get_diff_and_color(
-        state.actual_social_domains_stats[russian_trusted_ca_index][0],
-        state.prev_social_domains_stats[russian_trusted_ca_index][0])
+    if state.state.prev_social_domains_stats is not None:
+        social_ca_diff, social_ca_color = get_diff_and_color(
+            state.actual_social_domains_stats[russian_trusted_ca_index][0],
+            state.prev_social_domains_stats[russian_trusted_ca_index][0])
+    else:
+      social_ca_diff, social_ca_color = "0", "var(--main-green-color)"
 
-    social_ss_diff, social_ss_color = get_diff_and_color(
-        state.actual_social_domains_stats[self_signed_index][0],
-        state.prev_social_domains_stats[self_signed_index][0])
+    if state.state.prev_social_domains_stats is not None:
+        social_ss_diff, social_ss_color = get_diff_and_color(
+            state.actual_social_domains_stats[self_signed_index][0],
+            state.prev_social_domains_stats[self_signed_index][0])
+    else:
+        social_ss_diff, social_ss_color = "0", "var(--main-green-color)"
 
     # Get the top diffs
-    top_ca_diff, top_ca_color = get_diff_and_color(
-        state.actual_top_domains_stats[russian_trusted_ca_index][0],
-        state.prev_top_domains_stats[russian_trusted_ca_index][0])
+    if state.state.prev_top_domains_stats is not None:
+        top_ca_diff, top_ca_color = get_diff_and_color(
+            state.actual_top_domains_stats[russian_trusted_ca_index][0],
+            state.prev_top_domains_stats[russian_trusted_ca_index][0])
+    else:
+        top_ca_diff, top_ca_color = "0", "var(--main-green-color)"
 
-    top_ss_diff, top_ss_color = get_diff_and_color(
-        state.actual_top_domains_stats[self_signed_index][0],
-        state.prev_top_domains_stats[self_signed_index][0])
+    if state.state.prev_top_domains_stats is not None:
+        top_ss_diff, top_ss_color = get_diff_and_color(
+            state.actual_top_domains_stats[self_signed_index][0],
+            state.prev_top_domains_stats[self_signed_index][0])
+    else:
+        top_ss_diff, top_ss_color = "0", "var(--main-green-color)"
 
     prev_context = {
         'gov_diff': (gov_ca_diff, gov_ca_color, gov_ss_diff, gov_ss_color),
