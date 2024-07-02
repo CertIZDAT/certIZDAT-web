@@ -69,6 +69,8 @@ def index():
         'top_ss_count': top_ss_count
     }
 
+    # FIXME: app crashed if no prev month in db
+
     # Get the government diffs
     if state.prev_government_domains_stats[russian_trusted_ca_index] is not None:
         gov_ca_diff, gov_ca_color = get_diff_and_color(
