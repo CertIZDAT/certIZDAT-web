@@ -14,6 +14,8 @@
 
     --text-selection-color: #B0C4dE;
 
+    --rks-memory-color: #545454;
+
     /* Also used in /backend/utils/common.py */
     --main-green-color: #008000;
     --main-white-color: #ffffff;

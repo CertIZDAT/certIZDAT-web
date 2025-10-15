@@ -55,3 +55,17 @@ ul {
 .bold {
     font-weight: 500;
 }
+
+.rks_legacy {
+    margin: 16px auto 0;
+    font-size: 8px;
+    color: var(--rks-memory-color);
+}
+
+.rks_link,
+.rks_link:visited,
+.rks_link:hover,
+.rks_link:active,
+.rks_link:focus {
+    color: var(--main-gray-color);
+}
