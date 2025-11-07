@@ -2,4 +2,4 @@ Flask==3.1.2
 gunicorn==23.0.0
 Jinja2==3.1.6
 Flask-SSLify==0.1.5
-gevent==25.8.2
+gevent==25.9.1
