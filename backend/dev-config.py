@@ -1,7 +1,7 @@
 # gunicorn config
 
 # The address to bind to (change this to your desired host and port)
-bind = '0.0.0.0:80'
+bind = "0.0.0.0:80"
 
 # Number of worker processes to spawn
 workers = 4
@@ -13,6 +13,6 @@ threads = 2
 reload = True
 
 # Logging configuration
-accesslog = '-'  # '-' means log to stdout
-errorlog = '-'   # '-' means log to stderr
-loglevel = 'info'
+accesslog = "-"  # '-' means log to stdout
+errorlog = "-"  # '-' means log to stderr
+loglevel = "info"
