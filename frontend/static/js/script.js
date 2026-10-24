@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnClose = document.getElementById("close-btn");
     const selectList = document.getElementById('list-of');
     const textarea = document.getElementById('site-list');
+    const btnDownload = document.getElementById('download-dump');
+
+    if (btnDownload) {
+        btnDownload.addEventListener('click', download_dump);
+    }
 
     projectInfoBlock.style.display = "none";
 
@@ -33,7 +38,12 @@ document.addEventListener("DOMContentLoaded", function () {
 // Setup download dump button action
 function download_dump() {
     fetch('/download_dump')
-        .then(response => response.blob())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Download failed: ' + response.status);
+            }
+            return response.blob();
+        })
         .then(blob => {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -42,5 +52,7 @@ function download_dump() {
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-        });
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        })
+        .catch(error => console.error('Error downloading dump:', error));
 }

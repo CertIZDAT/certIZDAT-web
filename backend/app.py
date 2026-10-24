@@ -13,7 +13,7 @@ from analyser.utils.cert_references import SELF_SIGNED_CERTS as ss_list
 app = Flask(
     __name__,
     template_folder="../frontend/",
-    static_folder="../frontend/",
+    static_folder="../frontend/static/",
     static_url_path="",
 )
 
@@ -161,24 +161,19 @@ def index():
 
     context.update(prev_context)
     context.update(support_context)
-    template_name = "index.html" if app.config["DEBUG"] else "index-min.html"
-    return render_template(template_name, **context, app=app)
+    return render_template("index.html", **context)
 
 
 @app.route("/faq.html")
 def faq_page():
     clean_res = ", ".join(i for i in ss_list)
-    template_name = "faq.html" if app.config["DEBUG"] else "faq-min.html"
-    return render_template(template_name, ss_list=clean_res, app=app)
+    return render_template("faq.html", ss_list=clean_res)
 
 
 # 404 page
 @app.errorhandler(404)
-def page_not_found(e):
-    requested_url = request.url
-    print(f"404 error for URL: {requested_url}\nerror: {e}")
-    template_name = "404.html" if app.config["DEBUG"] else "404-min.html"
-    return render_template(template_name, app=app), 404
+def page_not_found(e: HTTPException):
+    return render_template("404.html"), 404
 
 
 # Handle internal errors
