@@ -10,7 +10,9 @@ certfile = "/etc/letsencrypt/live/certizdat.org/fullchain.pem"
 keyfile = "/etc/letsencrypt/live/certizdat.org/privkey.pem"
 
 # Security
-forwarded_allow_ips = "127.0.0.1"  # Limit to localhost for security reasons
+# This listener terminates TLS itself and must not trust client scheme headers
+forwarded_allow_ips = ""
+reload = False
 
 # Performance
 worker_class = "gevent"  # Use gevent workers for handling long-polling or WebSockets
