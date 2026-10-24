@@ -208,10 +208,11 @@ def page_not_found(e: HTTPException):
 
 # Handle internal errors
 @app.errorhandler(Exception)
-def internal_error(e):
-    print(f"Internal error: {e}")
-    template_name = "err.html" if app.config["DEBUG"] else "err-min.html"
-    return render_template(template_name, err_info=e)
+def internal_error(e: Exception):
+    if isinstance(e, HTTPException):
+        return e
+    app.logger.exception("Unhandled request error")
+    return render_template("err.html"), 500
 
 
 @app.route("/download_dump")
