@@ -234,34 +234,52 @@ def download_dump():
 # Government lists
 @app.route("/process/gov-ca")
 def gov_ca():
-    return state.actual_government_domains_stats[0][0].replace(",", "\n")
+    return Response(
+        state.actual_government_domains_stats[0][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 @app.route("/process/gov-ss")
 def gov_ss():
-    return state.actual_government_domains_stats[1][0].replace(",", "\n")
+    return Response(
+        state.actual_government_domains_stats[1][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 # Social lists
 @app.route("/process/social-ca")
 def social_ca():
-    return state.actual_social_domains_stats[0][0].replace(",", "\n")
+    return Response(
+        state.actual_social_domains_stats[0][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 @app.route("/process/social-ss")
 def social_ss():
-    return state.actual_social_domains_stats[1][0].replace(",", "\n")
+    return Response(
+        state.actual_social_domains_stats[1][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 # Top-100 lists
 @app.route("/process/top-ca")
 def top_ca():
-    return state.actual_top_domains_stats[0][0].replace(",", "\n")
+    return Response(
+        state.actual_top_domains_stats[0][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 @app.route("/process/top-ss")
 def top_ss():
-    return state.actual_top_domains_stats[1][0].replace(",", "\n")
+    return Response(
+        state.actual_top_domains_stats[1][0].replace(",", "\n"),
+        mimetype="text/plain",
+    )
 
 
 if __name__ == "__main__":
