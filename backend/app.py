@@ -2,10 +2,10 @@ import os
 import sys
 from datetime import date
 
-from flask import Flask, render_template, request, send_file
-from flask_sslify import SSLify
+from flask import Flask, Response, abort, redirect, render_template, request, send_file
 from utils.common import get_diff_and_color
 from utils.StatsState import StatsState
+from werkzeug.exceptions import HTTPException
 
 sys.path.append("../")
 from analyser.utils.cert_references import SELF_SIGNED_CERTS as ss_list
@@ -17,11 +17,41 @@ app = Flask(
     static_url_path="",
 )
 
-# Check if the DEBUG environment variable is set
-app.config["DEBUG"] = os.environ.get("DEBUG")
 
-if not app.config["DEBUG"]:
-    sslify = SSLify(app)
+def environment_flag(name: str) -> bool:
+    value = os.environ.get(name, "").strip().lower()
+    if value not in {"", "0", "false", "no", "off", "1", "true", "yes", "on"}:
+        raise ValueError(f"{name} must be a boolean value")
+    return value in {"1", "true", "yes", "on"}
+
+
+app.config["DEBUG"] = environment_flag("DEBUG")
+app.config["ENFORCE_HTTPS"] = not environment_flag("ALLOW_INSECURE_HTTP")
+app.config["TRUSTED_HOSTS"] = None if app.config["DEBUG"] else ["certizdat.org"]
+
+
+@app.before_request
+def enforce_https():
+    # Only the WSGI server may establish the scheme; never trust raw proxy headers.
+    if app.config["ENFORCE_HTTPS"] and not request.is_secure:
+        return redirect(request.url.replace("http://", "https://", 1), code=308)
+
+
+@app.after_request
+def security_headers(response: Response) -> Response:
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; script-src 'self'; "
+        "style-src 'self' 'unsafe-inline' https://fonts.bunny.net; "
+        "font-src 'self' https://fonts.bunny.net; img-src 'self'; "
+        "object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    )
+    if request.is_secure:
+        response.headers["Strict-Transport-Security"] = "max-age=31536000"
+    return response
+
 
 state = StatsState()
 state.init_cache()
