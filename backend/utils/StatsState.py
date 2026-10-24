@@ -32,7 +32,7 @@ class StatsState:
 
     def __get_data_from_db(self):
         try:
-            connection = db.get_db_connection(f"../analyser/statistics.db")
+            connection = db.get_db_connection("../analyser/statistics.db")
         except sqlite3.Error as e:
             print(f"func: __get_data_from_db\nget db connection error: {e}")
             return
