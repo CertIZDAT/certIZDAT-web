@@ -1,7 +1,6 @@
 # gunicorn config
-
-# The address to bind to (change this to your desired host and port)
 bind = "0.0.0.0:80"
+forwarded_allow_ips = ""
 
 # Number of worker processes to spawn
 workers = 4
