@@ -217,10 +217,18 @@ def internal_error(e: Exception):
 
 @app.route("/download_dump")
 def download_dump():
-    file_path: str = os.path.join(
+    file_path = os.path.join(
         os.path.dirname(os.path.realpath(__file__)), "..", "analyser", "statistics.db"
     )
-    return send_file(file_path, as_attachment=True, mimetype="application/x-sqlite3")
+    try:
+        return send_file(
+            file_path,
+            as_attachment=True,
+            download_name="statistics.db",
+            mimetype="application/x-sqlite3",
+        )
+    except (FileNotFoundError, IsADirectoryError):
+        abort(503, description="The statistics database is unavailable.")
 
 
 # Government lists
