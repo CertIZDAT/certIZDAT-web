@@ -64,5 +64,5 @@ def is_data_changed():
 
 
 def get_db_connection(db_name: str) -> Connection:
-    connect = sqlite3.connect(db_name)
-    return connect
+    uri = Path(db_name).resolve().as_uri() + "?mode=ro"
+    return sqlite3.connect(uri, uri=True)
