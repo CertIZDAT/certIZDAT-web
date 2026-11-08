@@ -9,6 +9,8 @@ bind = "0.0.0.0:443"
 certfile = "/etc/letsencrypt/live/certizdat.org/fullchain.pem"
 keyfile = "/etc/letsencrypt/live/certizdat.org/privkey.pem"
 
+# or for non-root user /etc/ssl/certizdat/fullchain.pem and /etc/ssl/certizdat/privkey.pem
+
 # Security
 # This listener terminates TLS itself and must not trust client scheme headers
 forwarded_allow_ips = ""
